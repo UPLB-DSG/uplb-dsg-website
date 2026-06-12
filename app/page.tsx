@@ -3,11 +3,11 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="relative min-h-[calc(100vh-80px)] bg-black text-white overflow-hidden flex flex-col lg:block">
-      {/* Top Mesh Gradient - dark theme with deep red-orange */}
+      {/* Top Mesh Gradient - accurate to Figma screenshot */}
       <div className="absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
-         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-[#9d0208] blur-[100px] rounded-[100%]" />
-         <div className="absolute top-[-200px] left-[30%] w-[60%] h-[400px] bg-[#370617] blur-[120px] rounded-[100%]" />
-         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-[#e85d04]/40 blur-[100px] rounded-[100%]" />
+         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-[#9e1c59] blur-[120px] rounded-[100%]" />
+         <div className="absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-[#4a0a77] blur-[140px] rounded-[100%]" />
+         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-[#a35c3e]/80 blur-[120px] rounded-[100%]" />
       </div>
       
       {/* Main Content Container */}
