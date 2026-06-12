@@ -8,7 +8,7 @@ export default function Footer() {
         <section className="space-y-4 md:max-w-sm">
           <div className="flex items-center gap-3">
             <Image
-              src="/icon.png"
+              src="/logo.png"
               alt="UPLB Data Science Guild Logo"
               width={40}
               height={40}
