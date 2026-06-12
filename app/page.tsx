@@ -11,10 +11,10 @@ export default function Home() {
       </div>
       
       {/* Main Content Container */}
-      <div className="container mx-auto px-6 z-30 relative w-full flex flex-col lg:block h-full min-h-[calc(100vh-80px)] justify-center pt-16 lg:pt-0">
+      <div className="container mx-auto px-6 z-30 relative w-full flex flex-col-reverse lg:block h-full min-h-[calc(100vh-80px)] justify-center pt-8 pb-12 lg:py-0">
         
         {/* Left Content (Text) */}
-        <section className="space-y-6 max-w-xl w-full lg:absolute lg:top-1/2 lg:-translate-y-1/2 z-30">
+        <section className="space-y-6 max-w-xl w-full lg:absolute lg:top-1/2 lg:-translate-y-1/2 z-30 mt-8 lg:mt-0">
           <p className="text-sm md:text-base text-gray-400 uppercase tracking-widest font-medium">
             UPLB Data Science Guild
           </p>
@@ -35,7 +35,7 @@ export default function Home() {
         {/* Isometric Graphic (Responsive) */}
         {/* Mobile: relative, centered, scaled to 150vw so it's large but contained */}
         {/* Desktop: absolute, positioned on right, massive fixed pixel dimensions */}
-        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 mt-12 lg:mt-0 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[40%] xl:left-[45%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
+        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[40%] xl:left-[45%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
           
           {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[60%] bg-[#a855f7] rounded-full blur-[60px] lg:blur-[100px] opacity-40 z-0" />
