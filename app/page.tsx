@@ -56,7 +56,7 @@ export default function Home() {
             }}
           >
              {/* The 3D Plane */}
-             <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
+             <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(56.633deg)_rotateZ(45deg)] flex items-center justify-center">
                 
                 {/* Grid Background */}
                 <div className="absolute inset-0" 
@@ -72,13 +72,13 @@ export default function Home() {
                 />
 
                 {/* Glowing Floor Tiles (Mapped to a SINGLE unit tile) */}
-                <div className="absolute opacity-80 blur-[8px] bg-accent-secondary" 
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 blur-[8px] bg-accent-secondary" 
                      style={{ 
                        width: 'calc(var(--tile-size) * 1.5)', 
                        height: 'calc(var(--tile-size) * 1.5)',
                      }} 
                 />
-                <div className="absolute opacity-60 blur-[2px] bg-accent-main" 
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 blur-[2px] bg-accent-main" 
                      style={{ 
                        width: 'var(--tile-size)', 
                        height: 'var(--tile-size)',
