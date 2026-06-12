@@ -51,8 +51,8 @@ export default function Home() {
           <div 
             className="absolute inset-0 flex items-center justify-center overflow-hidden"
             style={{
-              WebkitMaskImage: 'radial-gradient(ellipse at center, black 45%, transparent 80%)',
-              maskImage: 'radial-gradient(ellipse at center, black 45%, transparent 80%)'
+              WebkitMaskImage: 'radial-gradient(ellipse at center, black 60%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse at center, black 60%, transparent 100%)'
             }}
           >
              {/* The 3D Plane */}
