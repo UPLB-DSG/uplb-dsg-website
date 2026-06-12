@@ -56,7 +56,7 @@ export default function Home() {
             }}
           >
              {/* The 3D Plane */}
-             <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(56.633deg)_rotateZ(45deg)] flex items-center justify-center">
+             <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(54.736deg)_rotateZ(45deg)] flex items-center justify-center">
                 
                 {/* Highlighted Floor Panels (rendered under grid lines) */}
                 <div className="absolute inset-0">
