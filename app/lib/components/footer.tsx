@@ -6,7 +6,16 @@ export default function Footer() {
     <footer className="w-full border-t border-off-white/20 bg-dark-gray text-off-white">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12 md:flex-row md:justify-between md:gap-8">
         <section className="space-y-4 md:max-w-sm">
-          <h2 className="text-lg font-semibold">UPLB Data Science Guild</h2>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/icon.png"
+              alt="UPLB Data Science Guild Logo"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+            />
+            <h2 className="text-lg font-semibold leading-tight">UPLB Data Science Guild</h2>
+          </div>
           <p className="text-sm text-off-white/80 leading-relaxed">
             The UPLB Data Science Guild is a socio-civic, and pioneer
             organization of UPLB for data science.
