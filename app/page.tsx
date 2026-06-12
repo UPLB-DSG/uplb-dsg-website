@@ -58,8 +58,47 @@ export default function Home() {
              {/* The 3D Plane */}
              <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(56.633deg)_rotateZ(45deg)] flex items-center justify-center">
                 
+                {/* Highlighted Floor Panels (rendered under grid lines) */}
+                <div className="absolute inset-0">
+                  {/* General faint ambient glow to blend the sharp tiles */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 pointer-events-none" 
+                       style={{ 
+                         width: 'calc(var(--tile-size) * 6)', 
+                         height: 'calc(var(--tile-size) * 6)',
+                         background: 'radial-gradient(circle, var(--accent-main) 0%, transparent 50%)'
+                       }} 
+                  />
+                  
+                  {/* Specific mathematically locked tiles */}
+                  {[
+                    // Center (Under logo)
+                    { x: 0, y: 0, opacity: 0.6 },
+                    // Level 1 (Adjacent)
+                    { x: 1, y: 0, opacity: 0.4 },  // Down-Right
+                    { x: 0, y: 1, opacity: 0.4 },  // Down-Left
+                    { x: -1, y: 0, opacity: 0.2 }, // Up-Left
+                    { x: 0, y: -1, opacity: 0.2 }, // Up-Right
+                    // Level 2 (Extended)
+                    { x: 2, y: 0, opacity: 0.15 }, // Further Down-Right
+                    { x: 0, y: 2, opacity: 0.15 }, // Further Down-Left
+                    { x: -2, y: 0, opacity: 0.05 },// Further Up-Left
+                    { x: 0, y: -2, opacity: 0.05 },// Further Up-Right
+                  ].map((tile, i) => (
+                    <div 
+                      key={i}
+                      className="absolute top-1/2 left-1/2 bg-accent-main pointer-events-none"
+                      style={{ 
+                        width: 'var(--tile-size)', 
+                        height: 'var(--tile-size)',
+                        opacity: tile.opacity,
+                        transform: `translate(calc(-50% + ${tile.x} * var(--tile-size)), calc(-50% + ${tile.y} * var(--tile-size)))`
+                      }} 
+                    />
+                  ))}
+                </div>
+
                 {/* Grid Background */}
-                <div className="absolute inset-0" 
+                <div className="absolute inset-0 pointer-events-none" 
                      style={{
                        backgroundImage: `
                          linear-gradient(to right, rgba(167, 139, 250, 0.25) 1px, transparent 1px),
@@ -68,22 +107,6 @@ export default function Home() {
                        backgroundSize: 'var(--tile-size) var(--tile-size)',
                        /* backgroundPosition: center center naturally places the center of the container exactly in the middle of a grid tile */
                        backgroundPosition: 'center center'
-                     }} 
-                />
-
-                {/* Glowing Floor Tiles (Mapped to a SINGLE unit tile) */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" 
-                     style={{ 
-                       width: 'calc(var(--tile-size) * 1.5)', 
-                       height: 'calc(var(--tile-size) * 1.5)',
-                       background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 60%)'
-                     }} 
-                />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60" 
-                     style={{ 
-                       width: 'var(--tile-size)', 
-                       height: 'var(--tile-size)',
-                       background: 'radial-gradient(circle, var(--accent-main) 0%, transparent 70%)'
                      }} 
                 />
              </div>
