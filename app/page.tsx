@@ -41,7 +41,7 @@ export default function Home() {
         {/* We use a mathematical CSS grid for perfect precision instead of an image */}
         <section 
           className="relative w-full lg:w-[50%] aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
-          style={{ '--tile-size': 'clamp(100px, 12vw, 240px)' } as React.CSSProperties}
+          style={{ '--tile-size': 'clamp(64px, 8vw, 160px)' } as React.CSSProperties}
         >
           
           {/* Strong Center Glow BEHIND Grid */}
