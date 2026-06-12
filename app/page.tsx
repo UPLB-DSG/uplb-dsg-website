@@ -36,36 +36,54 @@ export default function Home() {
         </section>
 
         {/* Isometric Graphic (Responsive) */}
-        {/* Adjusted proportions: Grid is massive, centered/shifted right on desktop */}
-        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[20%] xl:left-[25%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
+        {/* We use a mathematical CSS grid for perfect precision instead of an image */}
+        <section 
+          className="relative lg:absolute w-full lg:w-[1000px] xl:w-[1400px] lg:left-[15%] xl:left-[20%] lg:top-1/2 lg:-translate-y-1/2 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none"
+          style={{ '--tile-size': 'clamp(24px, 4vw, 64px)' } as React.CSSProperties}
+        >
           
-          {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
+          {/* Strong Center Glow BEHIND Grid */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
 
-          {/* Highlighted Floor Tiles matching isometric grid perspective */}
-          {/* Positioned slightly below center (58.5%) to align with the bottom base of the cube */}
-          <div className="absolute top-[58.5%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 w-[44%] aspect-[2/1] z-0">
-             {/* Base glowing tile footprint */}
-             <div className="w-full h-full bg-[#c77dff] opacity-40 blur-[4px]" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
-             {/* Core intense glow directly underneath the cube */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[55%] bg-[#e0aaff] opacity-60 blur-[12px]" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+          {/* Mathematical Isometric Grid Container */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+             {/* The 3D Plane */}
+             <div className="absolute w-[200%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
+                
+                {/* Grid Background */}
+                <div className="absolute inset-0" 
+                     style={{
+                       backgroundImage: `
+                         linear-gradient(to right, rgba(167, 139, 250, 0.25) 1px, transparent 1px),
+                         linear-gradient(to bottom, rgba(167, 139, 250, 0.25) 1px, transparent 1px)
+                       `,
+                       backgroundSize: 'var(--tile-size) var(--tile-size)',
+                       backgroundPosition: 'center center'
+                     }} 
+                />
+
+                {/* Glowing Floor Tiles (3x3 grid area) */}
+                {/* Perfectly locked to the grid lines! */}
+                <div className="absolute bg-[#c77dff] opacity-40 blur-[4px]" 
+                     style={{ width: 'calc(var(--tile-size) * 3)', height: 'calc(var(--tile-size) * 3)' }} 
+                />
+                <div className="absolute bg-[#e0aaff] opacity-60 blur-[12px]" 
+                     style={{ width: 'calc(var(--tile-size) * 1.5)', height: 'calc(var(--tile-size) * 1.5)' }} 
+                />
+             </div>
           </div>
 
-          {/* Isometric Grid Background */}
-          <div className="absolute inset-0 z-10">
-            <Image 
-              src="/vector-grid.png" 
-              alt="Grid Background" 
-              fill
-              className="object-contain opacity-100"
-              priority
-            />
-          </div>
-
-          {/* Stacked Logo Elements - perfectly scaled and aligned to the grid intersections */}
-          {/* Width: 240/1468 = 16.34% | Height: 264/845 = 31.24% */}
-          {/* Tweak top/left percentages to snap the cube perfectly onto the grid lines */}
-          <div className="absolute z-20 w-[16.34%] h-[31.24%] top-[51%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+          {/* Stacked Logo Elements - perfectly scaled to the mathematical grid! */}
+          {/* Width of a 3x3 tile diamond is 3 * sqrt(2) * tile-size = 4.2426 * tile-size */}
+          {/* The logo is shifted up by roughly 29% of its width to align the cube's base with the floor diamond */}
+          <div className="absolute z-20 flex items-center justify-center"
+               style={{ 
+                 width: 'calc(var(--tile-size) * 4.2426)', 
+                 aspectRatio: '240 / 264',
+                 top: '50%',
+                 left: '50%',
+                 transform: 'translate(-50%, calc(-50% - (var(--tile-size) * 4.2426 * 0.29)))'
+               }}>
             <Image 
               src="/polygon-15.png"
               alt="DSG Logo Base"
