@@ -13,10 +13,10 @@ export default function Home() {
       </div>
       
       {/* Main Content Container */}
-      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col-reverse lg:block h-full min-h-[calc(100vh-80px)] justify-center pt-8 pb-12 lg:py-0">
+      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center justify-between h-full min-h-[calc(100vh-80px)] pt-8 pb-12 lg:py-0">
         
         {/* Left Content (Text) */}
-        <section className="space-y-4 lg:space-y-6 w-full lg:max-w-none lg:w-max lg:absolute lg:top-1/2 lg:-translate-y-1/2 z-30 mt-8 lg:mt-0 lg:left-[5%] xl:left-[10%]">
+        <section className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-8 lg:mt-0">
           {/* Made UPLB Data Science Guild more prominent per user request */}
           <p className="text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
             UPLB Data Science Guild
@@ -40,7 +40,7 @@ export default function Home() {
         {/* Isometric Graphic (Responsive) */}
         {/* We use a mathematical CSS grid for perfect precision instead of an image */}
         <section 
-          className="relative lg:absolute w-full lg:w-[800px] xl:w-[1000px] lg:right-[-5%] xl:right-[5%] lg:top-1/2 lg:-translate-y-1/2 aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
+          className="relative w-full lg:w-[50%] aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
           style={{ '--tile-size': 'clamp(100px, 12vw, 240px)' } as React.CSSProperties}
         >
           
@@ -72,16 +72,18 @@ export default function Home() {
                 />
 
                 {/* Glowing Floor Tiles (Mapped to a SINGLE unit tile) */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 blur-[8px] bg-accent-secondary" 
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" 
                      style={{ 
                        width: 'calc(var(--tile-size) * 1.5)', 
                        height: 'calc(var(--tile-size) * 1.5)',
+                       background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 60%)'
                      }} 
                 />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 blur-[2px] bg-accent-main" 
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60" 
                      style={{ 
                        width: 'var(--tile-size)', 
                        height: 'var(--tile-size)',
+                       background: 'radial-gradient(circle, var(--accent-main) 0%, transparent 70%)'
                      }} 
                 />
              </div>
