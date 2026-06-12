@@ -3,12 +3,11 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="relative min-h-[calc(100vh-80px)] bg-black text-white overflow-hidden flex flex-col lg:block">
-      {/* Top Mesh Gradient - exactly as in Figma */}
+      {/* Top Mesh Gradient - dark theme with deep red-orange */}
       <div className="absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
-         {/* Using absolute positioned blurred ovals to simulate the mesh gradient at the top */}
-         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-[#9d4edd] blur-[100px] rounded-[100%]" />
-         <div className="absolute top-[-200px] left-[30%] w-[60%] h-[400px] bg-[#7b2cbf] blur-[120px] rounded-[100%]" />
-         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-[#c77dff]/40 blur-[100px] rounded-[100%]" />
+         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-[#9d0208] blur-[100px] rounded-[100%]" />
+         <div className="absolute top-[-200px] left-[30%] w-[60%] h-[400px] bg-[#370617] blur-[120px] rounded-[100%]" />
+         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-[#e85d04]/40 blur-[100px] rounded-[100%]" />
       </div>
       
       {/* Main Content Container */}
@@ -37,8 +36,8 @@ export default function Home() {
         </section>
 
         {/* Isometric Graphic (Responsive) */}
-        {/* Adjusted proportions: Grid is ~1000-1100px wide, centered/shifted right on desktop */}
-        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1000px] xl:w-[1100px] lg:max-w-none lg:left-[35%] xl:left-[40%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
+        {/* Adjusted proportions: Grid is massive, centered/shifted right on desktop */}
+        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[40%] xl:left-[45%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
           
           {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
