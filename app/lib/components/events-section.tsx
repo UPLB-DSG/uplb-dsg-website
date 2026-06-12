@@ -3,16 +3,16 @@
 import { useState } from 'react';
 
 const PAST_EVENTS = [
-  { id: 1, title: "Data Science Bootcamp 2024", date: "August 15, 2024", description: "An intensive 3-day bootcamp covering the fundamentals of Python, pandas, and machine learning models for beginners.", image: "gradient-1" },
-  { id: 2, title: "AI in Healthcare Symposium", date: "October 10, 2024", description: "A panel discussion with industry experts on how artificial intelligence is revolutionizing predictive diagnostics and patient care.", image: "gradient-2" },
-  { id: 3, title: "Datathon: Hack the Future", date: "November 5-7, 2024", description: "Our annual flagship data hackathon where teams compete to build predictive models solving real-world climate change datasets.", image: "gradient-3" },
-  { id: 4, title: "Alumni Mixer & Networking", date: "January 20, 2025", description: "An exclusive networking night connecting current DSG members with alumni working in top tech companies across the globe.", image: "gradient-4" },
+  { id: 1, title: "Event Title 1", date: "Date of Event 1", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", image: "gradient-1" },
+  { id: 2, title: "Event Title 2", date: "Date of Event 2", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", image: "gradient-2" },
+  { id: 3, title: "Event Title 3", date: "Date of Event 3", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", image: "gradient-3" },
+  { id: 4, title: "Event Title 4", date: "Date of Event 4", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", image: "gradient-4" },
 ];
 
 const UPCOMING_EVENT = {
-  title: "Annual Data Science Conference 2025",
-  date: "May 20-22, 2025",
-  description: "Join us for our biggest event of the year! Featuring keynote speakers from top tech companies, interactive workshops, and a massive datathon.",
+  title: "Upcoming Event Title",
+  date: "Date of Upcoming Event",
+  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
   registrationLink: "#"
 };
 
