@@ -37,7 +37,7 @@ export default function Home() {
 
         {/* Isometric Graphic (Responsive) */}
         {/* Adjusted proportions: Grid is massive, centered/shifted right on desktop */}
-        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[40%] xl:left-[45%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
+        <section className="relative lg:absolute w-[150vw] sm:w-[120vw] max-w-[800px] left-1/2 -translate-x-1/2 lg:w-[1300px] xl:w-[1500px] lg:max-w-none lg:left-[20%] xl:left-[25%] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none">
           
           {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
