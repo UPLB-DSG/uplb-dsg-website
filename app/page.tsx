@@ -32,24 +32,25 @@ export default function Home() {
         </section>
 
         {/* Right Content - Isometric Grid and Logo */}
-        <section className="relative w-full h-[600px] lg:h-[800px] flex items-center justify-center">
+        <section className="relative w-full aspect-[1468/845] flex items-center justify-center">
           
+          {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[60%] bg-[#a855f7] rounded-full blur-[80px] opacity-40 z-0" />
+
           {/* Isometric Grid Background */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none w-[150%] left-[-25%] z-0">
+          <div className="absolute inset-0 z-10 pointer-events-none">
             <Image 
               src="/vector-grid.png" 
               alt="Grid Background" 
               fill
-              className="object-contain opacity-50 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+              className="object-contain opacity-100"
               priority
             />
           </div>
 
-          {/* Strong Center Glow behind Logo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#a855f7] rounded-full blur-[100px] opacity-60 z-0" />
-
-          {/* Stacked Logo Elements */}
-          <div className="relative w-[300px] h-[300px] flex items-center justify-center z-10 scale-110">
+          {/* Stacked Logo Elements - perfectly scaled to the grid's original Figma export dimensions */}
+          {/* Width: 240/1468 = 16.34% | Height: 264/845 = 31.24% */}
+          <div className="absolute z-20 w-[16.34%] h-[31.24%] flex items-center justify-center">
             <Image 
               src="/polygon-15.png"
               alt="DSG Logo Base"
@@ -60,13 +61,13 @@ export default function Home() {
               src="/group-49.png"
               alt="DSG Logo Middle"
               fill
-              className="object-contain absolute z-20 drop-shadow-[0_0_10px_rgba(167,139,250,0.8)]"
+              className="object-contain absolute z-20"
             />
             <Image 
               src="/group-47.png"
               alt="DSG Logo Top"
               fill
-              className="object-contain absolute z-30 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+              className="object-contain absolute z-30 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
             />
           </div>
         </section>
