@@ -42,6 +42,15 @@ export default function Home() {
           {/* Strong Center Glow BEHIND Grid so grid lines stay crisp */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
 
+          {/* Highlighted Floor Tiles matching isometric grid perspective */}
+          {/* Positioned slightly below center (58.5%) to align with the bottom base of the cube */}
+          <div className="absolute top-[58.5%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 w-[44%] aspect-[2/1] z-0">
+             {/* Base glowing tile footprint */}
+             <div className="w-full h-full bg-[#c77dff] opacity-40 blur-[4px]" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+             {/* Core intense glow directly underneath the cube */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[55%] bg-[#e0aaff] opacity-60 blur-[12px]" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+          </div>
+
           {/* Isometric Grid Background */}
           <div className="absolute inset-0 z-10">
             <Image 
@@ -53,9 +62,10 @@ export default function Home() {
             />
           </div>
 
-          {/* Stacked Logo Elements - perfectly scaled to the grid's original Figma export dimensions */}
+          {/* Stacked Logo Elements - perfectly scaled and aligned to the grid intersections */}
           {/* Width: 240/1468 = 16.34% | Height: 264/845 = 31.24% */}
-          <div className="absolute z-20 w-[16.34%] h-[31.24%] flex items-center justify-center">
+          {/* Tweak top/left percentages to snap the cube perfectly onto the grid lines */}
+          <div className="absolute z-20 w-[16.34%] h-[31.24%] top-[51%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
             <Image 
               src="/polygon-15.png"
               alt="DSG Logo Base"
