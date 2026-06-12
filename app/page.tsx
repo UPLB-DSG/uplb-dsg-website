@@ -49,10 +49,10 @@ export default function Home() {
 
           {/* Mathematical Isometric Grid Container with Radial Fade */}
           <div 
-            className="absolute inset-0 flex items-center justify-center overflow-hidden"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] flex items-center justify-center pointer-events-none"
             style={{
-              WebkitMaskImage: 'radial-gradient(50% 50% at center, black 50%, transparent 100%)',
-              maskImage: 'radial-gradient(50% 50% at center, black 50%, transparent 100%)'
+              WebkitMaskImage: 'radial-gradient(50% 50% at center, black 30%, transparent 80%)',
+              maskImage: 'radial-gradient(50% 50% at center, black 30%, transparent 80%)'
             }}
           >
              {/* The 3D Plane */}
