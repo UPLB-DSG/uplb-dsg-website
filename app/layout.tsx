@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "UPLB Data Science Guild",
-  description: "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
+  description:
+    "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
 };
 
 export default function RootLayout({

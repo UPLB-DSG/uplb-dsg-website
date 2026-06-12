@@ -15,7 +15,9 @@ export default function Footer() {
               className="h-10 w-10"
               quality={100}
             />
-            <h2 className="text-lg font-semibold leading-tight">UPLB Data Science Guild</h2>
+            <h2 className="text-lg font-semibold leading-tight">
+              UPLB Data Science Guild
+            </h2>
           </div>
           <p className="text-sm text-off-white/80 leading-relaxed">
             The UPLB Data Science Guild is a socio-civic, and pioneer
@@ -76,13 +78,19 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm text-off-white/80">
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Mission</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Mission
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">History</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                History
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Team</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Team
+              </Link>
             </li>
           </ul>
         </section>
@@ -93,13 +101,19 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm text-off-white/80">
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Workshops</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Workshops
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Competitions</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Competitions
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Community</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Community
+              </Link>
             </li>
           </ul>
         </section>
@@ -110,18 +124,23 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm text-off-white/80">
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Contact</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Contact
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Membership</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Membership
+              </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-off-white transition-colors">Partners</Link>
+              <Link href="#" className="hover:text-off-white transition-colors">
+                Partners
+              </Link>
             </li>
           </ul>
         </section>
       </div>
-
     </footer>
   );
 }
