@@ -66,8 +66,8 @@ export default function Home() {
                          linear-gradient(to bottom, rgba(167, 139, 250, 0.25) 1px, transparent 1px)
                        `,
                        backgroundSize: 'var(--tile-size) var(--tile-size)',
-                       /* Shifting by half a tile ensures the center of the screen is the center of a tile, so a 3x3 box perfectly aligns its edges with grid lines */
-                       backgroundPosition: 'calc(50% + (var(--tile-size) / 2)) calc(50% + (var(--tile-size) / 2))'
+                       /* backgroundPosition: center center naturally places the center of the container exactly in the middle of a grid tile */
+                       backgroundPosition: 'center center'
                      }} 
                 />
 
