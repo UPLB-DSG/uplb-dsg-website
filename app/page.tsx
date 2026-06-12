@@ -31,7 +31,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-4 lg:pt-6">
             <span className="text-sm text-gray-300">Want to hear updates?</span>
-            <button className="bg-[#7b2cbf] hover:bg-[#5a189a] text-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm">
+            <button className="bg-accent-main hover:bg-accent-secondary text-off-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm shadow-[0_0_20px_rgba(114,48,255,0.4)]">
               SUBSCRIBE
             </button>
           </div>
@@ -40,23 +40,23 @@ export default function Home() {
         {/* Isometric Graphic (Responsive) */}
         {/* We use a mathematical CSS grid for perfect precision instead of an image */}
         <section 
-          className="relative lg:absolute w-full lg:w-[1000px] xl:w-[1400px] lg:left-[15%] xl:left-[20%] lg:top-1/2 lg:-translate-y-1/2 aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none"
-          style={{ '--tile-size': 'clamp(24px, 4vw, 64px)' } as React.CSSProperties}
+          className="relative lg:absolute w-full lg:w-[800px] xl:w-[1000px] lg:right-[-5%] xl:right-[5%] lg:top-1/2 lg:-translate-y-1/2 aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
+          style={{ '--tile-size': 'clamp(32px, 5vw, 80px)' } as React.CSSProperties}
         >
           
           {/* Strong Center Glow BEHIND Grid */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[60%] bg-accent-main rounded-full blur-[60px] lg:blur-[80px] opacity-60 z-0" />
 
           {/* Mathematical Isometric Grid Container with Radial Fade */}
           <div 
             className="absolute inset-0 flex items-center justify-center overflow-hidden"
             style={{
-              WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-              maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)'
+              WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 65%)',
+              maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 65%)'
             }}
           >
              {/* The 3D Plane */}
-             <div className="absolute w-[300%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
+             <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
                 
                 {/* Grid Background */}
                 <div className="absolute inset-0" 
@@ -66,7 +66,8 @@ export default function Home() {
                          linear-gradient(to bottom, rgba(167, 139, 250, 0.25) 1px, transparent 1px)
                        `,
                        backgroundSize: 'var(--tile-size) var(--tile-size)',
-                       backgroundPosition: 'center center'
+                       /* Shifting by half a tile ensures the center of the screen is the center of a tile, so a 3x3 box perfectly aligns its edges with grid lines */
+                       backgroundPosition: 'calc(50% + (var(--tile-size) / 2)) calc(50% + (var(--tile-size) / 2))'
                      }} 
                 />
 
@@ -76,14 +77,14 @@ export default function Home() {
                      style={{ 
                        width: 'calc(var(--tile-size) * 3)', 
                        height: 'calc(var(--tile-size) * 3)',
-                       background: 'radial-gradient(circle, #c77dff 0%, transparent 70%)'
+                       background: 'radial-gradient(circle, var(--accent-main) 0%, transparent 70%)'
                      }} 
                 />
                 <div className="absolute opacity-80 blur-[8px]" 
                      style={{ 
                        width: 'calc(var(--tile-size) * 1.5)', 
                        height: 'calc(var(--tile-size) * 1.5)',
-                       background: 'radial-gradient(circle, #e0aaff 0%, transparent 70%)'
+                       background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%)'
                      }} 
                 />
              </div>
@@ -116,7 +117,7 @@ export default function Home() {
               src="/group-47.png"
               alt="DSG Logo Top"
               fill
-              className="object-contain absolute z-30 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+              className="object-contain absolute z-30 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
             />
           </div>
         </section>
@@ -143,7 +144,7 @@ export default function Home() {
             <div className="space-y-8">
               {/* Heading */}
               <div className="bg-white/5 border border-white/10 px-8 py-3 rounded-lg inline-block shadow-inner">
-                <h2 className="text-xl md:text-2xl font-black uppercase tracking-widest text-[#e0aaff]">
+                <h2 className="text-xl md:text-2xl font-black uppercase tracking-widest text-accent-main">
                   WHO ARE WE?
                 </h2>
               </div>
@@ -154,17 +155,17 @@ export default function Home() {
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 mt-6">
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-faded-accent mt-6">
                 <div className="space-y-1 mt-6">
-                  <h3 className="text-3xl md:text-4xl font-black text-white">100<span className="text-[#c77dff]">+</span></h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-off-white">100<span className="text-accent-main">+</span></h3>
                   <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">members</p>
                 </div>
                 <div className="space-y-1 mt-6">
-                  <h3 className="text-3xl md:text-4xl font-black text-white">100<span className="text-[#c77dff]">+</span></h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-off-white">100<span className="text-accent-main">+</span></h3>
                   <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">alumni</p>
                 </div>
                 <div className="space-y-1 mt-6">
-                  <h3 className="text-3xl md:text-4xl font-black text-white">100<span className="text-[#c77dff]">+</span></h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-off-white">100<span className="text-accent-main">+</span></h3>
                   <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-bold">partnerships</p>
                 </div>
               </div>
