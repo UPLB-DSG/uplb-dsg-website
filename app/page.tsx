@@ -15,14 +15,14 @@ export default function Home() {
       <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col-reverse lg:block h-full min-h-[calc(100vh-80px)] justify-center pt-8 pb-12 lg:py-0">
         
         {/* Left Content (Text) */}
-        <section className="space-y-4 lg:space-y-6 max-w-2xl w-full lg:absolute lg:top-1/2 lg:-translate-y-1/2 z-30 mt-8 lg:mt-0 lg:left-[5%] xl:left-[10%]">
+        <section className="space-y-4 lg:space-y-6 w-full lg:max-w-none lg:w-max lg:absolute lg:top-1/2 lg:-translate-y-1/2 z-30 mt-8 lg:mt-0 lg:left-[5%] xl:left-[10%]">
           {/* Made UPLB Data Science Guild more prominent per user request */}
           <p className="text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
             UPLB Data Science Guild
           </p>
           
-          {/* Gradient text matching Figma */}
-          <h1 className="text-[2.75rem] md:text-6xl lg:text-[4.5rem] font-black leading-[1.1] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-[#7b2cbf] via-[#c77dff] to-[#ffffff]">
+          {/* Gradient text matching Figma, w-fit ensures gradient exactly wraps the text without truncating */}
+          <h1 className="w-fit text-[clamp(2rem,6.5vw,4.5rem)] font-black leading-[1.1] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-[#7b2cbf] via-[#c77dff] to-[#ffffff]">
             <span className="block">INTEGRITY.</span>
             <span className="block">INTERDEPENDENCE.</span>
             <span className="block">INNOVATION.</span>
