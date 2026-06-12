@@ -41,7 +41,7 @@ export default function Home() {
         {/* We use a mathematical CSS grid for perfect precision instead of an image */}
         <section 
           className="relative lg:absolute w-full lg:w-[800px] xl:w-[1000px] lg:right-[-5%] xl:right-[5%] lg:top-1/2 lg:-translate-y-1/2 aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
-          style={{ '--tile-size': 'clamp(32px, 5vw, 80px)' } as React.CSSProperties}
+          style={{ '--tile-size': 'clamp(100px, 12vw, 240px)' } as React.CSSProperties}
         >
           
           {/* Strong Center Glow BEHIND Grid */}
@@ -71,35 +71,30 @@ export default function Home() {
                      }} 
                 />
 
-                {/* Glowing Floor Tiles (3x3 grid area) */}
-                {/* Perfectly locked to the grid lines! */}
-                <div className="absolute opacity-50 blur-[4px]" 
-                     style={{ 
-                       width: 'calc(var(--tile-size) * 3)', 
-                       height: 'calc(var(--tile-size) * 3)',
-                       background: 'radial-gradient(circle, var(--accent-main) 0%, transparent 70%)'
-                     }} 
-                />
-                <div className="absolute opacity-80 blur-[8px]" 
+                {/* Glowing Floor Tiles (Mapped to a SINGLE unit tile) */}
+                <div className="absolute opacity-80 blur-[8px] bg-accent-secondary" 
                      style={{ 
                        width: 'calc(var(--tile-size) * 1.5)', 
                        height: 'calc(var(--tile-size) * 1.5)',
-                       background: 'radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%)'
+                     }} 
+                />
+                <div className="absolute opacity-60 blur-[2px] bg-accent-main" 
+                     style={{ 
+                       width: 'var(--tile-size)', 
+                       height: 'var(--tile-size)',
                      }} 
                 />
              </div>
           </div>
 
-          {/* Stacked Logo Elements - perfectly scaled to the mathematical grid! */}
-          {/* Width of a 3x3 tile diamond is 3 * sqrt(2) * tile-size = 4.2426 * tile-size */}
-          {/* The logo is shifted up by roughly 29% of its width to align the cube's base with the floor diamond */}
+          {/* Stacked Logo Elements - perfectly scaled to ONE mathematical grid tile! */}
+          {/* Width of a 1x1 tile diamond is sqrt(2) * tile-size = 1.4142 * tile-size */}
+          {/* The logo is shifted up by exactly 25% of its height. Since the logo's height is 264 and center is 132, the base diamond center is at Y=198. Shifting by -25% (-66px) aligns the base perfectly to the grid center. */}
           <div className="absolute z-20 flex items-center justify-center"
                style={{ 
-                 width: 'calc(var(--tile-size) * 4.2426)', 
+                 width: 'calc(var(--tile-size) * 1.4142)', 
                  aspectRatio: '240 / 264',
-                 top: '50%',
-                 left: '50%',
-                 transform: 'translate(-50%, calc(-50% - (var(--tile-size) * 4.2426 * 0.29)))'
+                 transform: 'translateY(-25%)'
                }}>
             <Image 
               src="/polygon-15.png"
