@@ -47,10 +47,16 @@ export default function Home() {
           {/* Strong Center Glow BEHIND Grid */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[50%] bg-[#9d4edd] rounded-full blur-[60px] lg:blur-[80px] opacity-70 z-0" />
 
-          {/* Mathematical Isometric Grid Container */}
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+          {/* Mathematical Isometric Grid Container with Radial Fade */}
+          <div 
+            className="absolute inset-0 flex items-center justify-center overflow-hidden"
+            style={{
+              WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
+              maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)'
+            }}
+          >
              {/* The 3D Plane */}
-             <div className="absolute w-[200%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
+             <div className="absolute w-[300%] aspect-square [transform:rotateX(60deg)_rotateZ(45deg)] flex items-center justify-center">
                 
                 {/* Grid Background */}
                 <div className="absolute inset-0" 
