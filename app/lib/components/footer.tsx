@@ -10,9 +10,10 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="UPLB Data Science Guild Logo"
-              width={40}
-              height={40}
+              width={160}
+              height={160}
               className="h-10 w-10"
+              quality={100}
             />
             <h2 className="text-lg font-semibold leading-tight">UPLB Data Science Guild</h2>
           </div>
