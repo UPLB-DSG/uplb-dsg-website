@@ -1,21 +1,22 @@
 import Image from "next/image";
+import { COPY, SUBSCRIBE_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden flex flex-col lg:block">
       <div className="absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
-        <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-[#9e1c59] blur-[120px] rounded-[100%]" />
-        <div className="absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-[#4a0a77] blur-[140px] rounded-[100%]" />
-        <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-[#a35c3e]/80 blur-[120px] rounded-[100%]" />
+        <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
+        <div className="absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
+        <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center justify-between h-full min-h-[calc(100vh-80px)] pt-8 pb-12 lg:py-0">
-        <section className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-8 lg:mt-0">
+      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center justify-between h-full min-h-[calc(100vh-80px)] pt-28 pb-12 lg:py-0">
+        <div className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-8 lg:mt-0">
           <p className="text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
-            UPLB Data Science Guild
+            {COPY.orgName}
           </p>
 
-          <h1 className="w-fit text-[clamp(2rem,6.5vw,4.5rem)] font-black leading-[1.1] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-[#7b2cbf] via-[#c77dff] to-[#ffffff]">
+          <h1 className="font-display w-fit text-[clamp(2rem,6.5vw,4.5rem)] font-extrabold leading-[1.1] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-headline-from via-headline-via to-white">
             <span className="block">INTEGRITY.</span>
             <span className="block">INTERDEPENDENCE.</span>
             <span className="block">INNOVATION.</span>
@@ -23,13 +24,18 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-4 lg:pt-6">
             <span className="text-sm text-gray-300">Want to hear updates?</span>
-            <button className="bg-accent-main hover:bg-accent-secondary text-off-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm shadow-[0_0_20px_rgba(114,48,255,0.4)]">
+            <a
+              href={SUBSCRIBE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-accent-main hover:bg-accent-secondary text-off-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm shadow-[0_0_20px_rgba(114,48,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+            >
               SUBSCRIBE
-            </button>
+            </a>
           </div>
-        </section>
+        </div>
 
-        <section
+        <div
           className="relative w-full lg:w-[50%] aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
           style={
             { "--tile-size": "clamp(64px, 8vw, 160px)" } as React.CSSProperties
@@ -54,7 +60,7 @@ export default function HeroSection() {
                     width: "calc(var(--tile-size) * 6)",
                     height: "calc(var(--tile-size) * 6)",
                     background:
-                      "radial-gradient(circle, var(--accent-main) 0%, transparent 50%)",
+                      "radial-gradient(circle, var(--color-accent-main) 0%, transparent 50%)",
                   }}
                 />
 
@@ -106,24 +112,30 @@ export default function HeroSection() {
           >
             <Image
               src="/polygon-15.png"
-              alt="DSG Logo Base"
+              alt=""
               fill
+              priority
+              sizes="(min-width: 1024px) 15vw, 40vw"
               className="object-contain absolute z-10"
             />
             <Image
               src="/group-49.png"
-              alt="DSG Logo Middle"
+              alt=""
               fill
+              priority
+              sizes="(min-width: 1024px) 15vw, 40vw"
               className="object-contain absolute z-20"
             />
             <Image
               src="/group-47.png"
-              alt="DSG Logo Top"
+              alt="DSG isometric cube logo"
               fill
+              priority
+              sizes="(min-width: 1024px) 15vw, 40vw"
               className="object-contain absolute z-30 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
             />
           </div>
-        </section>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,11 @@
+import { COPY } from "@/lib/data";
+
 export default function AboutUsSection() {
   return (
-    <section className="w-full bg-[#050505] py-24 z-40 border-t border-white/5 relative">
+    <section
+      id="mission"
+      className="w-full bg-surface py-24 z-40 border-t border-white/5 relative scroll-mt-24"
+    >
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         <div className="bg-white text-black p-12 md:p-20 rounded-xl shadow-2xl flex flex-col gap-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 text-black/5 font-black text-8xl md:text-9xl tracking-tighter pointer-events-none select-none">
@@ -29,28 +34,22 @@ export default function AboutUsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-widest text-[#111]">
+              <h2 className="font-display text-2xl md:text-3xl font-black uppercase tracking-widest text-dark-gray">
                 MISSION
               </h2>
               <div className="w-12 h-1 bg-accent-main rounded-full" />
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus.
+                {COPY.mission}
               </p>
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-widest text-[#111]">
+              <h2 className="font-display text-2xl md:text-3xl font-black uppercase tracking-widest text-dark-gray">
                 VISION
               </h2>
               <div className="w-12 h-1 bg-accent-secondary rounded-full" />
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus.
+                {COPY.vision}
               </p>
             </div>
           </div>
