@@ -112,7 +112,7 @@ export const UPCOMING_EVENT = {
 export const PAST_EVENTS: Event[] = [
   {
     id: 1,
-    title: "Event Title 1",
+    title: "Data Horizons: Data Analytics For The Future (DAF-A): Python Workshop",
     date: "Date of Event 1",
     description:
       "A recap of this event will be posted here once the guild publishes its event archive.",
@@ -120,7 +120,7 @@ export const PAST_EVENTS: Event[] = [
   },
   {
     id: 2,
-    title: "Event Title 2",
+    title: "Data Analytics For The Future (DAF-B): R Workshop",
     date: "Date of Event 2",
     description:
       "A recap of this event will be posted here once the guild publishes its event archive.",
@@ -128,7 +128,7 @@ export const PAST_EVENTS: Event[] = [
   },
   {
     id: 3,
-    title: "Event Title 3",
+    title: "Data in Wonderland",
     date: "Date of Event 3",
     description:
       "A recap of this event will be posted here once the guild publishes its event archive.",
@@ -136,7 +136,7 @@ export const PAST_EVENTS: Event[] = [
   },
   {
     id: 4,
-    title: "Event Title 4",
+    title: "Dataverse @ UP Rural High School",
     date: "Date of Event 4",
     description:
       "A recap of this event will be posted here once the guild publishes its event archive.",
