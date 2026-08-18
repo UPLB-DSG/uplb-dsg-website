@@ -36,7 +36,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="relative w-full lg:w-[50%] aspect-[1/1] lg:aspect-[1468/845] flex items-center justify-center z-10 pointer-events-none mt-8 lg:mt-0"
+          className="relative z-10 mt-0 aspect-[4/3] w-full -mb-6 flex items-center justify-center pointer-events-none sm:-mt-12 sm:aspect-[16/9] md:-mt-20 lg:mt-0 lg:mb-0 lg:w-[50%] lg:aspect-[1468/845]"
           style={
             { "--tile-size": "clamp(64px, 8vw, 160px)" } as React.CSSProperties
           }
