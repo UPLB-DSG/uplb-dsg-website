@@ -23,13 +23,13 @@ export default function HeroSection() {
             <span className="block">INNOVATION.</span>
           </h1>
 
-          <div className="mt-auto flex items-center gap-3 lg:mt-0 lg:gap-6 lg:pt-6">
+          <div className="absolute left-0 top-[68%] flex items-center gap-3 lg:static lg:mt-0 lg:gap-6 lg:pt-6">
             <span className="text-sm text-gray-300">Follow us on</span>
             <a
               href={FACEBOOK_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 w-max items-center whitespace-nowrap rounded-sm bg-accent-main px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-off-white shadow-[0_0_20px_rgba(114,48,255,0.4)] transition-colors hover:bg-accent-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white lg:min-h-0"
+              className="inline-flex min-h-11 w-max items-center whitespace-nowrap rounded-sm bg-accent-main px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-off-white shadow-[0_0_20px_rgba(114,48,255,0.4)] transition-colors hover:bg-accent-secondary active:bg-accent-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white lg:min-h-0"
             >
               FACEBOOK
             </a>
@@ -101,7 +101,7 @@ export default function HeroSection() {
           </div>
 
           <div
-            className="absolute top-[48%] left-1/2 z-20 flex items-center justify-center lg:top-1/2"
+            className="absolute top-[44%] left-1/2 z-20 flex items-center justify-center lg:top-1/2"
             style={{
               width: "calc(var(--tile-size) * 1.4142)",
               aspectRatio: "240 / 264",
