@@ -3,7 +3,7 @@ import Image from "next/image";
 import { NAV_LINKS } from "@/lib/data";
 
 const navLinkClass =
-  "px-1 py-2 md:px-4 rounded-full hover:bg-white/10 text-[10px] md:text-xs font-bold tracking-wider md:tracking-widest uppercase transition-colors text-gray-300 hover:text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main";
+  "px-1 py-2 md:px-4 rounded-full hover:bg-white/10 text-center text-[10px] md:text-xs font-bold tracking-wider md:tracking-widest uppercase transition-colors text-gray-300 hover:text-white whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main";
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
         aria-label="Main"
         className="grid grid-cols-[1fr_auto_1fr] items-center gap-1 md:gap-4 px-2 py-2 md:px-4 md:py-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_30px_rgba(114,48,255,0.3)]"
       >
-        <div className="flex items-center justify-end gap-0 md:gap-2">
+        <div className="grid grid-cols-2 items-center gap-0 md:gap-2">
           {NAV_LINKS.left.map((link) => (
             <Link key={link.label} href={link.href} className={navLinkClass}>
               {link.label}
@@ -38,7 +38,7 @@ export default function Header() {
           </div>
         </Link>
 
-        <div className="flex items-center gap-0 md:gap-2">
+        <div className="grid grid-cols-2 items-center gap-0 md:gap-2">
           {NAV_LINKS.right.map((link) => (
             <Link key={link.label} href={link.href} className={navLinkClass}>
               {link.label}
