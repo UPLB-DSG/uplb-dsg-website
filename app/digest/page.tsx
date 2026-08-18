@@ -21,11 +21,11 @@ export default function DigestIndexPage() {
           >
             ← Home
           </Link>
-          <h1 className="font-display text-5xl font-extrabold tracking-tight md:text-7xl">
-            DATA <span className="text-accent-main">DIGEST</span>
+          <h1 className="font-display text-5xl font-extrabold tracking-tight text-accent-main md:text-7xl">
+            DATA DIGEST
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-white/70 md:text-xl">
-            The guild&apos;s visual series for learning data science one concept at a time.
+            Browse all {DIGEST_ENTRIES.length} visual explainers from the guild, one data science concept at a time.
           </p>
         </header>
 

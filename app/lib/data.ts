@@ -173,14 +173,14 @@ export const PAST_EVENTS: Event[] = [
   },
   {
     id: 4,
-    title: "Data Horizons with the UPLB Graduate School",
-    date: "Event archive",
+    title: "Data Horizons 2026 Workshop",
+    date: "2026",
     description:
-      "A Data Horizons activity delivered in partnership with the UPLB Graduate School.",
+      "A three-day intensive Python and R workshop for professionals.",
     images: [
       {
         src: "/events/data-horizons-graduate-school.webp",
-        alt: "Data Horizons participants holding certificates at the UPLB Graduate School",
+        alt: "Professionals attending the Data Horizons 2026 Python and R workshop",
       },
     ],
   },

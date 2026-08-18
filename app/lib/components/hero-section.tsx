@@ -4,13 +4,13 @@ import { COPY, FACEBOOK_URL } from "@/lib/data";
 export default function HeroSection() {
   return (
     <section className="relative min-h-svh w-full overflow-hidden flex flex-col lg:block">
-      <div className="absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
+      <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
         <div className="absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
       </div>
 
-      <div className="container mx-auto z-30 relative flex h-full min-h-svh w-full flex-col px-6 pt-24 pb-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
+      <div className="container mx-auto z-30 relative flex h-full min-h-svh w-full flex-col px-6 pt-32 pb-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
         <div className="z-30 text-center lg:text-left lg:block lg:w-[50%] lg:space-y-6 xl:w-[45%]">
           <p className="text-sm min-[360px]:text-base md:text-lg lg:text-xl text-off-white font-bold uppercase tracking-[0.16em] lg:tracking-[0.2em]">
             {COPY.orgName}
