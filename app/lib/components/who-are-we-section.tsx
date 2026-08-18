@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { COPY, STATS } from "@/lib/data";
 
 export default function WhoAreWeSection() {
@@ -8,25 +9,14 @@ export default function WhoAreWeSection() {
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(123,44,191,0.05)] group">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10 text-white/20"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-            </div>
+          <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(123,44,191,0.05)]">
+            <Image
+              src="/dsg-members.webp"
+              alt="UPLB Data Science Guild members gathered at a guild event"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div className="space-y-8">
