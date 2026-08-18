@@ -3,14 +3,14 @@ import { COPY, SUBSCRIBE_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden flex flex-col lg:block">
+    <section className="relative min-h-svh w-full overflow-hidden flex flex-col lg:block">
       <div className="absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
         <div className="absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center justify-between h-full min-h-[calc(100vh-80px)] pt-28 pb-12 lg:py-0">
+      <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center justify-between h-full min-h-svh pt-28 pb-12 lg:py-0">
         <div className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-8 lg:mt-0">
           <p className="text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
             {COPY.orgName}
