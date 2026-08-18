@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Archivo, Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { SITE_URL } from "@/lib/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -21,7 +17,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dsg-website.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: "UPLB Data Science Guild",
   description:
     "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
@@ -44,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-off-white">
         <a

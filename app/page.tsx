@@ -1,16 +1,17 @@
 import HeroSection from "@/components/hero-section";
 import WhoAreWeSection from "@/components/who-are-we-section";
 import AboutUsSection from "@/components/about-us-section";
+import DataDigestSection from "@/components/data-digest-section";
 import EventsSection from "@/components/events-section";
-import { COPY, SOCIAL_LINKS } from "@/lib/data";
+import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: COPY.orgName,
   description: COPY.tagline,
-  url: "https://dsg-website.vercel.app",
-  logo: "https://dsg-website.vercel.app/logo.png",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
   sameAs: SOCIAL_LINKS.map((social) => social.href),
 };
 
@@ -24,6 +25,7 @@ export default function Home() {
       <HeroSection />
       <WhoAreWeSection />
       <AboutUsSection />
+      <DataDigestSection />
       <EventsSection />
     </div>
   );

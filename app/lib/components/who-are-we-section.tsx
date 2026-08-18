@@ -10,13 +10,16 @@ export default function WhoAreWeSection() {
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(123,44,191,0.05)]">
-            <Image
-              src="/dsg-members.webp"
-              alt="UPLB Data Science Guild members gathered at a guild event"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/dsg-members-640.webp" />
+              <Image
+                src="/dsg-members.webp"
+                alt="UPLB Data Science Guild members gathered at a guild event"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </picture>
           </div>
 
           <div className="space-y-8">

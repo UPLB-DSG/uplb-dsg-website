@@ -1,4 +1,3 @@
-/* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V5 · genre: atmospheric · macrostructure: Manifesto · theme: incumbent DSG · enrichment: E5 tier-A CSS art · scope: mobile hero */
 import Image from "next/image";
 import { COPY, FACEBOOK_URL } from "@/lib/data";
 
@@ -11,19 +10,19 @@ export default function HeroSection() {
         <div className="absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
       </div>
 
-      <div className="container mx-auto z-30 relative h-full min-h-svh w-full lg:flex lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
-        <div className="absolute inset-x-6 top-28 bottom-12 z-30 flex flex-col lg:static lg:block lg:w-[50%] lg:space-y-6 xl:w-[45%]">
+      <div className="container mx-auto z-30 relative flex h-full min-h-svh w-full flex-col px-6 pt-24 pb-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
+        <div className="z-30 text-center lg:text-left lg:block lg:w-[50%] lg:space-y-6 xl:w-[45%]">
           <p className="text-sm min-[360px]:text-base md:text-lg lg:text-xl text-off-white font-bold uppercase tracking-[0.16em] lg:tracking-[0.2em]">
             {COPY.orgName}
           </p>
 
-          <h1 className="mt-4 min-w-0 w-fit font-display text-[clamp(1.5rem,7.5vw,2.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] [overflow-wrap:anywhere] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-headline-from via-headline-via to-white lg:mt-0 lg:text-[clamp(2rem,6.5vw,4.5rem)] lg:leading-[1.1] lg:tracking-normal lg:[overflow-wrap:normal]">
+          <h1 className="mt-4 min-w-0 w-fit mx-auto lg:mx-0 font-display text-[clamp(1.5rem,7.5vw,2.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] [overflow-wrap:anywhere] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-headline-from via-headline-via to-white lg:text-[clamp(2rem,6.5vw,4.5rem)] lg:leading-[1.1] lg:tracking-normal lg:[overflow-wrap:normal]">
             <span className="block">INTEGRITY.</span>
             <span className="block">INTERDEPENDENCE.</span>
             <span className="block">INNOVATION.</span>
           </h1>
 
-          <div className="absolute left-0 top-[68%] flex items-center gap-3 lg:static lg:mt-0 lg:gap-6 lg:pt-6">
+          <div className="mt-8 flex items-center justify-center gap-3 lg:mt-0 lg:justify-start lg:gap-6 lg:pt-6">
             <span className="text-sm text-gray-300">Follow us on</span>
             <a
               href={FACEBOOK_URL}
@@ -37,7 +36,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none [--tile-size:clamp(64px,12vw,112px)] lg:relative lg:inset-auto lg:mt-0 lg:mb-0 lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
+          className="relative z-10 flex min-h-[300px] flex-1 items-center justify-center pointer-events-none [--tile-size:clamp(80px,22vw,140px)] lg:mt-0 lg:mb-0 lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[60%] bg-accent-main rounded-full blur-[60px] lg:blur-[80px] opacity-60 z-0" />
 
@@ -101,11 +100,10 @@ export default function HeroSection() {
           </div>
 
           <div
-            className="absolute top-[44%] left-1/2 z-20 flex items-center justify-center lg:top-1/2"
+            className="relative z-20 flex items-center justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/4"
             style={{
               width: "calc(var(--tile-size) * 1.4142)",
               aspectRatio: "240 / 264",
-              transform: "translate(-50%, -25%)",
             }}
           >
             <Image

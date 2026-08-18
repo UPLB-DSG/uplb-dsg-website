@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UPLB DSG Website
+
+Official website of the **UPLB Data Science Guild** — the pioneer data science organization of the University of the Philippines Los Baños. Static site built with Next.js, deployed on Cloudflare Pages.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run lint` | ESLint — must pass before committing |
+| `npm run build -- --webpack` | Production build → `out/` (static export) |
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+All site copy, events, Data Digest entries, and links live in [`app/lib/data.ts`](app/lib/data.ts). Digest images live in `public/digest/<slug>/`; event images live in `public/events/`. Keep full images at 1200px WebP, add matching `*-640.webp` mobile variants, and use a 640px `cover.webp` for Digest cards.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Data Digest pages are statically generated at `/digest` and `/digest/[slug]`, with per-entry metadata, structured data, image alt text, and sitemap entries.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Push to `main` → GitHub Actions builds and deploys the static `out/` directory to **Cloudflare Pages**. Pull requests get `pr-N` preview deployments automatically.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Documentation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **[TURNOVER.md](TURNOVER.md)** — handover record: infrastructure, access, procedures, and the successor checklist. Must be kept current.
+- **[AGENTS.md](AGENTS.md)** — conventions and commands for AI coding agents (and a decent orientation for humans, too).
+
+## License
+
+Private — property of the UPLB Data Science Guild.

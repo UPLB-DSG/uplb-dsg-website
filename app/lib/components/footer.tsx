@@ -12,7 +12,7 @@ export default function Footer() {
         <section className="space-y-4 md:max-w-sm">
           <div className="flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt=""
               width={40}
               height={40}
@@ -33,7 +33,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="opacity-80 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main rounded-sm"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm opacity-80 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
               >
                 <Image
                   src={social.icon}
@@ -61,7 +61,7 @@ export default function Footer() {
                       href={link.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noreferrer" : undefined}
-                      className="hover:text-off-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main rounded-sm"
+                      className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
                     >
                       {link.label}
                     </Link>

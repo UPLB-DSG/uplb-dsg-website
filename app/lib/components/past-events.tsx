@@ -1,85 +1,125 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { Event } from "@/lib/data";
 
 export default function PastEvents({ events }: { events: Event[] }) {
   const [activeEventIndex, setActiveEventIndex] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const activeEvent = events[activeEventIndex];
+  const activeImage = activeEvent.images[activeImageIndex];
+
+  const selectEvent = (index: number) => {
+    setActiveEventIndex(index);
+    setActiveImageIndex(0);
+  };
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-auto md:h-[600px] rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md">
-      {/* Event list */}
-      <div className="w-full md:w-1/3 md:h-full overflow-y-auto border-b md:border-b-0 md:border-r border-white/10 bg-black/20 flex flex-col">
+    <div className="grid w-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md md:min-h-[620px] md:grid-cols-[minmax(220px,1fr)_2fr]">
+      <div className="flex w-full snap-x overflow-x-auto border-b border-white/10 bg-black/20 md:flex-col md:overflow-y-auto md:border-r md:border-b-0">
         {events.map((event, idx) => (
           <button
             key={event.id}
-            onClick={() => setActiveEventIndex(idx)}
+            onClick={() => selectEvent(idx)}
             aria-current={activeEventIndex === idx ? "true" : undefined}
-            className={`w-full text-left px-8 py-6 md:py-8 transition-all duration-300 border-b border-white/5 relative flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-main
+            className={`relative min-h-11 w-[78vw] max-w-72 shrink-0 snap-start border-r border-white/5 px-5 py-5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-main md:w-full md:max-w-none md:border-r-0 md:border-b md:px-8 md:py-8
               ${activeEventIndex === idx ? "bg-white/10" : "hover:bg-white/5"}
             `}
           >
             {activeEventIndex === idx && (
-              <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent-main" />
+              <span className="absolute inset-x-0 bottom-0 h-1 bg-accent-main md:inset-y-0 md:right-auto md:h-auto md:w-1.5" />
             )}
             <span
-              className={`block text-lg md:text-xl font-bold ${activeEventIndex === idx ? "text-white" : "text-white/50"}`}
+              className={`block text-base font-bold md:text-xl ${activeEventIndex === idx ? "text-white" : "text-white/50"}`}
             >
               {event.title}
             </span>
           </button>
         ))}
-        <div className="flex-grow bg-black/10" />
       </div>
 
-      {/* Detail panel */}
-      <div className="w-full md:w-2/3 min-h-[320px] md:h-full relative group">
-        <div
-          className={`absolute inset-0 transition-colors duration-1000 ${
-            activeEventIndex % 3 === 0
-              ? "bg-gradient-to-br from-accent-main/20 via-dark-gray to-black"
-              : activeEventIndex % 3 === 1
-                ? "bg-gradient-to-bl from-accent-secondary/20 via-dark-gray to-black"
-                : "bg-gradient-to-tr from-faded-accent/30 via-dark-gray to-black"
-          }`}
-        />
-
-        <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="100"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-            <circle cx="9" cy="9" r="2" />
-            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-          </svg>
+      <div className="flex min-w-0 flex-col">
+        <div className="relative aspect-[4/3] min-h-64 overflow-hidden bg-dark-gray md:flex-1 md:aspect-auto">
+          <picture key={activeImage.src}>
+            <source
+              media="(max-width: 640px)"
+              srcSet={activeImage.src.replace(".webp", "-640.webp")}
+            />
+            <Image
+              src={activeImage.src}
+              alt={activeImage.alt}
+              fill
+              sizes="(min-width: 768px) 66vw, 100vw"
+              className="object-cover"
+            />
+          </picture>
+          {activeEvent.images.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveImageIndex(
+                    (activeImageIndex - 1 + activeEvent.images.length) %
+                      activeEvent.images.length,
+                  )
+                }
+                aria-label="Previous event photo"
+                className="absolute left-3 top-1/2 grid min-h-11 min-w-11 -translate-y-1/2 place-items-center rounded-full bg-black/70 text-2xl text-white transition-colors hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveImageIndex(
+                    (activeImageIndex + 1) % activeEvent.images.length,
+                  )
+                }
+                aria-label="Next event photo"
+                className="absolute right-3 top-1/2 grid min-h-11 min-w-11 -translate-y-1/2 place-items-center rounded-full bg-black/70 text-2xl text-white transition-colors hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+              >
+                ›
+              </button>
+              <div
+                className="absolute inset-x-0 bottom-3 flex justify-center gap-2"
+                aria-label={`Photo ${activeImageIndex + 1} of ${activeEvent.images.length}`}
+              >
+                {activeEvent.images.map((image, index) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    onClick={() => setActiveImageIndex(index)}
+                    aria-label={`Show photo ${index + 1}`}
+                    aria-current={activeImageIndex === index ? "true" : undefined}
+                    className={`min-h-11 min-w-11 rounded-full before:block before:h-2 before:w-2 before:rounded-full before:transition-colors ${
+                      activeImageIndex === index
+                        ? "before:bg-accent-main"
+                        : "before:bg-white/60"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        <div className="relative md:absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-6 md:p-10">
-          <div
-            key={activeEvent.id}
-            className="transition-opacity duration-500 ease-in-out opacity-100"
-          >
-            <p className="text-accent-main font-mono text-sm md:text-base mb-3 uppercase tracking-wider">
-              {activeEvent.date}
+        <div className="border-t border-white/10 bg-black/60 p-6 md:p-8">
+          <p className="mb-2 font-mono text-sm uppercase tracking-wider text-accent-main">
+            {activeEvent.date}
+          </p>
+          <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">
+            {activeEvent.title}
+          </h3>
+          <p className="max-w-2xl leading-relaxed text-white/70">
+            {activeEvent.description}
+          </p>
+          {activeEvent.images.length > 1 && (
+            <p className="mt-4 text-sm text-white/50" aria-live="polite">
+              Photo {activeImageIndex + 1} of {activeEvent.images.length}
             </p>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {activeEvent.title}
-            </h3>
-            <p className="text-white/70 max-w-2xl leading-relaxed text-lg">
-              {activeEvent.description}
-            </p>
+          )}
           </div>
-        </div>
       </div>
     </div>
   );
