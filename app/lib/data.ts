@@ -98,8 +98,7 @@ export const COPY = {
   ],
 };
 
-// Swap for a Google Form or mailing list URL when one exists.
-export const SUBSCRIBE_URL = "https://www.facebook.com/dsguplb";
+export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
 
 export const UPCOMING_EVENT = {
   title: "Upcoming Event Title",

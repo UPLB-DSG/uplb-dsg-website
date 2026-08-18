@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { COPY, SUBSCRIBE_URL } from "@/lib/data";
+import { COPY, FACEBOOK_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
@@ -23,14 +23,14 @@ export default function HeroSection() {
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-4 lg:pt-6">
-            <span className="text-sm text-gray-300">Want to hear updates?</span>
+            <span className="text-sm text-gray-300">Follow us for updates.</span>
             <a
-              href={SUBSCRIBE_URL}
+              href={FACEBOOK_URL}
               target="_blank"
               rel="noreferrer"
               className="bg-accent-main hover:bg-accent-secondary text-off-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm shadow-[0_0_20px_rgba(114,48,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
-              SUBSCRIBE
+              FOLLOW ON FACEBOOK
             </a>
           </div>
         </div>
