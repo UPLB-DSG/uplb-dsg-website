@@ -48,9 +48,33 @@ export default function AboutUsSection() {
                 VISION
               </h2>
               <div className="w-12 h-1 bg-accent-secondary rounded-full" />
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                {COPY.vision}
-              </p>
+              <ul className="text-gray-600 text-base md:text-lg leading-relaxed list-disc space-y-2 pl-5">
+                {COPY.vision.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h2 className="font-display text-2xl md:text-3xl font-black uppercase tracking-widest text-dark-gray">
+                CORE VALUES
+              </h2>
+              <div className="w-12 h-1 bg-accent-main rounded-full" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {COPY.coreValues.map((value) => (
+                <div key={value.name} className="space-y-3">
+                  <h3 className="font-display text-lg font-black uppercase tracking-wider text-dark-gray">
+                    {value.name}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
