@@ -29,8 +29,8 @@ export const SITE_URL = "https://dsg-website.vercel.app";
 
 export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   left: [
-    { label: "Home", href: "/" },
     { label: "Events", href: "/#events" },
+    { label: "Digest", href: "/digest" },
   ],
   right: [
     { label: "About", href: "/#about" },
@@ -142,11 +142,11 @@ export const PAST_EVENTS: Event[] = [
     title: "Data in Borderland",
     date: "November 5, 2025",
     description:
-      "Students joined Data in Borderland for an interactive guild learning session.",
+      "Students competed in Data in Borderland, an interactive quizcon that tested their data science knowledge.",
     images: [
       {
         src: "/events/data-in-borderland.webp",
-        alt: "Students smiling during the Data in Borderland learning session",
+        alt: "Students smiling during the Data in Borderland quizcon",
       },
     ],
   },

@@ -17,7 +17,7 @@ export default function PastEvents({ events }: { events: Event[] }) {
 
   return (
     <div className="grid w-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md md:min-h-[620px] md:grid-cols-[minmax(220px,1fr)_2fr]">
-      <div className="flex w-full snap-x overflow-x-auto border-b border-white/10 bg-black/20 md:flex-col md:overflow-y-auto md:border-r md:border-b-0">
+      <div className="event-tabs-scrollbar flex w-full snap-x overflow-x-auto border-b border-white/10 bg-black/20 md:flex-col md:overflow-y-auto md:border-r md:border-b-0">
         {events.map((event, idx) => (
           <button
             key={event.id}

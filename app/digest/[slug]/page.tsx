@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import DigestCarousel from "@/components/digest-carousel";
 import { DIGEST_ENTRIES, SITE_URL } from "@/lib/data";
 
 export const dynamicParams = false;
@@ -65,12 +65,23 @@ export default async function DigestEntryPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <div className="mx-auto max-w-4xl">
-        <Link
-          href="/digest"
-          className="inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
-        >
-          ← All Data Digests
-        </Link>
+        <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-sm font-bold">
+          <Link
+            href="/"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+          >
+            Home
+          </Link>
+          <span aria-hidden="true" className="text-white/30">
+            /
+          </span>
+          <Link
+            href="/digest"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+          >
+            Data Digest
+          </Link>
+        </nav>
 
         <header className="mt-8 border-b border-white/10 pb-10">
           <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent-main">
@@ -99,30 +110,7 @@ export default async function DigestEntryPage({
           <h2 id="visual-story" className="font-display text-3xl font-bold">
             Visual story
           </h2>
-          {entry.panels.map((panel, index) => (
-            <figure
-              key={panel.src}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-black"
-            >
-              <picture>
-                <source
-                  media="(max-width: 640px)"
-                  srcSet={panel.src.replace(".webp", "-640.webp")}
-                />
-                <Image
-                  src={panel.src}
-                  alt={panel.alt}
-                  width={1200}
-                  height={1200}
-                  sizes="(min-width: 896px) 848px, calc(100vw - 3rem)"
-                  className="h-auto w-full"
-                />
-              </picture>
-              <figcaption className="border-t border-white/10 px-5 py-4 text-sm leading-relaxed text-white/60">
-                {index + 1} of {entry.panels.length}: {panel.alt}
-              </figcaption>
-            </figure>
-          ))}
+          <DigestCarousel panels={entry.panels} />
         </section>
 
         <footer className="mt-12 space-y-8 border-t border-white/10 pt-8">

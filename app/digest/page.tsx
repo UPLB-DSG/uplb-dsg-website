@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import DigestCard from "@/components/digest-card";
 import { DIGEST_ENTRIES } from "@/lib/data";
 
@@ -14,9 +15,12 @@ export default function DigestIndexPage() {
     <div className="min-h-screen bg-background px-6 pt-32 pb-24 text-off-white">
       <div className="mx-auto w-full max-w-6xl">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 font-mono text-sm uppercase tracking-[0.2em] text-accent-main">
-            Small bytes, big insights
-          </p>
+          <Link
+            href="/"
+            className="mb-6 inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+          >
+            ← Home
+          </Link>
           <h1 className="font-display text-5xl font-extrabold tracking-tight md:text-7xl">
             DATA <span className="text-accent-main">DIGEST</span>
           </h1>

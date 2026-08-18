@@ -7,9 +7,6 @@ export default function DataDigestSection() {
     <section id="digest" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-24">
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
-          <p className="mb-3 font-mono text-sm uppercase tracking-[0.2em] text-accent-main">
-            Small bytes, big insights
-          </p>
           <h2 className="font-display text-4xl font-bold tracking-wide text-white md:text-5xl">
             DATA <span className="text-accent-main">DIGEST</span>
           </h2>
