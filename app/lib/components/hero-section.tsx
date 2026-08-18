@@ -11,8 +11,8 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 z-30 relative w-full flex flex-col lg:flex-row items-center lg:justify-between h-full min-h-svh pt-28 pb-12 lg:py-0">
-        <div className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-8 lg:mt-0">
-          <p className="text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
+        <div className="space-y-4 lg:space-y-6 w-full lg:w-[50%] xl:w-[45%] z-30 mt-0 md:mt-8 lg:mt-0">
+          <p className="text-base min-[360px]:text-lg md:text-xl text-off-white font-bold uppercase tracking-[0.2em]">
             {COPY.orgName}
           </p>
 
@@ -22,15 +22,15 @@ export default function HeroSection() {
             <span className="block">INNOVATION.</span>
           </h1>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-4 lg:pt-6">
-            <span className="text-sm text-gray-300">Follow us for updates.</span>
+          <div className="flex items-center gap-3 pt-4 lg:gap-6 lg:pt-6">
+            <span className="text-sm text-gray-300">Follow us on</span>
             <a
               href={FACEBOOK_URL}
               target="_blank"
               rel="noreferrer"
               className="bg-accent-main hover:bg-accent-secondary text-off-white text-xs font-bold py-2.5 px-6 transition-colors uppercase tracking-widest w-max rounded-sm shadow-[0_0_20px_rgba(114,48,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
-              FOLLOW ON FACEBOOK
+              FACEBOOK
             </a>
           </div>
         </div>
@@ -103,11 +103,11 @@ export default function HeroSection() {
           </div>
 
           <div
-            className="absolute z-20 flex items-center justify-center"
+            className="absolute top-[35%] left-1/2 z-20 flex items-center justify-center lg:top-1/2"
             style={{
               width: "calc(var(--tile-size) * 1.4142)",
               aspectRatio: "240 / 264",
-              transform: "translateY(-25%)",
+              transform: "translate(-50%, -25%)",
             }}
           >
             <Image
