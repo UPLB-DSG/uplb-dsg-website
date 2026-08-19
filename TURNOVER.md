@@ -24,6 +24,8 @@ Audience: people interested in joining UPLB DSG or learning about its events and
 
 - Landing page built: hero, Who We Are, About Us, Data Digest showcase, event gallery, and footer. The placeholder upcoming-event card is intentionally removed until a real event is ready.
 - Data Digest is live as 11 crawlable static entries at `/digest/[slug]`, with a `/digest` index, per-entry metadata, Article JSON-LD, descriptive image text, `sitemap.xml`, and `robots.txt`.
+- SEO metadata is configured in `app/layout.tsx` and the Digest routes: canonical URLs, title templates, descriptions, Open Graph/Twitter images, Organization/WebSite JSON-LD, and BreadcrumbList JSON-LD for Digest articles.
+- Google Search Console is configured for `https://uplbdsg.org`. Use it to monitor indexing, sitemap processing, search queries, click-through rate, Core Web Vitals, mobile usability, and crawl errors. Submit `/sitemap.xml` and request re-crawls after substantial content or metadata changes.
 - Past events use a responsive photo slideshow. The mobile layout separates media and copy instead of overlaying text on photos.
 - Media is optimized for the static host: WebP event assets, 1200px Digest panels, separate 640px mobile sources/card thumbnails, and lazy-loaded Digest links without route prefetch. Full media dropped from about 15 MB of initial JPEGs to about 6.5 MB, while mobile pages fetch the smaller variants.
 - Original timeline (landing April–May, blog June–July 2026) slipped; landing page polish is still in progress.
@@ -69,6 +71,7 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Edit copy or add a past event | Edit `app/lib/data.ts`, add optimized WebP images under `public/events/`, commit, and push |
 | Add a Data Digest entry | Add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`; then add one `DIGEST_ENTRIES` item in `app/lib/data.ts` |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
+| Review SEO | Check Google Search Console for `https://uplbdsg.org`, verify the sitemap and indexing status, then review performance and crawl reports |
 | Get a preview URL | Open a PR → Cloudflare Pages `pr-N` branch deploy |
 | Add images | Optimize first, put in `public/` (no server-side image optimization exists) |
 
@@ -98,3 +101,4 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | --- | --- |
 | 2026-08-19 | First in-repo version, transcribed from the planning docs (project proposal, turnover template, working notes) and reconciled with actual infrastructure (Cloudflare Pages as active deployment). |
 | 2026-08-19 | Added the static Data Digest archive and SEO routes, responsive event slideshow, real event media, updated statistics/header, and the WebP performance workflow. |
+| 2026-08-19 | Added canonical metadata, title/description templates, social previews, Organization/WebSite/BreadcrumbList structured data, and Google Search Console operating notes. |
