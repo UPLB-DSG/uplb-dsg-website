@@ -25,10 +25,14 @@ export const metadata: Metadata = {
     title: "UPLB Data Science Guild",
     description:
       "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
-    images: ["/logo.png"],
+    url: SITE_URL,
+    siteName: "UPLB Data Science Guild",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    title: "UPLB Data Science Guild",
+    description:
+      "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
   },
 };
 

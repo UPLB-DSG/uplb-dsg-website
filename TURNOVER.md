@@ -27,7 +27,7 @@ Audience: people interested in joining UPLB DSG or learning about its events and
 - Past events use a responsive photo slideshow. The mobile layout separates media and copy instead of overlaying text on photos.
 - Media is optimized for the static host: WebP event assets, 1200px Digest panels, separate 640px mobile sources/card thumbnails, and lazy-loaded Digest links without route prefetch. Full media dropped from about 15 MB of initial JPEGs to about 6.5 MB, while mobile pages fetch the smaller variants.
 - Original timeline (landing April–May, blog June–July 2026) slipped; landing page polish is still in progress.
-- Not yet done: domain purchase, public launch announcement, and a no-code publishing interface.
+- Not yet done: public launch announcement and a no-code publishing interface.
 
 ## 3. Tech Stack
 
@@ -48,8 +48,8 @@ All site copy, event data, and Data Digest metadata/body copy live in `app/lib/d
 | Source code | GitHub org `UPLB-DSG`, repo `uplb-dsg-website` (`main` branch) | Active |
 | Hosting / CD | **Cloudflare Pages** project `uplb-dsg-website`, auto-deploy via `.github/workflows/deploy-cloudflare.yml` (push to `main` → production; PR → `pr-N` preview). Needs org secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` | Active pipeline |
 | Staging (legacy) | Vercel project `dsg-website` (`.vercel/`, `dsg-website.vercel.app`) — used for initial staging/review; **not the active pipeline** | Legacy |
-| Domain | `uplbdsg.org`, registrar **Porkbun** (~$6.88 / <₱400 first year; ~$10.74 / <₱600 per renewal) | **Not yet purchased** |
-| DNS | Cloudflare (free tier) | Planned, with domain |
+| Domain | `uplbdsg.org` | **Live** |
+| DNS | Cloudflare (free tier) | Active |
 | CMS | None; content is maintained in Git | Deliberate static-first choice |
 
 Budget for the domain is approved-in-principle per the proposal but must be formally requested from DSG Finance/Executive each year.

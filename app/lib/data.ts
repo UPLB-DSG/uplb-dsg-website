@@ -25,7 +25,7 @@ export type DigestEntry = {
   panels: ImageItem[];
 };
 
-export const SITE_URL = "https://dsg-website.vercel.app";
+export const SITE_URL = "https://uplbdsg.org";
 
 export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   left: [

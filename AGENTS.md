@@ -42,7 +42,7 @@ npm run build -- --webpack  # production build → out/ (must pass before commit
 - Path aliases: `@/components/*` → `app/lib/components/*`, `@/lib/*` → `app/lib/*`.
 - **All site copy/content lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `PAST_EVENTS`, `DIGEST_ENTRIES`). Edit copy there, never hardcode in components.
 - Design tokens in `app/globals.css` `@theme`: `accent-main` `#7230ff`, `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, headline gradient `headline-from`/`headline-via`. Fonts: Archivo (display, `--font-display`), Geist Sans/Mono.
-- SEO: root metadata + OpenGraph in `app/layout.tsx`, Organization JSON-LD in `app/page.tsx`, article metadata/JSON-LD in `app/digest/[slug]/page.tsx`, plus `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` still points to `https://dsg-website.vercel.app` — update it when the real domain lands.
+- SEO: root metadata + OpenGraph in `app/layout.tsx`, branded Open Graph/Twitter images in `app/opengraph-image.png` and `app/twitter-image.png`, Organization JSON-LD in `app/page.tsx`, article metadata/JSON-LD in `app/digest/[slug]/page.tsx`, plus `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` is `https://uplbdsg.org`.
 - ESLint extends Next.js Core Web Vitals/TypeScript rules with high-signal safety and consistency checks; add rules only when they prevent real defects or review churn.
 - Commits: **Conventional Commits, signed** (`git commit -S`), atomic scope.
 
@@ -59,7 +59,7 @@ Before committing any visual change, verify with the Playwright MCP at **320, 37
 - **Cloudflare Pages** via `.github/workflows/deploy-cloudflare.yml`: push to `main` → production; PRs → preview branches (`pr-N`). Deploys the static `out/` dir with Wrangler.
 - Required GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
 - A Vercel project (`dsg-website`, see `.vercel/`) exists from initial staging — **Cloudflare Pages is the active pipeline**.
-- Domain plan: `uplbdsg.org` via Porkbun (~$6.88 yr 1, ~$10.74/yr after), DNS on Cloudflare. Not yet purchased — see TURNOVER.md.
+- Production domain: `uplbdsg.org`, with DNS on Cloudflare — see TURNOVER.md.
 
 ## Pending work / roadmap
 
