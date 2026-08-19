@@ -142,11 +142,11 @@ export const PAST_EVENTS: Event[] = [
     title: "Data in Borderland",
     date: "November 5, 2025",
     description:
-      "Students competed in Data in Borderland, an interactive quizcon that tested their data science knowledge.",
+      "Students competed in Data in Borderland, an interactive general knowledge quizcon.",
     images: [
       {
         src: "/events/data-in-borderland.webp",
-        alt: "Students smiling during the Data in Borderland quizcon",
+        alt: "Students smiling during the Data in Borderland general knowledge quizcon",
       },
     ],
   },
