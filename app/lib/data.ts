@@ -94,6 +94,8 @@ export const COPY = {
     "The UPLB Data Science Guild (DSG) is the pioneer data science organization of the University of the Philippines Los Baños. We are a socio-civic organization of students who learn and practice data science together through workshops, projects, and community events, guided by three values: integrity, interdependence, and innovation.",
   mission:
     "To foster a data-driven culture in the Nation and beyond.",
+  missionImageAlt:
+    "UPLB Data Science Guild members gathered outdoors for a shared meal",
   vision: [
     "To bring opportunities and growth by utilizing data science and its tools.",
     "To connect students with companies, stakeholders, and/or end users to provide solutions and gain experience.",

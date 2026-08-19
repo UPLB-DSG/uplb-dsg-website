@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { COPY } from "@/lib/data";
 
 export default function AboutUsSection() {
@@ -12,24 +13,17 @@ export default function AboutUsSection() {
             DSG
           </div>
 
-          <div className="group relative flex aspect-[21/9] w-full items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-accent-main/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-main/20 to-accent-secondary/5" />
-            <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-black/30 md:h-20 md:w-20">
-              <svg
-                className="h-8 w-8 text-white/50 md:h-10 md:w-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
+          <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/mission-vision-640.webp" />
+              <Image
+                src="/mission-vision.webp"
+                alt={COPY.missionImageAlt}
+                fill
+                sizes="(min-width: 1024px) 1152px, calc(100vw - 4rem)"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+              />
+            </picture>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
