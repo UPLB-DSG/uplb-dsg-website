@@ -17,7 +17,7 @@ export default function PastEvents({ events }: { events: Event[] }) {
 
   return (
     <div className="grid w-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md md:min-h-[620px] md:grid-cols-[minmax(220px,1fr)_2fr]">
-      <div className="event-tabs-scrollbar flex w-full snap-x overflow-x-auto border-b border-white/10 bg-black/20 md:flex-col md:overflow-y-auto md:border-r md:border-b-0">
+      <div className="event-tabs-scrollbar relative flex w-full snap-x overflow-x-auto border-b border-white/10 bg-black/20 md:flex-col md:overflow-y-auto md:border-r md:border-b-0">
         {events.map((event, idx) => (
           <button
             key={event.id}
@@ -37,6 +37,12 @@ export default function PastEvents({ events }: { events: Event[] }) {
             </span>
           </button>
         ))}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 flex items-center bg-gradient-to-l from-black via-black/90 to-transparent pl-8 pr-3 text-[10px] font-bold uppercase tracking-widest text-white/70 md:hidden"
+        >
+          Swipe →
+        </span>
       </div>
 
       <div className="flex min-w-0 flex-col">

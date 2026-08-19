@@ -84,9 +84,6 @@ export default async function DigestEntryPage({
         </nav>
 
         <header className="mt-8 border-b border-white/10 pb-10">
-          <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent-main">
-            Data Digest · <time dateTime={entry.publishedAt}>{entry.date}</time>
-          </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-6xl">
             {entry.title}
           </h1>
