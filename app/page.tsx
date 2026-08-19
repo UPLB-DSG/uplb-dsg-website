@@ -5,14 +5,27 @@ import DataDigestSection from "@/components/data-digest-section";
 import EventsSection from "@/components/events-section";
 import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
-const organizationSchema = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: COPY.orgName,
-  description: COPY.tagline,
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  sameAs: SOCIAL_LINKS.map((social) => social.href),
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: COPY.orgName,
+      description: COPY.tagline,
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      sameAs: SOCIAL_LINKS.map((social) => social.href),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: COPY.orgName,
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "en-PH",
+    },
+  ],
 };
 
 export default function Home() {
@@ -20,7 +33,7 @@ export default function Home() {
     <div className="bg-background text-off-white min-h-screen">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HeroSection />
       <WhoAreWeSection />

@@ -4,7 +4,7 @@ import DigestCard from "@/components/digest-card";
 import { DIGEST_ENTRIES } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Data Digest | UPLB Data Science Guild",
+  title: "Data Digest",
   description:
     "Explore visual explainers from the UPLB Data Science Guild covering AI, statistics, computing, and data science.",
   alternates: { canonical: "/digest/" },

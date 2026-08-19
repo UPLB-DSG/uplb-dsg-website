@@ -26,6 +26,8 @@ export type DigestEntry = {
 };
 
 export const SITE_URL = "https://uplbdsg.org";
+export const SITE_DESCRIPTION =
+  "UPLB Data Science Guild is a student organization at the University of the Philippines Los Baños that learns, builds, and shares through data science workshops, projects, and community events.";
 
 export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   left: [
@@ -89,7 +91,7 @@ export const STATS: Stat[] = [
 
 export const COPY = {
   orgName: "UPLB Data Science Guild",
-  tagline: "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
+  tagline: SITE_DESCRIPTION,
   whoAreWe:
     "The UPLB Data Science Guild (DSG) is the pioneer data science organization of the University of the Philippines Los Baños. We are a socio-civic organization of students who learn and practice data science together through workshops, projects, and community events, guided by three values: integrity, interdependence, and innovation.",
   mission:

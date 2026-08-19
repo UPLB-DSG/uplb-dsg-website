@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!entry) return {};
 
   return {
-    title: `${entry.title} | Data Digest`,
+    title: entry.title,
     description: entry.description,
     alternates: { canonical: `/digest/${entry.slug}/` },
     openGraph: {
@@ -47,6 +47,8 @@ export default async function DigestEntryPage({
     "@type": "Article",
     headline: entry.title,
     description: entry.description,
+    articleSection: "Data Digest",
+    inLanguage: "en-PH",
     image: entry.panels.map(({ src }) => `${SITE_URL}${src}`),
     mainEntityOfPage: `${SITE_URL}/digest/${entry.slug}/`,
     author: { "@type": "Organization", name: "UPLB Data Science Guild" },
@@ -58,11 +60,35 @@ export default async function DigestEntryPage({
     ...(entry.publishedAt && { datePublished: entry.publishedAt }),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Data Digest",
+        item: `${SITE_URL}/digest/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: entry.title,
+        item: `${SITE_URL}/digest/${entry.slug}/`,
+      },
+    ],
+  };
+
   return (
     <article className="min-h-screen bg-background px-6 pt-28 pb-24 text-off-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="mx-auto max-w-4xl">
         <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-sm font-bold">

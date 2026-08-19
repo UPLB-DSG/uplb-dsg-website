@@ -3,7 +3,7 @@ import { Archivo, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { SITE_URL } from "@/lib/data";
+import { SITE_DESCRIPTION, SITE_URL } from "@/lib/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,21 +18,33 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "UPLB Data Science Guild",
-  description:
-    "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
+  title: {
+    default: "UPLB Data Science Guild",
+    template: "%s | UPLB Data Science Guild",
+  },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: "UPLB Data Science Guild",
-    description:
-      "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: "UPLB Data Science Guild",
+    type: "website",
+    locale: "en_PH",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "UPLB Data Science Guild",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "UPLB Data Science Guild",
-    description:
-      "The UPLB Data Science Guild is a socio-civic, and pioneer organization of UPLB for data science.",
+    description: SITE_DESCRIPTION,
+    images: ["/twitter-image.png"],
   },
 };
 
