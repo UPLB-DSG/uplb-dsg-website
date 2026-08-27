@@ -176,6 +176,22 @@ export const PAST_EVENTS: Event[] = [
     ],
   },
   {
+    id: 5,
+    title: "UPLB DSG Workshop on Bioinformatics",
+    date: "2026",
+    description:
+      "A hands-on workshop introducing members to bioinformatics and its data science applications.",
+    images: [],
+  },
+  {
+    id: 6,
+    title: "UPLB DSG Fireside Chats",
+    date: "2026",
+    description:
+      "An informal conversation series where members and guests share experiences in data science.",
+    images: [],
+  },
+  {
     id: 4,
     title: "Data Horizons 2026 Workshop",
     date: "2026",
