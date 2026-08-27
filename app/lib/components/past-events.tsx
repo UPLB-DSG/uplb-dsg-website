@@ -46,20 +46,26 @@ export default function PastEvents({ events }: { events: Event[] }) {
       </div>
 
       <div className="flex min-w-0 flex-col">
-        <div className="relative aspect-[4/3] min-h-64 overflow-hidden bg-dark-gray md:flex-1 md:aspect-auto">
-          <picture key={activeImage.src}>
-            <source
-              media="(max-width: 640px)"
-              srcSet={activeImage.src.replace(".webp", "-640.webp")}
-            />
-            <Image
-              src={activeImage.src}
-              alt={activeImage.alt}
-              fill
-              sizes="(min-width: 768px) 66vw, 100vw"
-              className="object-cover"
-            />
-          </picture>
+        <div className="img-shimmer relative aspect-[4/3] min-h-64 overflow-hidden bg-dark-gray md:flex-1 md:aspect-auto">
+          {activeImage ? (
+            <picture key={activeImage.src} className="img-fade">
+              <source
+                media="(max-width: 640px)"
+                srcSet={activeImage.src.replace(".webp", "-640.webp")}
+              />
+              <Image
+                src={activeImage.src}
+                alt={activeImage.alt}
+                fill
+                sizes="(min-width: 768px) 66vw, 100vw"
+                className="object-cover"
+              />
+            </picture>
+          ) : (
+            <div className="grid h-full animate-pulse place-items-center text-sm uppercase tracking-widest text-white/40 motion-reduce:animate-none">
+              Photos coming soon
+            </div>
+          )}
           {activeEvent.images.length > 1 && (
             <>
               <button

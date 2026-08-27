@@ -7,9 +7,9 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
     <Link
       href={`/digest/${entry.slug}`}
       prefetch={false}
-      className="group overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-colors hover:border-accent-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+      className="group overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-main hover:shadow-[0_8px_30px_rgba(114,48,255,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
-      <div className="relative aspect-square overflow-hidden bg-black">
+      <div className="img-shimmer relative aspect-square overflow-hidden bg-black">
         <Image
           src={`/digest/${entry.slug}/cover.webp`}
           alt={entry.panels[0].alt}

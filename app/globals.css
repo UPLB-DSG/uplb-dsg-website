@@ -49,8 +49,123 @@ html {
   mask-image: linear-gradient(to bottom, black 60%, transparent);
 }
 
+/* Motion system. Pure CSS, transform/opacity only, no JS observers. */
+:root {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(4%, 8%, 0);
+  }
+}
+
+@keyframes shimmer-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes img-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero load choreography: stagger via --i on each element. */
+.hero-enter {
+  animation: rise-in 0.7s var(--ease-out-quint) both;
+  animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+.hero-cube-enter {
+  animation: scale-in 0.9s var(--ease-out-quint) 0.2s both;
+}
+
+.glow-drift {
+  animation: glow-drift 18s ease-in-out infinite;
+}
+
+.glow-drift-alt {
+  animation: glow-drift 26s ease-in-out -9s infinite reverse;
+}
+
+/* Loading shimmer: sits behind the image, covered once it paints. */
+.img-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 35%,
+    rgb(255 255 255 / 7%) 50%,
+    transparent 65%
+  );
+  animation: shimmer-sweep 1.8s linear infinite;
+}
+
+.img-fade {
+  animation: img-fade 0.35s ease-out both;
+}
+
+/* Scroll reveal: scroll-driven timeline where supported, plain visible elsewhere. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: rise-in 0.7s var(--ease-out-quint) both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 40%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-enter,
+  .hero-cube-enter,
+  .glow-drift,
+  .glow-drift-alt,
+  .reveal,
+  .img-fade,
+  .img-shimmer::before {
+    animation: none !important;
   }
 }

@@ -23,7 +23,9 @@ export default function DataDigestSection() {
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {DIGEST_ENTRIES.slice(0, 4).map((entry) => (
-          <DigestCard key={entry.slug} entry={entry} />
+          <div key={entry.slug} className="reveal grid">
+            <DigestCard entry={entry} />
+          </div>
         ))}
       </div>
     </section>
