@@ -1,10 +1,13 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import Link from "next/link";
+import HeroCanvas from "@/components/hero-canvas";
 import { COPY, FACEBOOK_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-svh w-full overflow-hidden flex flex-col lg:block">
+    <section id="hero" className="relative min-h-svh w-full overflow-hidden flex flex-col lg:block">
+      <HeroCanvas heroId="hero" />
       <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="glow-drift absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
         <div className="glow-drift-alt absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
@@ -32,24 +35,42 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <div
-            className="hero-enter mt-8 flex items-center justify-center gap-3 lg:mt-0 lg:justify-start lg:gap-6 lg:pt-6"
+          <p
+            className="hero-enter mx-auto mt-6 max-w-md text-base leading-relaxed text-gray-300 lg:mx-0 lg:mt-0 lg:text-lg"
             style={{ "--i": 4 } as CSSProperties}
           >
-            <span className="text-sm text-gray-300">Follow us on</span>
+            {COPY.heroTagline}
+          </p>
+
+          <div
+            className="hero-enter mt-8 flex flex-wrap items-center justify-center gap-3 lg:mt-0 lg:justify-start lg:pt-4"
+            style={{ "--i": 5 } as CSSProperties}
+          >
+            <Link
+              href="/#workshops"
+              className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm bg-accent-main px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-off-white shadow-[0_0_20px_rgba(114,48,255,0.4)] transition-[background-color,transform] duration-150 hover:bg-accent-secondary active:scale-95 motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+            >
+              Join a workshop
+            </Link>
+            <Link
+              href="/digest"
+              className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm border border-white/25 px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-off-white transition-colors hover:border-accent-main hover:text-headline-via focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+            >
+              Read the Data Digest
+            </Link>
             <a
               href={FACEBOOK_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 w-max items-center whitespace-nowrap rounded-sm bg-accent-main px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-off-white shadow-[0_0_20px_rgba(114,48,255,0.4)] transition-[background-color,transform] duration-150 hover:bg-accent-secondary active:scale-95 active:bg-accent-secondary motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white lg:min-h-0"
+              className="inline-flex min-h-11 items-center px-2 text-xs font-bold uppercase tracking-widest text-gray-400 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
-              FACEBOOK
+              Facebook
             </a>
           </div>
         </div>
 
         <div
-          className="hero-cube-enter relative z-10 flex min-h-[300px] flex-1 items-center justify-center pointer-events-none [--tile-size:clamp(80px,22vw,140px)] lg:mt-0 lg:mb-0 lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
+          className="hero-cube-enter relative z-10 -mt-6 flex min-h-[220px] flex-1 items-center justify-center pointer-events-none [--tile-size:clamp(56px,16vw,110px)] lg:mt-0 lg:mb-0 lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[60%] bg-accent-main rounded-full blur-[60px] lg:blur-[80px] opacity-60 z-0" />
 
@@ -113,6 +134,7 @@ export default function HeroSection() {
           </div>
 
           <div
+            id="hero-cube"
             className="relative z-20 flex items-center justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/4"
             style={{
               width: "calc(var(--tile-size) * 1.4142)",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DigestCard from "@/components/digest-card";
+import RandomDigestButton from "@/components/random-digest-button";
 import { DIGEST_ENTRIES } from "@/lib/data";
 
 export default function DataDigestSection() {
@@ -14,12 +15,15 @@ export default function DataDigestSection() {
             {DIGEST_ENTRIES.length} visual explainers that make data science concepts easier to understand.
           </p>
         </div>
-        <Link
-          href="/digest"
-          className="inline-flex min-h-11 w-max shrink-0 items-center whitespace-nowrap rounded-sm border border-white/20 px-5 font-bold text-white transition-colors hover:border-accent-main hover:text-headline-via focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
-        >
-          View all digests →
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <RandomDigestButton slugs={DIGEST_ENTRIES.map((entry) => entry.slug)} />
+          <Link
+            href="/digest"
+            className="inline-flex min-h-11 w-max shrink-0 items-center whitespace-nowrap rounded-sm border border-white/20 px-5 font-bold text-white transition-colors hover:border-accent-main hover:text-headline-via focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+          >
+            View all digests →
+          </Link>
+        </div>
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {DIGEST_ENTRIES.slice(0, 4).map((entry) => (

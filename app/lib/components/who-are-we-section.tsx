@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CountUp from "@/components/count-up";
 import { COPY, STATS } from "@/lib/data";
 
 export default function WhoAreWeSection() {
@@ -37,8 +38,21 @@ export default function WhoAreWeSection() {
               {STATS.map((stat) => (
                 <div key={stat.label} className="space-y-1 mt-6">
                   <p className="text-3xl md:text-4xl font-black text-off-white">
-                    {stat.value}
+                    <CountUp value={Number(stat.value)} />
                     <span className="text-accent-main">{stat.suffix}</span>
+                    {stat.label === "members" && (
+                      <button
+                        type="button"
+                        className="p-tip ml-1 align-super text-base font-bold text-accent-main"
+                        aria-describedby="p-tip-text"
+                        aria-label="Significance note"
+                      >
+                        *
+                        <span id="p-tip-text" role="tooltip" className="p-tip-text">
+                          p &lt; 0.05. Statistically significant. We checked.
+                        </span>
+                      </button>
+                    )}
                   </p>
                   <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold">
                     {stat.label}

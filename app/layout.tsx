@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Archivo, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/data";
+
+const CONSOLE_EGG = String.raw`
+console.log(
+  "%c    ____\n   /\\   \\\n  /  \\___\\    UPLB Data Science Guild\n  \\  /   /    You opened the console. You're our kind of person.\n   \\/___/     Try the Konami code on the home page. Or type sudo.\n\n  Want in? https://www.facebook.com/dsguplb",
+  "color:#c77dff;font-family:ui-monospace,monospace"
+);`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +77,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Script id="console-egg" strategy="afterInteractive">{CONSOLE_EGG}</Script>
       </body>
     </html>
   );

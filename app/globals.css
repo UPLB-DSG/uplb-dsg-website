@@ -164,8 +164,73 @@ html {
   .glow-drift,
   .glow-drift-alt,
   .reveal,
+  .die-roll,
+  #hero-cube.antigravity,
   .img-fade,
   .img-shimmer::before {
     animation: none !important;
   }
+}
+
+/* Easter eggs */
+@keyframes antigravity {
+  to {
+    transform: translateY(-140vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+#hero-cube.antigravity {
+  animation: antigravity 2.4s var(--ease-out-quint) forwards;
+}
+
+#hero-cube.antigravity::after {
+  content: "I'm learning Python!";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #fafafa;
+}
+
+@keyframes die-roll {
+  0% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(540deg) scale(1.3); }
+  100% { transform: rotate(720deg) scale(1); }
+}
+
+.die-roll {
+  animation: die-roll 0.65s var(--ease-out-quint);
+}
+
+.p-tip {
+  position: relative;
+  cursor: help;
+}
+
+.p-tip-text {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  z-index: 40;
+  width: max-content;
+  max-width: 220px;
+  transform: translateX(-50%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 6px;
+  background: #1e1e1e;
+  padding: 6px 10px;
+  font: 500 12px/1.4 var(--font-sans), system-ui, sans-serif;
+  color: #fafafa;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+
+.p-tip:hover .p-tip-text,
+.p-tip:focus-visible .p-tip-text {
+  opacity: 1;
 }
