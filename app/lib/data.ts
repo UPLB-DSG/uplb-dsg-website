@@ -359,6 +359,197 @@ export const DIGEST_ENTRIES: DigestEntry[] = [
     ]),
   },
   {
+    slug: "poverty-from-the-sky",
+    title: "Can We See Poverty from the Sky?",
+    date: "October 13, 2025",
+    publishedAt: "2025-10-13",
+    description:
+      "How satellite imagery and machine learning predict poverty across five African countries where surveys fall short.",
+    body: [
+      "Between 2000 and 2010, 39 of 59 African countries ran fewer than two economic surveys. Researchers combined freely available daytime and nighttime satellite images with machine learning to estimate poverty where ground data is missing.",
+      "A transfer-learning model learns from nighttime light intensity, then reads roads, roofing materials, and farmland in daytime images. It explained 75% of the variation in asset wealth and 55% in household consumption across Nigeria, Tanzania, Uganda, Malawi, and Rwanda, giving policymakers a way to target aid, education, and infrastructure.",
+    ],
+    contentBy: "Siegfrid Cabuhat, caption by Bea Patricio",
+    layoutBy: "Lance Barroso and Cyrus Jade Barilea",
+    references: [
+      {
+        label: "Jean et al., Combining satellite imagery and machine learning to predict poverty, Science (2016)",
+        href: "https://doi.org/10.1126/science.aaf7894",
+      },
+    ],
+    panels: digestPanels("poverty-from-the-sky", [
+      "Mapping Poverty from the Sky Data Digest cover with a magnifying glass over a globe",
+      "The challenge: 39 of 59 African countries ran fewer than two economic surveys, and the vision to combine satellite imagery with machine learning",
+      "Three steps: gather day and night satellite images, teach a model to recognize economic indicators, predict poverty levels, plus transfer learning as the secret sauce",
+      "Results: 75% of variation in asset wealth and 55% in household consumption explained, validated across five African countries",
+      "How policymakers and communities can use the predictions to target aid and interventions",
+      "Call to action: transforming images into action starts with you",
+    ]),
+  },
+  {
+    slug: "simplex-algorithm",
+    title: "Simplex Algorithm for Optimizing Budget",
+    date: "August 12, 2025",
+    publishedAt: "2025-08-12",
+    description:
+      "How the Simplex method turns goals and constraints into the best possible plan, from coffee shop menus to financial planning.",
+    body: [
+      "The Simplex Algorithm solves linear optimization problems under constraints. It searches the feasible combinations within your limits and returns the one that maximizes gains or minimizes costs.",
+      "The recipe has four steps: write down the goal and constraints, express scenarios as linear functions, let the Simplex method find the optimal choice, and interpret the result. The worked example finds the drink mix that earns a coffee shop the most profit without exceeding prep time or espresso shot limits.",
+    ],
+    contentBy: "Yanika Tauro",
+    layoutBy: "Yuan Labuguen and Franz Saragena",
+    references: [
+      {
+        label: "Reveillac, Simplex Algorithm, ScienceDirect (2015)",
+        href: "https://www.sciencedirect.com/topics/computer-science/simplex-algorithm",
+      },
+    ],
+    panels: digestPanels("simplex-algorithm", [
+      "Simplex Algorithm for Optimizing Budget Data Digest cover",
+      "Definition of the Simplex Algorithm as a method for solving linear optimization problems under constraints",
+      "Four simple steps: write goals and constraints, try scenarios as linear functions, check which choice the Simplex method picks, interpret the answer",
+      "Coffee shop example with five drinks, resource constraints, and the profit objective function",
+      "Entering the linear equations into an online Simplex calculator or a Python or R library",
+      "Interpreting the result: maximum profit of 790 pesos from a mix of latte, mocha, flat white, and cappuccino",
+    ]),
+  },
+  {
+    slug: "bird-song-recognition",
+    title: "Deep Learning for Bird Song Recognition",
+    date: "February 28, 2025",
+    publishedAt: "2025-02-28",
+    description:
+      "How spectrograms and convolutional neural networks turn bird calls into conservation insights.",
+    body: [
+      "Deep learning in frequency recognition turns bird songs into data for wildlife conservation, habitat monitoring, species identification, and bioacoustic research. The same pipeline applies to noise monitoring, speech patterns, and voice-controlled devices.",
+      "The workflow runs from data collection (open datasets such as Xeno-canto or field recordings) through preprocessing into spectrograms, training a convolutional neural network, validating on unseen recordings, and deploying the model in a mobile or web app.",
+    ],
+    contentBy: "Ian Reginio and Victor Emmanuel Ruidera",
+    layoutBy: "Ryan Galaban",
+    references: [
+      {
+        label: "Nagy et al., Internet of Birds: Song Based Bird Sensing via Machine Learning in the Cloud, IEEE SENSORS (2020)",
+        href: "https://doi.org/10.1109/SENSORS47125.2020.9278714",
+      },
+      {
+        label: "Pellegrini, Densely connected CNNs for bird audio detection, EUSIPCO (2017)",
+        href: "https://doi.org/10.23919/EUSIPCO.2017.8081506",
+      },
+      {
+        label: "Sprengel et al., Audio Based Bird Species Identification using Deep Learning Techniques (2017)",
+        href: "http://ceur-ws.org/Vol-1609/16090547.pdf",
+      },
+    ],
+    panels: digestPanels("bird-song-recognition", [
+      "Deep Learning for Voice-Frequency Recognition Data Digest cover with painted birds",
+      "Other audio classification uses: ecological monitoring, noise pollution, speech patterns, and voice-controlled devices",
+      "Data collection from open datasets or field recordings, labeled with species names and timestamps",
+      "Preprocessing: signal processing, spectrogram normalization, and converting audio chunks into spectrograms",
+      "Sample spectrograms of the Yellow-bellied Whistler, Eurasian Tree Sparrow, and Azure-breasted Pitta",
+      "Model selection and training with convolutional neural networks and a train, validation, and test split",
+      "Validation and testing with precision, recall, and F1 score",
+      "Deployment of the trained model in a mobile or web application",
+    ]),
+  },
+  {
+    slug: "llm-hallucinations",
+    title: "Delulu si Mare: LLM Hallucinations and ROUGE",
+    date: "February 14, 2025",
+    publishedAt: "2025-02-14",
+    description:
+      "A Valentine's Day look at why large language models hallucinate and how ROUGE, BLEU, and other metrics measure it.",
+    body: [
+      "Ask a large language model to write a love letter from a list of shared memories and it may add details that were never there. In evaluation these fabricated outputs are called hallucinations.",
+      "Metrics such as ROUGE, BLEU, BERTScore, and perplexity compare generated text against a reference. A worked ROUGE example scores a paraphrased anniversary note at 82% recall and 82% precision, an F1 of 0.82. Fine-tuning and prompt engineering reduce hallucinations further.",
+    ],
+    contentBy: "Jerome Espina",
+    layoutBy: "Rey Isaac Jr.",
+    references: [
+      {
+        label: "Ganesan, An intro to ROUGE, and how to use it to evaluate summaries, freeCodeCamp (2017)",
+        href: "https://www.freecodecamp.org/news/what-is-rouge-and-how-it-works-for-evaluation-of-summaries-e059fb8ac840/",
+      },
+      {
+        label: "IBM, What are AI hallucinations? (2023)",
+        href: "https://www.ibm.com/think/topics/ai-hallucinations",
+      },
+    ],
+    panels: digestPanels("llm-hallucinations", [
+      "Delulu si Mare Data Digest cover on LLM hallucination, metrics, measurement, and mitigation",
+      "A love letter example showing how an LLM adds details that were never in its reference",
+      "Chat example of an LLM confidently inventing a birthday that does not exist",
+      "Evaluation metrics for hallucinations: ROUGE, BLEU, BERTScore, and perplexity",
+      "Worked ROUGE example with reference tokens, candidate tokens, and recall, precision, and F1 formulas",
+      "Result of the ROUGE calculation: 82% recall, 82% precision, F1 of 0.82",
+      "How to reduce hallucinations through fine-tuning and prompt engineering",
+    ]),
+  },
+  {
+    slug: "ai-economic-forecasting",
+    title: "How Is AI Changing the Economic Landscape?",
+    date: "January 24, 2025",
+    publishedAt: "2025-01-24",
+    description:
+      "How neural networks and generative AI are reshaping economic research and interest rate forecasting.",
+    body: [
+      "Traditional models such as linear and logistic regression struggle with messy, high-volume data from news and social media. Neural networks and large language models pick up patterns in that data and turn them into real-time economic insight.",
+      "Generative AI already helps economists brainstorm, analyze data, and solve equations, and an Ateneo de Manila study applies deep learning to predict money market interest rates. The trade-off: bad or incomplete inputs produce wrong predictions, and many AI models are hard to interpret.",
+    ],
+    contentBy: "John Donel Gaffud",
+    layoutBy: "Lance Barroso",
+    references: [
+      {
+        label: "Bata et al., Deep Learning Approaches in Interest Rate Forecasting, Archium Ateneo",
+        href: "https://archium.ateneo.edu/mathematics-faculty-pubs/288/",
+      },
+      {
+        label: "Korinek, Generative AI for Economic Research: Use Cases and Implications for Economists, Journal of Economic Literature (2023)",
+        href: "https://doi.org/10.1257/jel.20231736",
+      },
+      {
+        label: "Udo, Toromade, and Chiekezie, AI-Powered Economic Forecasting: Challenges and Opportunities in a Data-Driven World (2022)",
+        href: "https://doi.org/10.51594/csitrj.v3i3.1452",
+      },
+    ],
+    panels: digestPanels("ai-economic-forecasting", [
+      "How Is AI Changing the Economic Landscape Data Digest cover in pixel-art style",
+      "Traditional models versus AI models for economic forecasting",
+      "Applications of AI in economics research: brainstorming, data analysis, and solving equations",
+      "Forecasting market interest rates with deep learning at Ateneo de Manila University",
+      "Opportunities and challenges of AI-powered economic forecasting",
+    ]),
+  },
+  {
+    slug: "yolov11-object-detection",
+    title: "An Ultimate Guide to YOLOv11 Object Detection",
+    date: "January 17, 2025",
+    publishedAt: "2025-01-17",
+    description:
+      "A hands-on walkthrough of training a YOLOv11 object detector, from dataset annotation on Roboflow to evaluation on Google Colab.",
+    body: [
+      "You Only Look Once (YOLO) divides an image into an NxN grid where each cell predicts bounding boxes and class probabilities in a single pass. Introduced in 2015, it remains one of the fastest real-time detection algorithms.",
+      "The guide walks through gathering and annotating a dataset on Roboflow, downloading it into a Google Colab notebook, training with the ultralytics package, running the best weights on new images, and reading the precision, recall, and confusion matrix outputs.",
+    ],
+    contentBy: "Keith Tidon, Research and Development Team, Wizy.io",
+    layoutBy: "Franz Saragena",
+    references: [
+      {
+        label: "Keita, YOLO object detection explained, DataCamp (2024)",
+        href: "https://www.datacamp.com/blog/yolo-object-detection-explained",
+      },
+    ],
+    panels: digestPanels("yolov11-object-detection", [
+      "An Ultimate Guide to YOLOv11 Object Detection Data Digest cover",
+      "What YOLO is: a single-pass real-time object detection algorithm introduced in 2015",
+      "Datasets and data annotation with Roboflow and Kaggle",
+      "Google Colab setup: installing ultralytics and downloading the annotated dataset",
+      "Training command for YOLOv11 with image size 640 and a QR code to the Colab notebook",
+      "Using the trained model's last weights to run detection on new images",
+      "Model evaluation with precision curve, recall curve, confusion matrix, and loss functions",
+    ]),
+  },
+  {
     slug: "occams-razor",
     title: "Occam's Razor: Simplify Life",
     date: "January 4, 2025",
