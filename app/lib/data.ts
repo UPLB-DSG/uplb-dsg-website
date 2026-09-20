@@ -101,7 +101,7 @@ export const COPY = {
   orgName: "UPLB Data Science Guild",
   tagline: SITE_DESCRIPTION,
   heroTagline:
-    "The pioneer data science organization of UPLB. Free workshops, visual explainers, and events for students who learn by building.",
+    "The pioneer data science organization of UPLB. Workshops, visual explainers, and events for students who learn by building.",
   whoAreWe:
     "The UPLB Data Science Guild (DSG) is the pioneer data science organization of the University of the Philippines Los Baños. We are a socio-civic organization of students who learn and practice data science together through workshops, projects, and community events, guided by three values: integrity, interdependence, and innovation.",
   mission:
