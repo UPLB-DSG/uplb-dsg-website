@@ -9,7 +9,7 @@ import { useEffect, useRef } from "react";
 // Any click, key, or scroll fast-forwards to the handoff.
 
 const COLORS = ["#7230ff", "#c77dff", "#a35c3e"];
-const GLYPHS = "!<>-_\\/[]{}=+*^?#0123456789";
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const SESSION_KEY = "dsgIntro";
 
 type P = { x: number; y: number; tx: number; ty: number; c: number; alpha: number };
@@ -41,6 +41,13 @@ function sampleLogo(src: string, size: number): Promise<{ x: number; y: number }
 
 function scramble(el: HTMLElement, duration: number) {
   const final = el.textContent ?? "";
+  // Lock the line's box so glyph noise never reflows or wraps the headline.
+  const { width, height } = el.getBoundingClientRect();
+  el.style.width = `${width}px`;
+  el.style.height = `${height}px`;
+  el.style.whiteSpace = "nowrap";
+  el.style.overflow = "hidden";
+  const unlock = () => { el.style.width = ""; el.style.height = ""; el.style.whiteSpace = ""; el.style.overflow = ""; };
   const start = performance.now();
   const tick = (now: number) => {
     const t = (now - start) / duration;
@@ -51,7 +58,7 @@ function scramble(el: HTMLElement, duration: number) {
     }
     el.textContent = out;
     if (t < 1) requestAnimationFrame(tick);
-    else el.textContent = final;
+    else { el.textContent = final; unlock(); }
   };
   requestAnimationFrame(tick);
 }

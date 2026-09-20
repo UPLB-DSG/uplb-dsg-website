@@ -1,7 +1,7 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import HeroCanvas from "@/components/hero-canvas";
+import IsoScene from "@/components/iso-scene";
 import HeroIntro from "@/components/hero-intro";
 import { COPY, FACEBOOK_URL } from "@/lib/data";
 
@@ -74,103 +74,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div
-          className="hero-cube-enter relative z-10 -mt-4 flex h-[240px] items-center justify-center pointer-events-none [--tile-size:clamp(56px,14vw,96px)] md:h-[300px] lg:mt-0 lg:mb-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[60%] bg-accent-main rounded-full blur-[60px] lg:blur-[80px] opacity-60 z-0" />
-
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] flex items-center justify-center pointer-events-none"
-            style={{
-              WebkitMaskImage:
-                "radial-gradient(50% 50% at center, black 20%, transparent 70%)",
-              maskImage:
-                "radial-gradient(50% 50% at center, black 20%, transparent 70%)",
-            }}
-          >
-            <div className="absolute w-[200%] md:w-[150%] aspect-square [transform:rotateX(54.736deg)_rotateZ(45deg)] flex items-center justify-center">
-              <div className="absolute inset-0">
-                <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 pointer-events-none"
-                  style={{
-                    width: "calc(var(--tile-size) * 6)",
-                    height: "calc(var(--tile-size) * 6)",
-                    background:
-                      "radial-gradient(circle, var(--color-accent-main) 0%, transparent 50%)",
-                  }}
-                />
-
-                {[
-                  { x: 0, y: 0, opacity: 0.6 },
-                  { x: 1, y: 0, opacity: 0.4 },
-                  { x: 0, y: 1, opacity: 0.4 },
-                  { x: -1, y: 0, opacity: 0.2 },
-                  { x: 0, y: -1, opacity: 0.2 },
-                  { x: 2, y: 0, opacity: 0.15 },
-                  { x: 0, y: 2, opacity: 0.15 },
-                  { x: -2, y: 0, opacity: 0.05 },
-                  { x: 0, y: -2, opacity: 0.05 },
-                ].map((tile, i) => (
-                  <div
-                    key={i}
-                    className="absolute top-1/2 left-1/2 bg-accent-main pointer-events-none"
-                    style={{
-                      width: "var(--tile-size)",
-                      height: "var(--tile-size)",
-                      opacity: tile.opacity,
-                      transform: `translate(calc(-50% + ${tile.x} * var(--tile-size)), calc(-50% + ${tile.y} * var(--tile-size)))`,
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backgroundImage: `
-                         linear-gradient(to right, rgba(167, 139, 250, 0.25) 1px, transparent 1px),
-                         linear-gradient(to bottom, rgba(167, 139, 250, 0.25) 1px, transparent 1px)
-                       `,
-                  backgroundSize: "var(--tile-size) var(--tile-size)",
-                  backgroundPosition: "center center",
-                }}
-              />
-            </div>
-          </div>
-
-          <div
-            id="hero-cube"
-            className="relative z-20 flex items-center justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/4"
-            style={{
-              width: "calc(var(--tile-size) * 1.4142)",
-              aspectRatio: "240 / 264",
-            }}
-          >
-            <Image
-              src="/polygon-15.png"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 15vw, 40vw"
-              className="object-contain absolute z-10"
-            />
-            <Image
-              src="/group-49.png"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 15vw, 40vw"
-              className="object-contain absolute z-20"
-            />
-            <Image
-              src="/group-47.png"
-              alt="DSG isometric cube logo"
-              fill
-              priority
-              sizes="(min-width: 1024px) 15vw, 40vw"
-              className="object-contain absolute z-30 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
-            />
-          </div>
+        <div className="hero-cube-enter relative z-10 -mt-4 h-[240px] w-full pointer-events-none md:h-[320px] lg:mt-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845]">
+          <IsoScene />
         </div>
       </div>
     </section>

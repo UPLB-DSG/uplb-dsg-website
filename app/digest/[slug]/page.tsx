@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import DigestCarousel from "@/components/digest-carousel";
+import RandomDigestButton from "@/components/random-digest-button";
 import { DIGEST_ENTRIES, SITE_URL } from "@/lib/data";
 
 export const dynamicParams = false;
@@ -41,6 +42,12 @@ export default async function DigestEntryPage({
   const { slug } = await params;
   const entry = findEntry(slug);
   if (!entry) notFound();
+
+  // Entries are newest first: the previous index is newer, the next is older.
+  const index = DIGEST_ENTRIES.findIndex((item) => item.slug === slug);
+  const newer = DIGEST_ENTRIES[index - 1];
+  const older = DIGEST_ENTRIES[index + 1];
+  const otherSlugs = DIGEST_ENTRIES.filter((item) => item.slug !== slug).map((item) => item.slug);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -184,6 +191,36 @@ export default async function DigestEntryPage({
             </section>
           )}
         </footer>
+
+        <nav aria-label="More digests" className="mt-12 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-[1fr_auto_1fr]">
+          {older ? (
+            <Link
+              href={`/digest/${older.slug}`}
+              prefetch={false}
+              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 transition-colors hover:border-accent-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            >
+              <span className="text-xs text-white/50">← Older</span>
+              <span className="mt-1 font-bold text-white group-hover:text-headline-via">{older.title}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          <div className="flex items-center justify-center">
+            <RandomDigestButton slugs={otherSlugs} />
+          </div>
+          {newer ? (
+            <Link
+              href={`/digest/${newer.slug}`}
+              prefetch={false}
+              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 text-right transition-colors hover:border-accent-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            >
+              <span className="text-xs text-white/50">Newer →</span>
+              <span className="mt-1 font-bold text-white group-hover:text-headline-via">{newer.title}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
       </div>
     </article>
   );
