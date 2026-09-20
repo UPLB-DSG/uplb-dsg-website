@@ -57,8 +57,12 @@ function scramble(el: HTMLElement, duration: number) {
       out += t >= reveal ? final[i] : final[i] === " " ? " " : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
     }
     el.textContent = out;
-    if (t < 1) requestAnimationFrame(tick);
-    else { el.textContent = final; unlock(); }
+    if (t < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = final;
+      unlock();
+    }
   };
   requestAnimationFrame(tick);
 }
