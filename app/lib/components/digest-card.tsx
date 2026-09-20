@@ -19,7 +19,7 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
         />
       </div>
       <div className="space-y-3 p-5">
-        <p className="font-mono text-xs uppercase tracking-wider text-accent-main">
+        <p className="text-sm text-accent-main">
           {entry.date}
         </p>
         <h3 className="font-display text-2xl font-bold leading-tight text-white">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DigestCard from "@/components/digest-card";
 import RandomDigestButton from "@/components/random-digest-button";
+import Lottie from "@/components/lottie";
 import { DIGEST_ENTRIES } from "@/lib/data";
 
 export default function DataDigestSection() {
@@ -8,9 +9,12 @@ export default function DataDigestSection() {
     <section id="digest" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-24">
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
-          <h2 className="font-display text-4xl font-bold tracking-wide text-accent-main md:text-5xl">
-            DATA DIGEST
-          </h2>
+          <div className="flex items-center gap-4">
+            <Lottie src="/lottie/chart.json" className="h-16 w-20 shrink-0 md:h-20 md:w-24" />
+            <h2 className="font-display text-4xl font-bold tracking-wide text-accent-main md:text-5xl">
+              DATA DIGEST
+            </h2>
+          </div>
           <p className="mt-4 leading-relaxed text-white/70">
             {DIGEST_ENTRIES.length} visual explainers that make data science concepts easier to understand.
           </p>

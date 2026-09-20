@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Lottie from "@/components/lottie";
 
 // Random sample: roll a die, open a random digest.
 export default function RandomDigestButton({ slugs }: { slugs: string[] }) {
@@ -12,11 +13,19 @@ export default function RandomDigestButton({ slugs }: { slugs: string[] }) {
     if (rolling) return;
     setRolling(true);
     const slug = slugs[Math.floor(Math.random() * slugs.length)];
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 650;
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 900;
     window.setTimeout(() => router.push(`/digest/${slug}`), delay);
   };
 
   return (
+    <span className="relative inline-flex">
+      {rolling && (
+        <Lottie
+          src="/lottie/confetti.json"
+          loop={false}
+          className="pointer-events-none absolute left-1/2 top-1/2 z-10 h-56 w-56 -translate-x-1/2 -translate-y-1/2"
+        />
+      )}
     <button
       type="button"
       onClick={roll}
@@ -28,5 +37,6 @@ export default function RandomDigestButton({ slugs }: { slugs: string[] }) {
       </span>
       Random sample
     </button>
+    </span>
   );
 }

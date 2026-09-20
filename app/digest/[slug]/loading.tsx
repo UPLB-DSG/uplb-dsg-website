@@ -1,6 +1,8 @@
+import Lottie from "@/components/lottie";
 export default function DigestEntryLoading() {
   return (
     <div className="min-h-screen bg-background px-6 pt-32 pb-24 text-off-white">
+      <Lottie src="/lottie/isometric.json" className="mx-auto mb-6 h-20 w-20" label="Loading" />
       <div className="mx-auto w-full max-w-3xl animate-pulse space-y-6 motion-reduce:animate-none">
         <div className="h-4 w-20 rounded bg-white/10" />
         <div className="h-12 w-4/5 rounded bg-white/10" />

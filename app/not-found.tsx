@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Lottie from "@/components/lottie";
 
 const cell = "rounded-xl border border-white/10 p-6 text-center align-middle";
 
@@ -7,7 +8,8 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-background px-6 pt-32 pb-24 text-off-white">
       <div className="mx-auto max-w-xl">
-        <p className="font-mono text-xs uppercase tracking-wider text-accent-main">Error 404</p>
+        <Lottie src="/lottie/pop.json" className="-ml-4 h-28 w-28" />
+        <p className="text-sm text-accent-main">Error 404</p>
         <h1 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">False positive.</h1>
         <p className="mt-4 leading-relaxed text-white/70">
           The model predicted this page exists. The ground truth disagrees. One more sample for the confusion matrix.

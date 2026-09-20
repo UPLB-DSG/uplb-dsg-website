@@ -141,7 +141,7 @@ export default async function DigestEntryPage({
             <dl className="grid gap-4 text-sm sm:grid-cols-2">
               {entry.contentBy && (
                 <div>
-                  <dt className="font-bold uppercase tracking-wider text-accent-main">
+                  <dt className="font-bold text-accent-main">
                     Content by
                   </dt>
                   <dd className="mt-1 text-white/70">{entry.contentBy}</dd>
@@ -149,7 +149,7 @@ export default async function DigestEntryPage({
               )}
               {entry.layoutBy && (
                 <div>
-                  <dt className="font-bold uppercase tracking-wider text-accent-main">
+                  <dt className="font-bold text-accent-main">
                     Layout by
                   </dt>
                   <dd className="mt-1 text-white/70">{entry.layoutBy}</dd>

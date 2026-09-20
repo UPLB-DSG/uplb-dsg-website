@@ -172,6 +172,20 @@ html {
   }
 }
 
+/* Gradient lives on each headline line so opacity animations can hide it. */
+.headline-gradient {
+  background-image: linear-gradient(to right, var(--color-headline-from), var(--color-headline-via), #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Opening sequence: hold the hero stagger until the intro hands off. */
+#hero[data-intro="pending"] .hero-enter,
+#hero[data-intro="pending"] .hero-cube-enter {
+  animation-play-state: paused;
+}
+
 /* Easter eggs */
 @keyframes antigravity {
   to {

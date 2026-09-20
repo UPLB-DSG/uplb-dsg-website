@@ -2,12 +2,17 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import HeroCanvas from "@/components/hero-canvas";
+import HeroIntro from "@/components/hero-intro";
 import { COPY, FACEBOOK_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden flex flex-col lg:block lg:min-h-svh">
+    <section id="hero" data-intro="pending" className="relative w-full overflow-hidden flex flex-col lg:block lg:min-h-svh">
+      <noscript>
+        <style>{`#hero[data-intro] .hero-enter, #hero[data-intro] .hero-cube-enter { animation-play-state: running; }`}</style>
+      </noscript>
       <HeroCanvas heroId="hero" />
+      <HeroIntro heroId="hero" cubeId="hero-cube" />
       <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="glow-drift absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
         <div className="glow-drift-alt absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
@@ -23,14 +28,14 @@ export default function HeroSection() {
             {COPY.orgName}
           </p>
 
-          <h1 className="mt-4 min-w-0 w-fit mx-auto lg:mx-0 font-display text-[clamp(1.5rem,7.5vw,2.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] [overflow-wrap:anywhere] drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-headline-from via-headline-via to-white lg:text-[clamp(2rem,6.5vw,4.5rem)] lg:leading-[1.1] lg:tracking-normal lg:[overflow-wrap:normal]">
-            <span className="hero-enter block" style={{ "--i": 1 } as CSSProperties}>
+          <h1 className="mt-4 min-w-0 w-fit mx-auto lg:mx-0 font-display text-[clamp(1.5rem,7.5vw,2.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] [overflow-wrap:anywhere] drop-shadow-lg lg:text-[clamp(2rem,6.5vw,4.5rem)] lg:leading-[1.1] lg:tracking-normal lg:[overflow-wrap:normal]">
+            <span className="hero-enter headline-gradient block" style={{ "--i": 1 } as CSSProperties}>
               INTEGRITY.
             </span>
-            <span className="hero-enter block" style={{ "--i": 2 } as CSSProperties}>
+            <span className="hero-enter headline-gradient block" style={{ "--i": 2 } as CSSProperties}>
               INTERDEPENDENCE.
             </span>
-            <span className="hero-enter block" style={{ "--i": 3 } as CSSProperties}>
+            <span className="hero-enter headline-gradient block" style={{ "--i": 3 } as CSSProperties}>
               INNOVATION.
             </span>
           </h1>

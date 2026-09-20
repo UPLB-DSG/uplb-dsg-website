@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import ContainedImage from "@/components/contained-image";
 import { notFound } from "next/navigation";
 import { EVENTS, SITE_URL } from "@/lib/data";
 
@@ -85,7 +85,7 @@ export default async function EventPage({
         </nav>
 
         <header className="mt-8 border-b border-white/10 pb-10">
-          <p className="font-mono text-xs uppercase tracking-wider text-accent-main">
+          <p className="text-sm text-accent-main">
             {event.date}
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-6xl">
@@ -98,13 +98,13 @@ export default async function EventPage({
             <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
               {event.venue && (
                 <div>
-                  <dt className="font-bold uppercase tracking-wider text-accent-main">Where</dt>
+                  <dt className="font-bold text-accent-main">Where</dt>
                   <dd className="mt-1 text-white/70">{event.venue}</dd>
                 </div>
               )}
               {event.audience && (
                 <div>
-                  <dt className="font-bold uppercase tracking-wider text-accent-main">Who</dt>
+                  <dt className="font-bold text-accent-main">Who</dt>
                   <dd className="mt-1 text-white/70">{event.audience}</dd>
                 </div>
               )}
@@ -113,19 +113,12 @@ export default async function EventPage({
         </header>
 
         {cover && (
-          <figure className="img-shimmer relative mt-10 aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-dark-gray sm:aspect-[16/10]">
-            <picture>
-              <source media="(max-width: 640px)" srcSet={cover.src.replace(".webp", "-640.webp")} />
-              <Image
-                src={cover.src}
-                alt={cover.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 896px, 100vw"
-                className="object-cover"
-              />
-            </picture>
-          </figure>
+          <ContainedImage
+            image={cover}
+            priority
+            sizes="(min-width: 1024px) 896px, 100vw"
+            className="mt-10 aspect-[4/3] rounded-2xl border border-white/10 sm:aspect-[16/10]"
+          />
         )}
 
         <section aria-labelledby="event-writeup" className="py-10">
@@ -146,20 +139,12 @@ export default async function EventPage({
             </h2>
             <ul className="grid gap-4 sm:grid-cols-2">
               {gallery.map((image) => (
-                <li
-                  key={image.src}
-                  className="img-shimmer relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-dark-gray"
-                >
-                  <picture>
-                    <source media="(max-width: 640px)" srcSet={image.src.replace(".webp", "-640.webp")} />
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(min-width: 640px) 440px, 100vw"
-                      className="object-cover"
-                    />
-                  </picture>
+                <li key={image.src}>
+                  <ContainedImage
+                    image={image}
+                    sizes="(min-width: 640px) 440px, 100vw"
+                    className="aspect-[4/3] rounded-xl border border-white/10"
+                  />
                 </li>
               ))}
             </ul>
