@@ -6,7 +6,7 @@ import { COPY, FACEBOOK_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-svh w-full overflow-hidden flex flex-col lg:block">
+    <section id="hero" className="relative w-full overflow-hidden flex flex-col lg:block lg:min-h-svh">
       <HeroCanvas heroId="hero" />
       <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="glow-drift absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
@@ -14,7 +14,7 @@ export default function HeroSection() {
         <div className="glow-drift absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
       </div>
 
-      <div className="container mx-auto z-30 relative flex h-full min-h-svh w-full flex-col px-6 pt-32 pb-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
+      <div className="container mx-auto z-30 relative flex h-full w-full flex-col px-6 pt-32 pb-6 lg:min-h-svh lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-0">
         <div className="z-30 text-center lg:text-left lg:block lg:w-[50%] lg:space-y-6 xl:w-[45%]">
           <p
             className="hero-enter text-sm min-[360px]:text-base md:text-lg lg:text-xl text-off-white font-bold uppercase tracking-[0.16em] lg:tracking-[0.2em]"
@@ -70,7 +70,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="hero-cube-enter relative z-10 -mt-6 flex min-h-[220px] flex-1 items-center justify-center pointer-events-none [--tile-size:clamp(56px,16vw,110px)] lg:mt-0 lg:mb-0 lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
+          className="hero-cube-enter relative z-10 -mt-4 flex h-[240px] items-center justify-center pointer-events-none [--tile-size:clamp(56px,14vw,96px)] md:h-[300px] lg:mt-0 lg:mb-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845] lg:[--tile-size:clamp(64px,8vw,160px)]"
         >
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[60%] bg-accent-main rounded-full blur-[60px] lg:blur-[80px] opacity-60 z-0" />
 
