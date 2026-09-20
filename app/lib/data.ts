@@ -4,14 +4,21 @@ export type NavLink = { label: string; href: string };
 export type SocialLink = { label: string; href: string; icon: string };
 export type Stat = { value: string; suffix: string; label: string };
 export type ImageItem = { src: string; alt: string };
+export type Reference = { label: string; href?: string };
 export type Event = {
   id: number;
+  slug: string;
+  kind: "event" | "workshop";
   title: string;
   date: string;
+  publishedAt?: string;
+  venue?: string;
+  audience?: string;
   description: string;
+  writeup: string[];
+  source?: Reference;
   images: ImageItem[];
 };
-export type Reference = { label: string; href?: string };
 export type DigestEntry = {
   slug: string;
   title: string;
@@ -69,6 +76,7 @@ export const FOOTER_LINK_GROUPS: { heading: string; links: NavLink[] }[] = [
   {
     heading: "Activities",
     links: [
+      { label: "Workshops", href: "/#workshops" },
       { label: "Events", href: "/#events" },
       { label: "Data Digest", href: "/digest" },
     ],
@@ -123,88 +131,315 @@ export const COPY = {
 
 export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
 
-export const PAST_EVENTS: Event[] = [
+const eventImages = (slug: string, alts: string[]): ImageItem[] =>
+  alts.map((alt, index) => ({
+    src: `/events/${slug}/${String(index + 1).padStart(2, "0")}.webp`,
+    alt,
+  }));
+
+const fbPost = (id: string) => `https://www.facebook.com/dsguplb/posts/${id}`;
+
+// Newest first. Writeups are adapted from the guild's Facebook captions; each
+// entry links back to the original post as the source.
+export const EVENTS: Event[] = [
   {
-    id: 1,
-    title: "Data Horizons 2024 Symposium",
-    date: "May 6, 2024",
+    id: 14,
+    slug: "room-tba-workshop",
+    kind: "workshop",
+    title: "Breaking Down Room TBA: Visualizing Campus Realities with Python",
+    date: "September 4, 2026",
+    publishedAt: "2026-09-04",
+    venue: "Online, 5:00 to 6:00 PM",
+    audience: "Open to all UPLB students, zero coding experience required",
     description:
-      "Guild members and participants gathered for the Data Horizons 2024 symposium.",
+      "A one-hour online session that untangles raw class schedule exports and turns them into campus insights with Python.",
+    writeup: [
+      "Is your class schedule locked away behind tower walls? You scroll through course listings, check building codes, and count open slots. This session asks participants to grab a laptop, step beyond the ordinary, and look at UPLB through a whole new lens.",
+      "Breaking Down Room TBA walks through the real Room TBA project, a community-maintained campus map, and shows how raw schedule exports become visualizations of campus realities using Python. No complex setup is needed, and slots are limited.",
+    ],
+    source: { label: "Facebook post, August 31, 2026", href: fbPost("122259233714119873") },
     images: [
-      {
-        src: "/events/data-horizons-symposium-1.webp",
-        alt: "Participants and organizers posing inside the Data Horizons 2024 venue",
-      },
-      {
-        src: "/events/data-horizons-symposium-2.webp",
-        alt: "Data Horizons 2024 organizers posing in front of the symposium screen",
-      },
+      { src: "/events/workshops/room-tba.webp", alt: "Tangled-themed poster for Breaking Down Room TBA: Visualizing Campus Realities with Python" },
+    ],
+  },
+  {
+    id: 13,
+    slug: "bioinformatics-tools-workshop",
+    kind: "workshop",
+    title: "Decoding Life's Data: A Hands-On Intro to Bioinformatics Tools",
+    date: "May 9, 2026",
+    publishedAt: "2026-05-09",
+    venue: "Online, 9:00 AM to 12:00 NN",
+    audience: "Fully online, open to all",
+    description:
+      "The first session of the 2026 Workshop Series: where DNA sequences, computational tools, and real-world applications come together.",
+    writeup: [
+      "How does biology become data, and how can data science help make sense of it? This session on bioinformatics brings DNA sequences, computational tools, and real-world applications together in a hands-on introduction.",
+      "Participants get a glimpse of how biological data can be analyzed through tools used for sequence identification, comparison, and basic data-driven discovery.",
+    ],
+    source: { label: "Facebook post, May 7, 2026", href: fbPost("122246736140119873") },
+    images: [
+      { src: "/events/workshops/bioinformatics-tools.webp", alt: "UPLB DSG Workshop Series 2026 poster: Introduction to Bioinformatics Tools, fully online and open to all" },
+    ],
+  },
+  {
+    id: 4,
+    slug: "data-horizons-2026",
+    kind: "event",
+    title: "Data Horizons 2026",
+    date: "April 2026",
+    publishedAt: "2026-04-30",
+    venue: "UPLB Graduate School International Student and Cultural Center",
+    audience: "Professionals and students, with a UPLB Graduate School Certificate of Completion",
+    description:
+      "A two-phase Python and R training program with the UPLB Graduate School, capped by a hackathon.",
+    writeup: [
+      "Data Horizons 2026 ran as two three-day phases in partnership with the UPLB Graduate School. Phase 1 covered Python; Phase 2, held April 28 to 30 and guided by Prof. Jomar F. Rabajante, was built for those ready to master R. Each day ran from 8:00 AM to 5:00 PM at the UPLB GS ISSC.",
+      "Phase 1 moved participants from technical foundations to actionable insights, turning complex concepts into practical solutions over three days and closing with a hackathon that put problem-solving to the test.",
+      "On the final day of Phase 2, participants used linear regression, data visualization, and other machine learning models to analyze datasets of their choice, bridging the gap between knowledge and practical application. Completers received a verifiable Certificate of Completion from the UPLB Graduate School.",
+    ],
+    source: { label: "Facebook posts, April 2026", href: fbPost("122246152616119873") },
+    images: [
+      { src: "/events/data-horizons-graduate-school.webp", alt: "Professionals attending the Data Horizons 2026 Python and R workshop" },
+      ...eventImages("data-horizons-2026", [
+        "Data Horizons 2026 Day 1 poster with the UPLB Graduate School",
+        "A speaker presenting a chart to Data Horizons 2026 participants",
+        "Participants working through the Python training",
+        "Facilitators guiding a hands-on exercise",
+        "Participants presenting hackathon output",
+      ]),
+      ...eventImages("dh2026-hackathon", [
+        "Data Horizons 2026 hackathon day poster",
+        "Teams analyzing their chosen datasets during the hackathon",
+        "A team presenting regression results",
+        "Participants and organizers at the close of Data Horizons 2026",
+      ]),
     ],
   },
   {
     id: 2,
-    title: "Data in Borderland",
+    slug: "data-in-borderland",
+    kind: "event",
+    title: "Data in Borderland QuizCon",
     date: "November 5, 2025",
+    publishedAt: "2025-11-05",
+    venue: "MMM Lecture Hall, Physical Sciences Building, UPLB",
     description:
-      "Students competed in Data in Borderland, an interactive general knowledge quizcon.",
-    images: [
-      {
-        src: "/events/data-in-borderland.webp",
-        alt: "Students smiling during the Data in Borderland general knowledge quizcon",
-      },
+      "An interactive general knowledge quizcon where teams played through rounds of strategy, teamwork, and determination.",
+    writeup: [
+      "The game has officially come to an end. Data in Borderland wrapped up with full tables, sharp minds, and moments worth remembering. From the first question drawn to the final card played, everyone brought the energy and focus that made the night a meaningful experience.",
+      "Held at the MMM Lecture Hall of the Physical Sciences Building, teams worked through each round with strategy, teamwork, and determination, from the opening briefing to the awarding of the winners.",
+      "The quizcon was held in partnership with UP Euyeomuyeo, the UPLB Society of Electrical Engineering Students, the UPLB College Youth Club, the Society of Applied Mathematics of UPLB, and Mokape Coffee Los Banos, and brought to you by the Alliance of Computer Science Students UPLB, UP Engineering Radio Guild Los Banos, and partner organizations.",
     ],
+    source: { label: "Facebook post, November 24, 2025", href: fbPost("122226704084119873") },
+    images: [
+      { src: "/events/data-in-borderland.webp", alt: "Students smiling during the Data in Borderland general knowledge quizcon" },
+      ...eventImages("data-in-borderland", [
+        "Thank you poster for the Data in Borderland QuizCon 2025 with participants",
+        "Teams seated at full tables during the opening briefing",
+        "A team conferring over a quiz round",
+        "Host reading a question to the crowd",
+        "Participants reacting during a round",
+        "Winners receiving their awards",
+      ]),
+    ],
+  },
+  {
+    id: 12,
+    slug: "ai-literacy-training",
+    kind: "workshop",
+    title: "Hour of Code and AI Literacy Training",
+    date: "October 11 and 18, 2025",
+    publishedAt: "2025-10-18",
+    venue: "Online, 1:00 PM onwards",
+    audience: "Open to all, in partnership with AI Ready ASEAN Philippines",
+    description:
+      "A two-part AI literacy workshop with AI Ready ASEAN Master Trainer Keith Tidon, from Hour of Code to computer vision and RAG pipelines.",
+    writeup: [
+      "The guild geared up to become AI-ready through the Hour of Code and AI Literacy Training with guildsman and AI Ready ASEAN Master Trainer Keith Tidon. The AI Ready ASEAN Philippines program seeks to empower 5.5 million individuals across Southeast Asia with essential AI skills, led by the ASEAN Foundation, supported by Google.org, with Limitless Lab as the local implementing partner.",
+      "Part 1 on October 11 covered AI literacy and awareness. Part 2 on October 18 continued into AI architectures and applications: the practical implementation of AI systems, from computer vision models for image recognition to Retrieval-Augmented Generation pipelines in large language models.",
+    ],
+    source: { label: "Facebook posts, October 2025", href: fbPost("122221988930119873") },
+    images: [
+      { src: "/events/ai-literacy/01.webp", alt: "AI Ready ASEAN Hour of Code poster with speaker Keith Tidon, October 11, 2025" },
+    ],
+  },
+  {
+    id: 11,
+    slug: "edgerunners-orientation",
+    kind: "event",
+    title: "Signal in the Static: Edgerunners Breaking In",
+    date: "September 10, 2025",
+    publishedAt: "2025-09-10",
+    venue: "IC's Bar and Cafe, Los Banos, 7:00 to 9:00 PM",
+    description:
+      "The first semester orientation for AY 2025 to 2026, where new members joined the network.",
+    writeup: [
+      "Patterns hide in the noise. Systems are designed to mislead. But Edgerunners see the lines others miss. The guild called all Edgerunners to the frontlines to intercept the signals, decode the hidden flows, and turn raw data into disruption.",
+      "Props to all the runners who tapped the frequency and joined Signal in the Static. Together they proved that when the right signals sync, the static does not stand a chance. This was just the first breach, and the guild got a bigger crew out of it. Welcome to the network, edgerunners.",
+    ],
+    source: { label: "Facebook post, September 20, 2025", href: fbPost("122218577612119873") },
+    images: eventImages("edgerunners", [
+      "Thank you Edgerunners poster in cyberpunk style",
+      "New members and officers gathered at IC's Bar and Cafe",
+      "Participants listening during the orientation program",
+      "Members playing an icebreaker game",
+      "Group photo of the Edgerunners orientation crowd",
+      "Officers welcoming new members",
+    ]),
+  },
+  {
+    id: 10,
+    slug: "dataverse-blockchain",
+    kind: "event",
+    title: "Dataverse: Bridging Data Science and Blockchain",
+    date: "May 3, 2025",
+    publishedAt: "2025-05-03",
+    venue: "UPLB Graduate School",
+    description:
+      "A session with Hiraya Network on blockchain and data science, capped by hands-on extraction and analysis of blockchain data.",
+    writeup: [
+      "On May 3, 2025, the guild gathered at the UPLB Graduate School for Dataverse: Bridging Data Science and Blockchain for a Secure Digital Future. In partnership with the Junior Blockchain Education Consortium of the Philippines Dangals, the event brought together data enthusiasts and blockchain innovators for a session led by Jerome Monte and Renzo Cabarios of Hiraya Network.",
+      "From real-world applications to key issues, attendees explored the evolving landscape of blockchain and its integration with data science. The day was capped off with a hands-on coding session where participants extracted and analyzed blockchain data in action.",
+    ],
+    source: { label: "Facebook post, May 19, 2025", href: fbPost("122202757046119873") },
+    images: eventImages("dataverse-blockchain", [
+      "Dataverse: Bridging Data Science and Blockchain poster",
+      "Speakers from Hiraya Network presenting at the UPLB Graduate School",
+      "Participants following the blockchain session",
+      "Hands-on coding session extracting blockchain data",
+      "Participants asking questions during the open forum",
+      "Group photo of Dataverse participants and organizers",
+    ]),
   },
   {
     id: 3,
+    slug: "dataverse-up-rural",
+    kind: "event",
     title: "Dataverse at UP Rural High School",
     date: "April 4, 11, and 26, 2025",
+    publishedAt: "2025-04-26",
+    venue: "UP Rural High School Computer Laboratory",
     description:
-      "A three-day series exploring the future of data and AI with students from UP Rural High School.",
+      "A three-day series exploring the future of data and AI with CodeIT senior high school students.",
+    writeup: [
+      "Dataverse: Exploring the Future of Data and AI took the guild to UP Rural High School for three Saturdays in April 2025, in partnership with the CodeIT senior high school program.",
+      "The final day on April 26 went deep into AI, machine learning, and Python, and the participants from CodeIT absolutely crushed it. Special thanks to Aljon and Galvin for lighting up the UPRHS Computer Lab with knowledge and passion, and to everyone who took on the challenges and made the Dataverse journey a success.",
+    ],
+    source: { label: "Facebook post, April 28, 2025", href: fbPost("122199934388119873") },
     images: [
-      {
-        src: "/events/dataverse-april-4.webp",
-        alt: "Students working at computers during Dataverse day one on April 4, 2025",
-      },
-      {
-        src: "/events/dataverse-april-11.webp",
-        alt: "Dataverse participants posing in a classroom on April 11, 2025",
-      },
-      {
-        src: "/events/dataverse-april-26.webp",
-        alt: "Dataverse participants posing outside UP Rural High School on April 26, 2025",
-      },
+      { src: "/events/dataverse-april-4.webp", alt: "Students working at computers during Dataverse day one on April 4, 2025" },
+      { src: "/events/dataverse-april-11.webp", alt: "Dataverse participants posing in a classroom on April 11, 2025" },
+      { src: "/events/dataverse-april-26.webp", alt: "Dataverse participants posing outside UP Rural High School on April 26, 2025" },
+      ...eventImages("dataverse-uprhs", [
+        "Dataverse Day 3 poster with participants in front of UP Rural High School",
+        "Students coding in Python at the UPRHS computer laboratory",
+        "A facilitator explaining machine learning to the class",
+        "Students and facilitators at the close of Dataverse Day 3",
+      ]),
     ],
   },
   {
-    id: 5,
-    title: "UPLB DSG Workshop on Bioinformatics",
-    date: "2026",
+    id: 9,
+    slug: "bytecamp-2025",
+    kind: "workshop",
+    title: "ByteCamp: Data Science and Machine Learning",
+    date: "February 28, 2025",
+    publishedAt: "2025-02-28",
+    venue: "UPLB Graduate School",
+    audience: "Internal workshop for guild members",
     description:
-      "A hands-on workshop introducing members to bioinformatics and its data science applications.",
-    images: [],
-  },
-  {
-    id: 6,
-    title: "UPLB DSG Fireside Chats",
-    date: "2026",
-    description:
-      "An informal conversation series where members and guests share experiences in data science.",
-    images: [],
-  },
-  {
-    id: 4,
-    title: "Data Horizons 2026 Workshop",
-    date: "2026",
-    description:
-      "A three-day intensive Python and R workshop for professionals.",
-    images: [
-      {
-        src: "/events/data-horizons-graduate-school.webp",
-        alt: "Professionals attending the Data Horizons 2026 Python and R workshop",
-      },
+      "A face-to-face hands-on session on Python, pandas, regression, classification, and clustering with Aljon Gerard De Leon.",
+    writeup: [
+      "At the UPLB Data Science Guild, members do not just keep up with data science; they explore, innovate, and master it together. On February 28, 2025, the guild held the second part of its internal workshop, ByteCamp: Data Science and Machine Learning, at the UPLB Graduate School.",
+      "With Aljon Gerard De Leon sharing his expertise, members worked through an overview of Python as a data science tool with Jupyter notebooks, an introduction to Python and pandas, regression with scikit-learn, classification with logistic regression and decision trees, and clustering with k-means.",
     ],
+    source: { label: "Facebook post, March 6, 2025", href: fbPost("122191634174119873") },
+    images: eventImages("bytecamp", [
+      "ByteCamp face-to-face hands-on session poster listing the five modules",
+      "Members following the ByteCamp session at the UPLB Graduate School",
+      "Aljon Gerard De Leon presenting a machine learning module",
+      "Members coding along during ByteCamp",
+    ]),
+  },
+  {
+    id: 8,
+    slug: "red-light-green-light",
+    kind: "event",
+    title: "Red Light, Green Light: Step into the Data Science Spotlight",
+    date: "February 19, 2025",
+    publishedAt: "2025-02-19",
+    venue: "Makiling Ballroom, UPLB, 7:00 PM",
+    audience: "Open to all programs",
+    description:
+      "The second semester orientation: a game-themed night of workshops, activities, and a test of strategy.",
+    writeup: [
+      "The moment arrived, the countdown ended, and the game officially started. Red Light, Green Light invited students from every program to step into the spotlight and begin a journey into the world of data science, with exciting workshops, fun activities, and a test of strategy along the way.",
+      "The challenge was set, the stakes were high, and only those who chose the right path moved forward. The right door opened on February 19, 2025, at 7:00 PM in Makiling Ballroom.",
+    ],
+    source: { label: "Facebook post, February 19, 2025", href: fbPost("122189008748119873") },
+    images: [
+      { src: "/events/red-light-green-light/01.webp", alt: "D-Day poster for Red Light, Green Light at Makiling Ballroom, February 19, 2025" },
+    ],
+  },
+  {
+    id: 1,
+    slug: "data-horizons-2024",
+    kind: "event",
+    title: "Data Horizons 2024 Symposium",
+    date: "May 6, 2024",
+    publishedAt: "2024-05-06",
+    venue: "UPLB Rural Economic Development and Renewable Energy Center (REDREC), 12:00 to 5:00 PM",
+    audience: "Free and open to all UPLB students",
+    description:
+      "The guild's pioneering symposium on machine learning, data journalism, analytics, AI, and unmanned aerial vehicles.",
+    writeup: [
+      "Under the expansive skies of The UPLB Data Horizon, held on May 6, 2024, participants embarked on a journey across the frontiers of machine learning, finance journalism, analytics, AI, and unmanned aerial vehicles. Each session revealed new perspectives in these fields and sparked a collective vision for the future of innovation.",
+      "The symposium explored trends and insights shaping the future of the country while drawing lessons from the past, covering the development of AI, data journalism, and data analytics in healthcare and agriculture, with experts from different fields.",
+      "Data Horizons 2024 was brought to you by the UPLB Graduate School and Tau Alpha, endorsed by the Analytics and Artificial Intelligence Association of the Philippines, co-presented by CodeHappy, supported by BizKit Technologies, and held courtesy of the UP Data Science Society, the UPLB Society of Electrical Engineering Students, and the Society of Applied Mathematics of UPLB.",
+    ],
+    source: { label: "Facebook post, June 19, 2024", href: fbPost("122151379418119873") },
+    images: [
+      { src: "/events/data-horizons-symposium-1.webp", alt: "Participants and organizers posing inside the Data Horizons 2024 venue" },
+      { src: "/events/data-horizons-symposium-2.webp", alt: "Data Horizons 2024 organizers posing in front of the symposium screen" },
+      ...eventImages("data-horizons-2024", [
+        "Data Horizons 2024 stage at REDREC before the program",
+        "A speaker presenting to the Data Horizons 2024 audience",
+        "Participants listening to a symposium session",
+        "Speakers and organizers on stage",
+        "The audience during a question and answer segment",
+        "Group photo of Data Horizons 2024 speakers, organizers, and participants",
+      ]),
+    ],
+  },
+  {
+    id: 7,
+    slug: "no-code-beta-2024",
+    kind: "workshop",
+    title: "No Code Beta 2024",
+    date: "March 4 and 5, 2024",
+    publishedAt: "2024-03-05",
+    venue: "UPLB Graduate School",
+    audience: "Internal workshop for resident members and applicants",
+    description:
+      "The guild's first internal workshop: basic data preparation, dashboarding, data mining, and statistical analysis.",
+    writeup: [
+      "Data transfer completed. The UPLB Data Science Guild conducted its first internal workshop, No Code Beta 2024, at the UPLB Graduate School on March 4 and 5, 2024, for resident members and applicants.",
+      "The two-day workshop was a knowledge transfer based on the UPLB Graduate School's Data Analytics for the Future (DAF) X program, built to establish foundational data analytics skills and designed for participants with zero to beginner-level experience. Training covered basic data preparation, dashboarding, data mining, and statistical analysis.",
+    ],
+    source: { label: "Facebook post, March 23, 2024", href: fbPost("122135010770119873") },
+    images: eventImages("no-code-beta", [
+      "Members at the No Code Beta 2024 workshop at the UPLB Graduate School",
+      "A facilitator presenting a dashboarding module",
+      "Participants working through a data preparation exercise",
+      "Members collaborating on a statistical analysis task",
+      "Group photo at the end of No Code Beta 2024",
+    ]),
   },
 ];
+
+export const PAST_EVENTS = EVENTS.filter((event) => event.kind === "event");
+export const WORKSHOPS = EVENTS.filter((event) => event.kind === "workshop");
 
 const digestPanels = (slug: string, alts: string[]): ImageItem[] =>
   alts.map((alt, index) => ({
@@ -412,6 +647,36 @@ export const DIGEST_ENTRIES: DigestEntry[] = [
       "Coffee shop example with five drinks, resource constraints, and the profit objective function",
       "Entering the linear equations into an online Simplex calculator or a Python or R library",
       "Interpreting the result: maximum profit of 790 pesos from a mix of latte, mocha, flat white, and cappuccino",
+    ]),
+  },
+  {
+    slug: "excel-data-analysis",
+    title: "Excel Tools for Data Preprocessing and Visualization",
+    date: "March 7, 2025",
+    publishedAt: "2025-03-07",
+    description:
+      "How Excel's built-in tools clean messy datasets and turn them into charts that tell a story.",
+    body: [
+      "Microsoft Excel covers a surprising share of everyday data work: data tracking, data science, and data engineering. Remove Duplicates, Sort and Filter, CLEAN, and TRIM handle the preprocessing that keeps analysis accurate.",
+      "Once the data is clean, line graphs show change over time, pie charts show parts of a whole, and bar graphs compare categories. The right chart makes the dataset readable at a glance.",
+    ],
+    contentBy: "Yanika Tauro",
+    layoutBy: "Franz Saragena",
+    references: [
+      {
+        label: "GeeksforGeeks, How to Perform Data Analysis in Excel: A Beginner's Guide (2025)",
+        href: "https://www.geeksforgeeks.org/data-analysis-in-excel/",
+      },
+      {
+        label: "Intellspot, Types of Graphs and Charts and Their Uses (2020)",
+        href: "https://www.intellspot.com/types-graphs-charts/",
+      },
+    ],
+    panels: digestPanels("excel-data-analysis", [
+      "Excel Tools for Data Preprocessing and Data Visualization Data Digest cover",
+      "What is Excel: a tool for storing, organizing, and analyzing data used in data tracking, data science, and data engineering",
+      "Tools for data preprocessing: Remove Duplicates, Sort and Filter, CLEAN, and TRIM",
+      "Data visualization with line graphs, pie charts, and bar graphs",
     ]),
   },
   {

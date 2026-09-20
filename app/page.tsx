@@ -3,6 +3,7 @@ import WhoAreWeSection from "@/components/who-are-we-section";
 import AboutUsSection from "@/components/about-us-section";
 import DataDigestSection from "@/components/data-digest-section";
 import EventsSection from "@/components/events-section";
+import WorkshopsSection from "@/components/workshops-section";
 import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
 const structuredData = {
@@ -39,6 +40,7 @@ export default function Home() {
       <WhoAreWeSection />
       <AboutUsSection />
       <DataDigestSection />
+      <WorkshopsSection />
       <EventsSection />
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import type { Event } from "@/lib/data";
 
@@ -126,6 +127,13 @@ export default function PastEvents({ events }: { events: Event[] }) {
           <p className="max-w-2xl leading-relaxed text-white/70">
             {activeEvent.description}
           </p>
+          <Link
+            href={`/events/${activeEvent.slug}`}
+            prefetch={false}
+            className="mt-4 inline-flex min-h-11 items-center font-bold text-white hover:text-headline-via focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+          >
+            Read the full writeup →
+          </Link>
           {activeEvent.images.length > 1 && (
             <p className="mt-4 text-sm text-white/50" aria-live="polite">
               Photo {activeImageIndex + 1} of {activeEvent.images.length}

@@ -28,6 +28,11 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
         <p className="line-clamp-3 text-sm leading-relaxed text-white/70">
           {entry.description}
         </p>
+        {entry.contentBy && (
+          <p className="text-xs text-white/50">
+            By <span className="text-white/80">{entry.contentBy}</span>
+          </p>
+        )}
         <span className="inline-block font-bold text-white group-hover:text-headline-via">
           Read digest →
         </span>
