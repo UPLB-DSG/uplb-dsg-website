@@ -21,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Editing content
 
-All site copy, events, Data Digest entries, and links live in [`app/lib/data.ts`](app/lib/data.ts). Digest images live in `public/digest/<slug>/`; event images live in `public/events/`. Keep full images at 1200px WebP, add matching `*-640.webp` mobile variants, and use a 640px `cover.webp` for Digest cards.
+All site copy, events and workshops, Data Digest entries, and links live in [`app/lib/data.ts`](app/lib/data.ts). Digest images live in `public/digest/<slug>/`; event images live in `public/events/<slug>/` (1600px max plus `*-640.webp`). Each `EVENTS` item gets a page at `/events/<slug>`. Keep full images at 1200px WebP, add matching `*-640.webp` mobile variants, and use a 640px `cover.webp` for Digest cards.
 
 Data Digest pages are statically generated at `/digest` and `/digest/[slug]`, with per-entry metadata, structured data, image alt text, and sitemap entries.
 

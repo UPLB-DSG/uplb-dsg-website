@@ -20,13 +20,16 @@ Functional priorities, in order:
 
 Audience: people interested in joining UPLB DSG or learning about its events and activities.
 
-## 2. Current State (as of 2026-08-19)
+## 2. Current State (as of 2026-09-20)
 
 - Landing page built: hero, Who We Are, About Us, Data Digest showcase, event gallery, and footer. The placeholder upcoming-event card is intentionally removed until a real event is ready.
-- Data Digest is live as 11 crawlable static entries at `/digest/[slug]`, with a `/digest` index, per-entry metadata, Article JSON-LD, descriptive image text, `sitemap.xml`, and `robots.txt`.
+- Data Digest is live as 18 crawlable static entries at `/digest/[slug]`, with a `/digest` index, per-entry metadata, Article JSON-LD, descriptive image text, `sitemap.xml`, and `robots.txt`.
 - SEO metadata is configured in `app/layout.tsx` and the Digest routes: canonical URLs, title templates, descriptions, Open Graph/Twitter images, Organization/WebSite JSON-LD, and BreadcrumbList JSON-LD for Digest articles.
 - Google Search Console is configured for `https://uplbdsg.org`. Use it to monitor indexing, sitemap processing, search queries, click-through rate, Core Web Vitals, mobile usability, and crawl errors. Submit `/sitemap.xml` and request re-crawls after substantial content or metadata changes.
-- Past events use a responsive photo slideshow. The mobile layout separates media and copy instead of overlaying text on photos.
+- Events and workshops: 14 entries in `EVENTS` (`kind: "event" | "workshop"`), each with a static page at `/events/[slug]` (writeup adapted from the guild's Facebook caption, gallery, venue, audience, source link, Event JSON-LD, sitemap entry). The home page shows a Workshop Series card grid and a Past Events timeline. Images render whole over a blurred backdrop (`contained-image.tsx`), never cropped.
+- Hero: tagline plus "Join a workshop" and "Read the Data Digest" calls to action. A once-per-session opening sequence (`hero-intro.tsx`, canvas) scatters points, k-means tints them, converges them into the cube, then hands off to the CSS stagger. Easter eggs in `hero-canvas.tsx`: click-to-fit regression line, Konami code k-means, "sudo" antigravity. Also a console message, CountUp stats with a p-value tooltip, a random digest die, and a confusion matrix 404. All motion respects `prefers-reduced-motion`.
+- Lottie: `lottie-web` (light build, lazy, plays only in view) via `app/lib/components/lottie.tsx`. Recolored vector assets in `public/lottie/` (isometric cubes, chart, confetti, pop). Sources: Apache ECharts site (Apache 2.0), LottieFiles dotlottie-web fixtures (MIT repo, Lottie Simple License), srm-kzilla/kzilla.xyz (MIT).
+- Favicon and Open Graph card are built from the official vector logo (`DSG Logo Vector.eps`, kept outside the repo). OG card: lockup on dark with the Facebook page description.
 - Media is optimized for the static host: WebP event assets, 1200px Digest panels, separate 640px mobile sources/card thumbnails, and lazy-loaded Digest links without route prefetch. Full media dropped from about 15 MB of initial JPEGs to about 6.5 MB, while mobile pages fetch the smaller variants.
 - Original timeline (landing April–May, blog June–July 2026) slipped; landing page polish is still in progress.
 - Not yet done: public launch announcement and a no-code publishing interface.
@@ -68,12 +71,13 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Task | How |
 | --- | --- |
 | Run locally | `npm ci && npm run dev` → http://localhost:3000 |
-| Edit copy or add a past event | Edit `app/lib/data.ts`, add optimized WebP images under `public/events/`, commit, and push |
+| Edit copy or add an event or workshop | Add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/`, then add one `EVENTS` item in `app/lib/data.ts` with `slug`, `kind`, dates, `writeup`, and `source` (Facebook permalink). The page, sitemap entry, and home-page card or timeline row follow from the data |
 | Add a Data Digest entry | Add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`; then add one `DIGEST_ENTRIES` item in `app/lib/data.ts` |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
 | Review SEO | Check Google Search Console for `https://uplbdsg.org`, verify the sitemap and indexing status, then review performance and crawl reports |
 | Get a preview URL | Open a PR → Cloudflare Pages `pr-N` branch deploy |
 | Add images | Optimize first, put in `public/` (no server-side image optimization exists) |
+| Regenerate the OG card or favicon | Render the EPS with Ghostscript (`gs -sDEVICE=pngalpha -r300 -dEPSCrop`), compose in an HTML card at 1200x630, screenshot with Playwright, save to `app/opengraph-image.png` and `app/twitter-image.png` (update the `.alt.txt` files); icons are `app/icon.png` (512) and `app/apple-icon.png` (180) |
 
 ## 7. Successor Handover Checklist
 
@@ -102,3 +106,5 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | 2026-08-19 | First in-repo version, transcribed from the planning docs (project proposal, turnover template, working notes) and reconciled with actual infrastructure (Cloudflare Pages as active deployment). |
 | 2026-08-19 | Added the static Data Digest archive and SEO routes, responsive event slideshow, real event media, updated statistics/header, and the WebP performance workflow. |
 | 2026-08-19 | Added canonical metadata, title/description templates, social previews, Organization/WebSite/BreadcrumbList structured data, and Google Search Console operating notes. |
+| 2026-08-27 | Bioinformatics Workshop and Fireside Chats event entries; CSS-only motion system (hero stagger, scroll reveals, shimmer, loading skeletons). |
+| 2026-09-20 | Seven Data Digest entries and fourteen event/workshop pages harvested from the Facebook page; Workshop Series section and Past Events timeline; hero tagline, CTAs, and opening sequence; data science easter eggs; Lottie ornaments; About section relayout; favicon and Open Graph card rebuilt from the vector logo. |

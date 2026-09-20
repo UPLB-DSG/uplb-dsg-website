@@ -21,7 +21,7 @@ Functional priorities, in order: **(1) landing page → (2) SEO-friendly content
 ## Stack
 
 - **Next.js 16.2.3** (App Router, `output: "export"` — fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 9** (flat config).
-- No component library, CMS, or database. Data Digest content is currently maintained in Git through `app/lib/data.ts`; a Git-based editor may be added only when non-developers need it.
+- No component library, CMS, or database. `lottie-web` (light build) is the only runtime dependency beyond Next and React; keep it lazy and in-view only. Content is maintained in Git through `app/lib/data.ts`; a Git-based editor may be added only when non-developers need it.
 - Wireframes/design live in Figma (external).
 
 ## Commands
@@ -38,9 +38,10 @@ npm run build -- --webpack  # production build → out/ (must pass before commit
 
 - `app/page.tsx` — landing-page composition of sections.
 - `app/digest/page.tsx` and `app/digest/[slug]/page.tsx` — static Data Digest index and article routes.
-- `app/lib/components/` — section components (`hero-section`, `who-are-we-section`, `about-us-section`, `events-section`, `past-events`, `header`, `footer`).
+- `app/events/[slug]/page.tsx` — static event and workshop pages generated from `EVENTS`.
+- `app/lib/components/` — section components (`hero-section`, `hero-intro`, `hero-canvas`, `who-are-we-section`, `about-us-section`, `data-digest-section`, `workshops-section`, `events-section`, `header`, `footer`) plus shared `contained-image`, `lottie`, `count-up`, `random-digest-button`.
 - Path aliases: `@/components/*` → `app/lib/components/*`, `@/lib/*` → `app/lib/*`.
-- **All site copy/content lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `PAST_EVENTS`, `DIGEST_ENTRIES`). Edit copy there, never hardcode in components.
+- **All site copy/content lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `EVENTS` with derived `PAST_EVENTS` and `WORKSHOPS`, `DIGEST_ENTRIES`). Edit copy there, never hardcode in components. Event writeups are adapted from the guild's Facebook captions and must keep a `source` link. Date labels are plain sentence case, no uppercase tracked eyebrows.
 - Design tokens in `app/globals.css` `@theme`: `accent-main` `#7230ff`, `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, headline gradient `headline-from`/`headline-via`. Fonts: Archivo (display, `--font-display`), Geist Sans/Mono.
 - SEO: root metadata + OpenGraph in `app/layout.tsx`, branded Open Graph/Twitter images in `app/opengraph-image.png` and `app/twitter-image.png`, Organization JSON-LD in `app/page.tsx`, article metadata/JSON-LD in `app/digest/[slug]/page.tsx`, plus `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` is `https://uplbdsg.org`.
 - ESLint extends Next.js Core Web Vitals/TypeScript rules with high-signal safety and consistency checks; add rules only when they prevent real defects or review churn.
