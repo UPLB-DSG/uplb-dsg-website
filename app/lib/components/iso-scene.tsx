@@ -91,13 +91,13 @@ const POINTS: [number, number, number, string][] = [
 ];
 const CENTROIDS: [number, number][] = [[305, 175], [715, 165], [690, 445]];
 
-export default function IsoScene() {
+export default function IsoScene({ minimal = false }: { minimal?: boolean }) {
   const cube = { x: CUBE_X, y: CUBE_Y, width: CUBE_W, height: CUBE_H, preserveAspectRatio: "xMidYMid meet" as const };
   return (
     <svg
       viewBox={`0 0 ${VW} ${VH}`}
       preserveAspectRatio="xMidYMid meet"
-      className="absolute inset-0 h-full w-full"
+      className="absolute inset-0 z-10 h-full w-full"
       aria-hidden="true"
     >
       <defs>
@@ -112,16 +112,16 @@ export default function IsoScene() {
           <rect width={VW} height={VH} fill="url(#dot-fade)" />
         </mask>
         <radialGradient id="scene-glow" cx={CX} cy={CY} r="290" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#7230ff" stopOpacity="0.85" />
-          <stop offset="0.4" stopColor="#7230ff" stopOpacity="0.35" />
+          <stop offset="0" stopColor="#7230ff" stopOpacity="0.9" />
+          <stop offset="0.4" stopColor="#7230ff" stopOpacity="0.45" />
           <stop offset="1" stopColor="#7230ff" stopOpacity="0" />
         </radialGradient>
       </defs>
 
       <circle cx={CX} cy={CY} r="290" fill="url(#scene-glow)" />
-      <rect width={VW} height={VH} fill="url(#dots)" mask="url(#dot-mask)" opacity="0.6" />
+      {!minimal && <rect width={VW} height={VH} fill="url(#dots)" mask="url(#dot-mask)" opacity="0.6" />}
 
-      <g mask="url(#dot-mask)">
+      {!minimal && <g mask="url(#dot-mask)">
         {POINTS.map(([x, y, r, c], i) => (
           <circle key={i} cx={x} cy={y} r={r} fill={c} className="scene-node" style={{ "--n": i % 9 } as React.CSSProperties} />
         ))}
@@ -130,7 +130,7 @@ export default function IsoScene() {
             <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="#fafafa" strokeWidth="1.5" />
           </g>
         ))}
-      </g>
+      </g>}
 
       <g id="hero-cube" className="cube-float">
         <ellipse cx={CX} cy={CUBE_Y + CUBE_H + 30} rx="120" ry="16" fill="#7230ff" fillOpacity="0.35" className="cube-shadow" />

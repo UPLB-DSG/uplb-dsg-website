@@ -2,36 +2,20 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import HeroCanvas from "@/components/hero-canvas";
 import IsoScene from "@/components/iso-scene";
+import HeroSlideshow from "@/components/hero-slideshow";
 import HeroIntro from "@/components/hero-intro";
 import { COPY, FACEBOOK_URL } from "@/lib/data";
 
 export default function HeroSection() {
   return (
     <section id="hero" data-intro="pending" className="relative w-full overflow-hidden flex flex-col lg:block lg:min-h-svh">
-      <picture className="pointer-events-none absolute inset-0 z-0">
-        <source media="(max-width: 640px)" srcSet="/hero-bg-960.webp" />
-        <img
-          src="/hero-bg.webp"
-          alt=""
-          className="h-full w-full scale-[1.04] object-cover object-[55%_35%] opacity-60 blur-[2px]"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </picture>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.6) 40%, rgba(10,10,10,0.4) 100%), linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 40%, #0a0a0a 100%), rgba(74,10,119,0.3)",
-        }}
-      />
       <noscript>
         <style>{`#hero[data-intro] .hero-enter, #hero[data-intro] .hero-cube-enter { animation-play-state: running; }`}</style>
       </noscript>
+      <HeroSlideshow />
       <HeroCanvas heroId="hero" />
       <HeroIntro heroId="hero" cubeId="hero-cube" />
-      <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-[1] pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
+      <div className="hero-top-glow absolute top-0 left-0 right-0 h-[400px] w-full z-0 pointer-events-none opacity-80 mix-blend-screen overflow-hidden">
         <div className="glow-drift absolute top-[-150px] left-[-10%] w-[50%] h-[300px] bg-glow-magenta blur-[120px] rounded-[100%]" />
         <div className="glow-drift-alt absolute top-[-200px] left-[20%] w-[60%] h-[400px] bg-glow-violet blur-[140px] rounded-[100%]" />
         <div className="glow-drift absolute top-[-150px] right-[-10%] w-[40%] h-[300px] bg-glow-amber/80 blur-[120px] rounded-[100%]" />
@@ -92,8 +76,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-cube-enter relative z-10 -mt-4 h-[240px] w-full pointer-events-none md:h-[320px] lg:mt-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845]">
-          <IsoScene />
+        <div className="hero-cube-enter relative z-10 -mt-4 h-[280px] w-full pointer-events-none md:h-[360px] lg:mt-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845]">
+          <IsoScene minimal />
         </div>
       </div>
     </section>
