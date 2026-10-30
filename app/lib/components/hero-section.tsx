@@ -32,10 +32,10 @@ export default function HeroSection() {
             style={{ "--i": 2 } as CSSProperties}
           >
             <Link
-              href="/#join"
+              href="/digest"
               className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm bg-accent-main px-6 font-bold text-off-white transition-colors duration-150 hover:bg-accent-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              How to join
+              Read the Data Digest
             </Link>
             <Link
               href="/events"
