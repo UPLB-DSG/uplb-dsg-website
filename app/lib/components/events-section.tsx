@@ -27,7 +27,7 @@ export function EventsTimeline({ limit }: { limit?: number }) {
             <Link
               href={`/events/${event.slug}`}
               prefetch={false}
-              className="group grid gap-5 rounded-2xl border border-white/10 bg-dark-gray p-4 transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white sm:grid-cols-[220px_1fr] sm:p-5"
+              className="group grid gap-5 rounded-xl border border-white/10 bg-dark-gray p-4 transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white sm:grid-cols-[220px_1fr] sm:p-5"
             >
               {event.images[0] ? (
                 <ContainedImage
@@ -57,11 +57,11 @@ export function EventsTimeline({ limit }: { limit?: number }) {
 export default function EventsSection() {
   return (
     <section id="events" aria-labelledby="events-heading" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 lg:px-12 py-20 lg:py-24">
-      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-3">
         <h2 id="events-heading" className="font-display text-4xl font-extrabold text-off-white md:text-5xl">
           Recent events
         </h2>
-        <p className="max-w-md leading-relaxed text-white/70">
+        <p className="max-w-xl leading-relaxed text-white/70">
           Symposia, orientations, quiz nights, and outreach, from the first
           Data Horizons to this year.
         </p>
