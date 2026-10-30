@@ -156,7 +156,7 @@ export const EVENTS: Event[] = [
     description:
       "A one-hour online session that untangles raw class schedule exports and turns them into campus insights with Python.",
     writeup: [
-      "Is your class schedule locked away behind tower walls? You scroll through course listings, check building codes, and count open slots. This session asks participants to grab a laptop, step beyond the ordinary, and look at UPLB through a whole new lens.",
+      "Finding a free room at UPLB means scrolling through course listings, checking building codes, and counting open slots. This session asked participants to bring a laptop and answer that question with data instead.",
       "Breaking Down Room TBA walks through the real Room TBA project, a community-maintained campus map, and shows how raw schedule exports become visualizations of campus realities using Python. No complex setup is needed, and slots are limited.",
     ],
     source: { label: "Facebook post, August 31, 2026", href: fbPost("122259233714119873") },
@@ -197,8 +197,8 @@ export const EVENTS: Event[] = [
       "A two-phase Python and R training program with the UPLB Graduate School, capped by a hackathon.",
     writeup: [
       "Data Horizons 2026 ran as two three-day phases in partnership with the UPLB Graduate School. Phase 1 covered Python; Phase 2, held April 28 to 30 and guided by Prof. Jomar F. Rabajante, was built for those ready to master R. Each day ran from 8:00 AM to 5:00 PM at the UPLB GS ISSC.",
-      "Phase 1 moved participants from technical foundations to actionable insights, turning complex concepts into practical solutions over three days and closing with a hackathon that put problem-solving to the test.",
-      "On the final day of Phase 2, participants used linear regression, data visualization, and other machine learning models to analyze datasets of their choice, bridging the gap between knowledge and practical application. Completers received a verifiable Certificate of Completion from the UPLB Graduate School.",
+      "Phase 1 took participants from Python basics to their own analyses over three days and closed with a hackathon.",
+      "On the final day of Phase 2, participants used linear regression, data visualization, and other machine learning models to analyze datasets of their choice. Completers received a verifiable Certificate of Completion from the UPLB Graduate School.",
     ],
     source: { label: "Facebook posts, April 2026", href: fbPost("122246152616119873") },
     images: [
@@ -302,7 +302,7 @@ export const EVENTS: Event[] = [
       "A session with Hiraya Network on blockchain and data science, capped by hands-on extraction and analysis of blockchain data.",
     writeup: [
       "On May 3, 2025, the guild gathered at the UPLB Graduate School for Dataverse: Bridging Data Science and Blockchain for a Secure Digital Future. In partnership with the Junior Blockchain Education Consortium of the Philippines Dangals, the event brought together data enthusiasts and blockchain innovators for a session led by Jerome Monte and Renzo Cabarios of Hiraya Network.",
-      "From real-world applications to key issues, attendees explored the evolving landscape of blockchain and its integration with data science. The day was capped off with a hands-on coding session where participants extracted and analyzed blockchain data in action.",
+      "The talk covered how blockchain is used today, its open problems, and where it meets data science. The day ended with a hands-on coding session where participants extracted and analyzed blockchain data in action.",
     ],
     source: { label: "Facebook post, May 19, 2025", href: fbPost("122202757046119873") },
     images: eventImages("dataverse-blockchain", [
@@ -396,8 +396,8 @@ export const EVENTS: Event[] = [
     description:
       "The guild's pioneering symposium on machine learning, data journalism, analytics, AI, and unmanned aerial vehicles.",
     writeup: [
-      "Under the expansive skies of The UPLB Data Horizon, held on May 6, 2024, participants embarked on a journey across the frontiers of machine learning, finance journalism, analytics, AI, and unmanned aerial vehicles. Each session revealed new perspectives in these fields and sparked a collective vision for the future of innovation.",
-      "The symposium explored trends and insights shaping the future of the country while drawing lessons from the past, covering the development of AI, data journalism, and data analytics in healthcare and agriculture, with experts from different fields.",
+      "The first UPLB Data Horizon, held on May 6, 2024, brought together talks on machine learning, finance journalism, analytics, AI, and unmanned aerial vehicles.",
+      "Speakers from different fields covered the development of AI, data journalism, and data analytics in healthcare and agriculture.",
       "Data Horizons 2024 was brought to you by the UPLB Graduate School and Tau Alpha, endorsed by the Analytics and Artificial Intelligence Association of the Philippines, co-presented by CodeHappy, supported by BizKit Technologies, and held courtesy of the UP Data Science Society, the UPLB Society of Electrical Engineering Students, and the Society of Applied Mathematics of UPLB.",
     ],
     source: { label: "Facebook post, June 19, 2024", href: fbPost("122151379418119873") },
@@ -705,7 +705,7 @@ export const DIGEST_ENTRIES: DigestEntry[] = [
       },
       {
         label: "Sprengel et al., Audio Based Bird Species Identification using Deep Learning Techniques (2017)",
-        href: "http://ceur-ws.org/Vol-1609/16090547.pdf",
+        href: "https://ceur-ws.org/Vol-1609/16090547.pdf",
       },
     ],
     panels: digestPanels("bird-song-recognition", [
@@ -848,7 +848,7 @@ export const DIGEST_ENTRIES: DigestEntry[] = [
     date: "December 27, 2024",
     publishedAt: "2024-12-27",
     description:
-      "How machines classify, detect, and segment objects in images—and why those skills matter.",
+      "How machines classify, detect, and segment objects in images, and why those skills matter.",
     body: [
       "Computer vision lets machines interpret visual data. Classification identifies what an image contains, object detection locates multiple objects, and segmentation separates precise shapes or regions.",
       "These techniques support medical imaging, autonomous vehicles, and traffic analysis, alongside familiar tools such as phone face recognition.",
