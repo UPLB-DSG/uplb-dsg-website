@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.245.0/schema/sveltia-cms.json
+# Editor for content/ (same setup as the DSSoc site). Saving commits to main,
+# which deploys to uplbdsg.org. Each entry is one markdown file; the file name
+# becomes the page address.
+
+backend:
+  name: github
+  repo: UPLB-DSG/uplb-dsg-website
+  branch: main
+  # Sveltia CMS Authenticator (Cloudflare Worker) backed by the UPLB DSG Blog Post OAuth app.
+  base_url: https://uplbdsg-cms-auth.h-847.workers.dev
+
+site_url: https://uplbdsg.org
+display_url: https://uplbdsg.org
+logo_url: /logo.webp
+
+media_folder: public
+public_folder: /
+
+output:
+  omit_empty_optional_fields: true
+
+media_libraries:
+  default:
+    config:
+      # Uploads are converted to WebP and capped at 1200 px, like the hand-made posts.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 80
+          width: 1200
+          height: 1600
+
+collections:
+  - name: events
+    label: Events and workshops
+    label_singular: Event
+    folder: content/events
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    media_folder: /public/events/{{slug}}
+    public_folder: /events/{{slug}}
+    sortable_fields: [publishedAt, title]
+    summary: "{{publishedAt}} · {{title}}"
+    fields:
+      - { label: Type, name: kind, widget: select, options: [event, workshop], default: event }
+      - { label: Title, name: title, widget: string }
+      - { label: Date shown on the page, name: date, widget: string, hint: "Plain words, for example September 4, 2026." }
+      - { label: Date for sorting, name: publishedAt, widget: datetime, type: date, required: false, hint: "Newest first on the site." }
+      - { label: Venue, name: venue, widget: string, required: false }
+      - { label: Who it is for, name: audience, widget: string, required: false }
+      - { label: One-sentence summary, name: description, widget: text, hint: "Shows on cards and in Google results." }
+      - label: Source
+        name: source
+        widget: object
+        required: false
+        hint: "The Facebook post this writeup is based on."
+        fields:
+          - { label: Label, name: label, widget: string, hint: "For example Facebook post, November 16, 2026." }
+          - { label: Link, name: href, widget: string, required: false, pattern: ['^https://', 'Must start with https://'] }
+      - label: Photos and posters
+        name: images
+        widget: list
+        min: 1
+        hint: "The first one is the cover."
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Alt text, name: alt, widget: string, hint: "What the image shows, one sentence. Required for accessibility." }
+      - { label: Writeup, name: body, widget: markdown }
+
+  - name: digest
+    label: Data Digest
+    label_singular: Digest
+    folder: content/digest
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    media_folder: /public/digest/{{slug}}
+    public_folder: /digest/{{slug}}
+    sortable_fields: [publishedAt, title]
+    summary: "{{date}} · {{title}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date shown on the page, name: date, widget: string, hint: "For example April 10, 2026." }
+      - { label: Date for sorting, name: publishedAt, widget: datetime, type: date, required: false }
+      - { label: One-sentence summary, name: description, widget: text }
+      - { label: Content by, name: contentBy, widget: string, required: false }
+      - { label: Layout by, name: layoutBy, widget: string, required: false }
+      - label: Panels
+        name: panels
+        widget: list
+        min: 1
+        hint: "In reading order. The first one is the cover."
+        fields:
+          - { label: Image, name: src, widget: image }
+          - { label: Alt text, name: alt, widget: string, hint: "What the panel shows, one sentence." }
+      - label: References
+        name: references
+        widget: list
+        required: false
+        fields:
+          - { label: Title, name: label, widget: string }
+          - { label: Link, name: href, widget: string, required: false }
+      - { label: Article text, name: body, widget: markdown }

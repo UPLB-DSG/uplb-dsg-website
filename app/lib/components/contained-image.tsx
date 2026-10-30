@@ -16,7 +16,7 @@ export default function ContainedImage({
   priority?: boolean;
   className?: string;
 }) {
-  const small = image.src.replace(".webp", "-640.webp");
+  const small = image.small ?? image.src;
   return (
     <div className={`img-shimmer relative overflow-hidden bg-black ${className}`}>
       <Image

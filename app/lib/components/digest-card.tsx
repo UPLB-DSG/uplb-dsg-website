@@ -11,7 +11,7 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
     >
       <div className="img-shimmer relative aspect-square overflow-hidden bg-black">
         <Image
-          src={`/digest/${entry.slug}/cover.webp`}
+          src={entry.cover}
           alt={entry.panels[0].alt}
           fill
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
