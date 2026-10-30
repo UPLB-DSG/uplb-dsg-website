@@ -31,8 +31,5 @@ function load<T extends { slug: string; html: string; publishedAt?: string }>(
 export const EVENTS = load<Event>("events", ["kind", "title", "date", "description", "images"]);
 export const PAST_EVENTS = EVENTS.filter((event) => event.kind === "event");
 export const WORKSHOPS = EVENTS.filter((event) => event.kind === "workshop");
-// ponytail: "upcoming" is judged at build time; an event stays listed until the next deploy after its date.
-const buildDate = new Date().toISOString().slice(0, 10);
-export const UPCOMING = EVENTS.filter((event) => event.publishedAt && event.publishedAt >= buildDate);
 
 export const DIGEST_ENTRIES = load<DigestEntry>("digest", ["title", "date", "description", "panels", "references"]);
