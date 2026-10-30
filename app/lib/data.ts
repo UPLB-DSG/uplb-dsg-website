@@ -77,6 +77,8 @@ export const FOOTER_LINKS: NavLink[] = [
 
 export const COPY = {
   orgName: "UPLB Data Science Guild",
+  // Confirmed by the guild, October 2026. Update each recruitment cycle.
+  memberCount: "100+",
   tagline: SITE_DESCRIPTION,
   heroTagline:
     "The pioneer data science organization of UPLB. Workshops, visual explainers, and events for students who learn by building.",
