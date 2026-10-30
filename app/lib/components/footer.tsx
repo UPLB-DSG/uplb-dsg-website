@@ -1,77 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
-import { COPY, FOOTER_LINK_GROUPS, SOCIAL_LINKS } from "@/lib/data";
+import { CONTACT_EMAIL, COPY, FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer
-      id="contact"
-      className="w-full border-t border-off-white/20 bg-dark-gray text-off-white scroll-mt-24"
-    >
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12 md:flex-row md:justify-between md:gap-8">
-        <section className="space-y-4 md:max-w-sm">
+    <footer id="contact" className="w-full scroll-mt-24 border-t border-white/10 bg-dark-gray text-off-white">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 lg:px-12 md:grid-cols-[1fr_auto] md:gap-16">
+        <div className="space-y-4 md:max-w-md">
           <div className="flex items-center gap-3">
-            <Image
-              src="/logo.webp"
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10"
-            />
-            <p className="text-lg font-semibold leading-tight">
-              {COPY.orgName}
-            </p>
+            <Image src="/logo.webp" alt="" width={40} height={40} className="h-10 w-10" />
+            <p className="text-lg font-semibold leading-tight">{COPY.orgName}</p>
           </div>
-          <p className="text-sm text-off-white/80 leading-relaxed">
-            {COPY.tagline}
+          <p className="text-sm leading-relaxed text-white/70">
+            University of the Philippines Los Baños. Write to us at{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="[overflow-wrap:anywhere] font-semibold text-off-white underline decoration-white/30 underline-offset-4 hover:decoration-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+            >
+              {CONTACT_EMAIL}
+            </a>
+            .
           </p>
-          <div className="flex items-center gap-4 pt-1">
+          <ul className="flex items-center gap-2">
             {SOCIAL_LINKS.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.label}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm opacity-80 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
-              >
-                <Image
-                  src={social.icon}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="h-5 w-5 invert"
-                />
-              </a>
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm opacity-80 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+                >
+                  <Image src={social.icon} alt="" width={20} height={20} className="h-5 w-5 invert" />
+                </a>
+              </li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </div>
 
-        {FOOTER_LINK_GROUPS.map((group) => (
-          <section key={group.heading} className="space-y-3">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent-main">
-              {group.heading}
-            </h2>
-            <ul className="space-y-2 text-sm text-off-white/80">
-              {group.links.map((link) => {
-                const external = link.href.startsWith("http");
-                return (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noreferrer" : undefined}
-                      className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        ))}
+        <nav aria-label="Footer">
+          <ul className="grid grid-cols-2 gap-x-8 text-sm text-white/75 md:grid-cols-1">
+            {FOOTER_LINKS.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm transition-colors hover:text-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
+      <p className="mx-auto max-w-6xl border-t border-white/10 px-6 py-5 lg:px-12 text-sm text-white/60">
+        © {new Date().getFullYear()} {COPY.orgName}. Built and maintained by members.
+      </p>
     </footer>
   );
 }

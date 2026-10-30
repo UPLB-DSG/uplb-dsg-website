@@ -9,7 +9,7 @@ export default function DigestCarousel({ panels }: { panels: ImageItem[] }) {
   const activePanel = panels[activeIndex];
 
   return (
-    <figure className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-black">
+    <figure className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black">
       <div className="relative">
         <picture key={activePanel.src}>
           <source

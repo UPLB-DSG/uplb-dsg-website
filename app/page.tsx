@@ -1,9 +1,9 @@
 import HeroSection from "@/components/hero-section";
-import WhoAreWeSection from "@/components/who-are-we-section";
-import AboutUsSection from "@/components/about-us-section";
-import DataDigestSection from "@/components/data-digest-section";
-import EventsSection from "@/components/events-section";
+import JoinSection from "@/components/join-section";
 import WorkshopsSection from "@/components/workshops-section";
+import EventsSection from "@/components/events-section";
+import DataDigestSection from "@/components/data-digest-section";
+import AboutSection from "@/components/about-section";
 import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
 const structuredData = {
@@ -29,6 +29,8 @@ const structuredData = {
   ],
 };
 
+// Order follows what visitors come for: who we are, how to get in, what we run,
+// then reading material and the longer story.
 export default function Home() {
   return (
     <div className="bg-background text-off-white min-h-screen">
@@ -37,11 +39,11 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HeroSection />
-      <WhoAreWeSection />
-      <AboutUsSection />
-      <DataDigestSection />
+      <JoinSection />
       <WorkshopsSection />
       <EventsSection />
+      <DataDigestSection />
+      <AboutSection />
     </div>
   );
 }

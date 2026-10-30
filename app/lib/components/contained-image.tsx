@@ -2,7 +2,9 @@ import Image from "next/image";
 import type { ImageItem } from "@/lib/data";
 
 // Shows the whole image, never cropped: the same picture, blurred and dimmed,
-// fills the box behind an object-contain foreground.
+// fills the box behind an object-contain foreground. The backdrop is a lazy
+// image of the small file, so it loads only near the viewport and reuses the
+// mobile download.
 export default function ContainedImage({
   image,
   sizes,
@@ -17,10 +19,14 @@ export default function ContainedImage({
   const small = image.src.replace(".webp", "-640.webp");
   return (
     <div className={`img-shimmer relative overflow-hidden bg-black ${className}`}>
-      <div
+      <Image
+        src={small}
+        alt=""
         aria-hidden="true"
-        className="absolute inset-0 scale-125 bg-cover bg-center opacity-50 blur-2xl"
-        style={{ backgroundImage: `url(${small})` }}
+        fill
+        priority={priority}
+        sizes="20vw"
+        className="scale-125 object-cover opacity-50 blur-2xl"
       />
       <picture>
         <source media="(max-width: 640px)" srcSet={small} />
