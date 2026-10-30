@@ -43,7 +43,7 @@ export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   ],
   right: [
     { label: "About", href: "/#about" },
-    { label: "Join", href: "/#join" },
+    { label: "Contact", href: "/#contact" },
   ],
 };
 
@@ -68,7 +68,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const CONTACT_EMAIL = "uplbdatascienceguild@gmail.com";
 
 export const FOOTER_LINKS: NavLink[] = [
-  { label: "How to join", href: "/#join" },
   { label: "Workshops", href: "/#workshops" },
   { label: "Events", href: "/events" },
   { label: "Data Digest", href: "/digest" },
@@ -109,31 +108,6 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
-  joinIntro:
-    "",
-  // Removed.
-  joinSteps: [
-    {
-      title: "",
-      body: "",
-    },
-    {
-      title: "",
-      body: "",
-    },
-    {
-      title: "",
-      body: "",
-    },
-    {
-      title: "",
-      body: "",
-    },
-    {
-      title: "",
-      body: "",
-    },
-  ],
   // Named in the event writeups below; add to this list as new partners come in.
   partners: [
     "UPLB Graduate School",
@@ -154,8 +128,6 @@ export const COPY = {
     { name: "Rookie", role: "Finance and Audit", image: "/officers/finance-audit.webp" },
     { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
   ],
-  nothingScheduled:
-    "Nothing is scheduled right now. New workshops and events are posted on Facebook first.",
 };
 
 export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
