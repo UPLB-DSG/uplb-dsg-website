@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { DIGEST_ENTRIES, EVENTS, SITE_URL } from "@/lib/data";
+import { SITE_URL } from "@/lib/data";
+import { DIGEST_ENTRIES, EVENTS } from "@/lib/content";
 
 export const dynamic = "force-static";
 
@@ -7,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/digest/`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/events/`, changeFrequency: "monthly", priority: 0.9 },
     ...DIGEST_ENTRIES.map((entry) => ({
       url: `${SITE_URL}/digest/${entry.slug}/`,
       ...(entry.publishedAt && { lastModified: entry.publishedAt }),

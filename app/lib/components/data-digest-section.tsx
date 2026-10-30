@@ -1,39 +1,33 @@
 import Link from "next/link";
 import DigestCard from "@/components/digest-card";
 import RandomDigestButton from "@/components/random-digest-button";
-import Lottie from "@/components/lottie";
-import { DIGEST_ENTRIES } from "@/lib/data";
+import { DIGEST_ENTRIES } from "@/lib/content";
 
 export default function DataDigestSection() {
   return (
-    <section id="digest" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 py-24">
+    <section id="digest" aria-labelledby="digest-heading" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 lg:px-12 py-20 lg:py-24">
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-4">
-            <Lottie src="/lottie/chart.json" className="h-16 w-20 shrink-0 md:h-20 md:w-24" />
-            <h2 className="font-display text-4xl font-bold tracking-wide text-accent-main md:text-5xl">
-              DATA DIGEST
-            </h2>
-          </div>
+          <h2 id="digest-heading" className="font-display text-4xl font-extrabold text-off-white md:text-5xl">
+            Data Digest
+          </h2>
           <p className="mt-4 leading-relaxed text-white/70">
-            {DIGEST_ENTRIES.length} visual explainers that make data science concepts easier to understand.
+            {DIGEST_ENTRIES.length} short visual explainers written by members, one data science idea at a time.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
           <RandomDigestButton slugs={DIGEST_ENTRIES.map((entry) => entry.slug)} />
           <Link
             href="/digest"
-            className="inline-flex min-h-11 w-max shrink-0 items-center whitespace-nowrap rounded-sm border border-white/20 px-5 font-bold text-white transition-colors hover:border-accent-main hover:text-headline-via focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="inline-flex min-h-11 w-max shrink-0 items-center whitespace-nowrap rounded-sm border border-white/30 px-5 font-bold text-off-white transition-colors hover:border-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
-            View all digests →
+            All digests
           </Link>
         </div>
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {DIGEST_ENTRIES.slice(0, 4).map((entry) => (
-          <div key={entry.slug} className="reveal grid">
-            <DigestCard entry={entry} />
-          </div>
+          <DigestCard key={entry.slug} entry={entry} />
         ))}
       </div>
     </section>
