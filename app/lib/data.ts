@@ -38,12 +38,12 @@ export const SITE_DESCRIPTION =
 
 export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   left: [
-    { label: "Events", href: "/#events" },
+    { label: "Events", href: "/events" },
     { label: "Digest", href: "/digest" },
   ],
   right: [
     { label: "About", href: "/#about" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Join", href: "/#join" },
   ],
 };
 
@@ -65,30 +65,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
-export const FOOTER_LINK_GROUPS: { heading: string; links: NavLink[] }[] = [
-  {
-    heading: "Guild",
-    links: [
-      { label: "Who We Are", href: "/#about" },
-      { label: "Mission & Vision", href: "/#mission" },
-    ],
-  },
-  {
-    heading: "Activities",
-    links: [
-      { label: "Workshops", href: "/#workshops" },
-      { label: "Events", href: "/#events" },
-      { label: "Data Digest", href: "/digest" },
-    ],
-  },
-  {
-    heading: "Connect",
-    links: [
-      { label: "Facebook", href: "https://www.facebook.com/dsguplb" },
-      { label: "Instagram", href: "https://www.instagram.com/uplbdsg/" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/uplbdsg/" },
-    ],
-  },
+export const CONTACT_EMAIL = "uplbdatascienceguild@gmail.com";
+
+export const FOOTER_LINKS: NavLink[] = [
+  { label: "How to join", href: "/#join" },
+  { label: "Workshops", href: "/#workshops" },
+  { label: "Events", href: "/events" },
+  { label: "Data Digest", href: "/digest" },
+  { label: "About", href: "/#about" },
 ];
 
 export const STATS: Stat[] = [
