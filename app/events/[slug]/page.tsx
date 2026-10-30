@@ -124,7 +124,7 @@ export default async function EventPage({
             image={cover}
             priority
             sizes="(min-width: 1024px) 896px, 100vw"
-            className="mt-10 aspect-[4/3] rounded-2xl border border-white/10 sm:aspect-[16/10]"
+            className="mt-10 aspect-[4/3] rounded-xl border border-white/10 sm:aspect-[16/10]"
           />
         )}
 

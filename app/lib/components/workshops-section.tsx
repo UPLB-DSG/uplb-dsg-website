@@ -21,7 +21,7 @@ export default function WorkshopsSection() {
             <Link
               href={`/events/${workshop.slug}`}
               prefetch={false}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+              className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
               <ContainedImage
                 image={workshop.images[0]}
