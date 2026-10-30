@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Explore visual explainers from the UPLB Data Science Guild covering AI, statistics, computing, and data science.",
   alternates: { canonical: "/digest/" },
+  openGraph: { url: "/digest/", title: "Data Digest", type: "website" },
 };
 
 export default function DigestIndexPage() {
@@ -17,18 +18,17 @@ export default function DigestIndexPage() {
         <header className="mb-12 max-w-3xl">
           <Link
             href="/"
-            className="mb-6 inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="mb-6 inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
             ← Home
           </Link>
-          <h1 className="font-display text-5xl font-extrabold tracking-tight text-accent-main md:text-7xl">
-            DATA DIGEST
-          </h1>
+          <h1 className="font-display text-5xl font-extrabold md:text-7xl">Data Digest</h1>
           <p className="mt-5 text-lg leading-relaxed text-white/70 md:text-xl">
             Browse all {DIGEST_ENTRIES.length} visual explainers from the guild, one data science concept at a time.
           </p>
         </header>
 
+        <h2 className="sr-only">All explainers</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {DIGEST_ENTRIES.map((entry) => (
             <DigestCard key={entry.slug} entry={entry} />

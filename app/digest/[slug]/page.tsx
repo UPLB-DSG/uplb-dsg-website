@@ -28,6 +28,7 @@ export async function generateMetadata({
     alternates: { canonical: `/digest/${entry.slug}/` },
     openGraph: {
       type: "article",
+      url: `/digest/${entry.slug}/`,
       title: entry.title,
       description: entry.description,
       images: [{ url: entry.panels[0].src, alt: entry.panels[0].alt }],
@@ -101,7 +102,7 @@ export default async function DigestEntryPage({
         <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-sm font-bold">
           <Link
             href="/"
-            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
             Home
           </Link>
@@ -110,7 +111,7 @@ export default async function DigestEntryPage({
           </span>
           <Link
             href="/digest"
-            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
             Data Digest
           </Link>
@@ -148,7 +149,7 @@ export default async function DigestEntryPage({
             <dl className="grid gap-4 text-sm sm:grid-cols-2">
               {entry.contentBy && (
                 <div>
-                  <dt className="font-bold text-accent-main">
+                  <dt className="font-bold text-accent-text">
                     Content by
                   </dt>
                   <dd className="mt-1 text-white/70">{entry.contentBy}</dd>
@@ -156,7 +157,7 @@ export default async function DigestEntryPage({
               )}
               {entry.layoutBy && (
                 <div>
-                  <dt className="font-bold text-accent-main">
+                  <dt className="font-bold text-accent-text">
                     Layout by
                   </dt>
                   <dd className="mt-1 text-white/70">{entry.layoutBy}</dd>
@@ -170,7 +171,7 @@ export default async function DigestEntryPage({
               <h2 id="references" className="font-display text-2xl font-bold">
                 References
               </h2>
-              <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-white/70">
+              <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-white/70">
                 {entry.references.map((reference) => (
                   <li key={reference.label}>
                     {reference.href ? (
@@ -178,7 +179,7 @@ export default async function DigestEntryPage({
                         href={reference.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+                        className="inline-block py-3 underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
                       >
                         {reference.label}
                       </a>
@@ -197,10 +198,10 @@ export default async function DigestEntryPage({
             <Link
               href={`/digest/${older.slug}`}
               prefetch={false}
-              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 transition-colors hover:border-accent-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
               <span className="text-xs text-white/50">← Older</span>
-              <span className="mt-1 font-bold text-white group-hover:text-headline-via">{older.title}</span>
+              <span className="mt-1 font-bold text-white group-hover:underline">{older.title}</span>
             </Link>
           ) : (
             <span />
@@ -212,10 +213,10 @@ export default async function DigestEntryPage({
             <Link
               href={`/digest/${newer.slug}`}
               prefetch={false}
-              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 text-right transition-colors hover:border-accent-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+              className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 text-right transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
             >
               <span className="text-xs text-white/50">Newer →</span>
-              <span className="mt-1 font-bold text-white group-hover:text-headline-via">{newer.title}</span>
+              <span className="mt-1 font-bold text-white group-hover:underline">{newer.title}</span>
             </Link>
           ) : (
             <span />
