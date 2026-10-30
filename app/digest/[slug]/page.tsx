@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import DigestCarousel from "@/components/digest-carousel";
 import RandomDigestButton from "@/components/random-digest-button";
-import { DIGEST_ENTRIES, SITE_URL } from "@/lib/data";
+import { SITE_URL } from "@/lib/data";
+import { DIGEST_ENTRIES } from "@/lib/content";
 
 export const dynamicParams = false;
 
@@ -130,11 +131,7 @@ export default async function DigestEntryPage({
           <h2 id="article-copy" className="sr-only">
             Article
           </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-white/80">
-            {entry.body.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+          <div className="prose-body" dangerouslySetInnerHTML={{ __html: entry.html }} />
         </section>
 
         <section aria-labelledby="visual-story" className="space-y-8">

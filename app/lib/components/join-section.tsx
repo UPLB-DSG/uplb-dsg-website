@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CONTACT_EMAIL, COPY, FACEBOOK_URL, UPCOMING } from "@/lib/data";
+import { CONTACT_EMAIL, COPY, FACEBOOK_URL } from "@/lib/data";
+import { UPCOMING } from "@/lib/content";
 
 export default function JoinSection() {
   return (
