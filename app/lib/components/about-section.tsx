@@ -6,6 +6,7 @@ import { DIGEST_ENTRIES, EVENTS, PAST_EVENTS, WORKSHOPS } from "@/lib/content";
 // Facts counted from the content itself, so they never drift from what the site shows.
 const firstYear = Math.min(...EVENTS.map((event) => Number(event.publishedAt?.slice(0, 4) ?? 9999)));
 const FACTS = [
+  { value: COPY.memberCount, label: "members" },
   { value: WORKSHOPS.length, label: "workshops on record" },
   { value: PAST_EVENTS.length, label: `events since ${firstYear}` },
   { value: DIGEST_ENTRIES.length, label: "Data Digest explainers" },
@@ -34,7 +35,7 @@ export default function AboutSection() {
               About the guild
             </h2>
             <p className="mt-5 max-w-lg leading-relaxed text-white/75 md:text-lg">{COPY.whoAreWe}</p>
-            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
+            <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 border-t border-white/10 pt-6 sm:grid-cols-4">
               {FACTS.map((fact) => (
                 <div key={fact.label} className="flex flex-col-reverse">
                   <dt className="mt-1 text-sm leading-snug text-white/65">{fact.label}</dt>
