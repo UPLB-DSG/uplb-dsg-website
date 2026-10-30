@@ -106,6 +106,31 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
+  joinIntro:
+    "Recruitment opens at the start of every semester and is announced on our Facebook page. Students from any UPLB program can apply. No data science background needed.",
+  // From the guild's recruitment process guidelines, in order.
+  joinSteps: [
+    {
+      title: "Come to the orientation",
+      body: "Each recruitment season opens with an orientation night. The date goes up on Facebook first.",
+    },
+    {
+      title: "Meet the members",
+      body: "Applicants set short one-on-one sessions with resident members and alumni to get to know the guild.",
+    },
+    {
+      title: "Run a fundraiser with your batch",
+      body: "Your applicant batch plans and runs one fundraising activity together.",
+    },
+    {
+      title: "Attend a guild workshop",
+      body: "Every applicant joins at least one workshop run by the Training and Skills Committee.",
+    },
+    {
+      title: "Present at finals",
+      body: "Your batch presents what it learned, defends its batch name, and joins as members.",
+    },
+  ],
   // Named in the event writeups below; add to this list as new partners come in.
   partners: [
     "UPLB Graduate School",
@@ -115,6 +140,8 @@ export const COPY = {
     "UP Rural High School",
     "Analytics and Artificial Intelligence Association of the Philippines",
   ],
+  nothingScheduled:
+    "Nothing is scheduled right now. New workshops and events are posted on Facebook first.",
 };
 
 export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
@@ -428,6 +455,9 @@ export const EVENTS: Event[] = [
 
 export const PAST_EVENTS = EVENTS.filter((event) => event.kind === "event");
 export const WORKSHOPS = EVENTS.filter((event) => event.kind === "workshop");
+// ponytail: "upcoming" is judged at build time; an event stays listed until the next deploy after its date.
+const buildDate = new Date().toISOString().slice(0, 10);
+export const UPCOMING = EVENTS.filter((event) => event.publishedAt && event.publishedAt >= buildDate);
 
 const digestPanels = (slug: string, alts: string[]): ImageItem[] =>
   alts.map((alt, index) => ({
