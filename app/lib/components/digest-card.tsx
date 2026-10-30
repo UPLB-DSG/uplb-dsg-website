@@ -7,7 +7,7 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
     <Link
       href={`/digest/${entry.slug}`}
       prefetch={false}
-      className="group overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-main hover:shadow-[0_8px_30px_rgba(114,48,255,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
     >
       <div className="img-shimmer relative aspect-square overflow-hidden bg-black">
         <Image
@@ -15,27 +15,24 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
           alt={entry.panels[0].alt}
           fill
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-cover"
         />
       </div>
       <div className="space-y-3 p-5">
-        <p className="text-sm text-accent-main">
+        <p className="text-sm text-accent-text">
           {entry.date}
         </p>
-        <h3 className="font-display text-2xl font-bold leading-tight text-white">
+        <h3 className="font-display text-2xl font-bold leading-tight text-off-white group-hover:underline">
           {entry.title}
         </h3>
         <p className="line-clamp-3 text-sm leading-relaxed text-white/70">
           {entry.description}
         </p>
         {entry.contentBy && (
-          <p className="text-xs text-white/50">
-            By <span className="text-white/80">{entry.contentBy}</span>
+          <p className="text-sm text-white/60">
+            By <span className="text-white/85">{entry.contentBy}</span>
           </p>
         )}
-        <span className="inline-block font-bold text-white group-hover:text-headline-via">
-          Read digest →
-        </span>
       </div>
     </Link>
   );
