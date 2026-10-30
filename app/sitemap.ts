@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { DIGEST_ENTRIES, EVENTS, SITE_URL } from "@/lib/data";
+import { SITE_URL } from "@/lib/data";
+import { DIGEST_ENTRIES, EVENTS } from "@/lib/content";
 
 export const dynamic = "force-static";
 

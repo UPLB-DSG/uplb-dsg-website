@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ContainedImage from "@/components/contained-image";
-import { COPY, DIGEST_ENTRIES, EVENTS, PAST_EVENTS, WORKSHOPS } from "@/lib/data";
+import { COPY } from "@/lib/data";
+import { DIGEST_ENTRIES, EVENTS, PAST_EVENTS, WORKSHOPS } from "@/lib/content";
 
 // Facts counted from the content itself, so they never drift from what the site shows.
 const firstYear = Math.min(...EVENTS.map((event) => Number(event.publishedAt?.slice(0, 4) ?? 9999)));

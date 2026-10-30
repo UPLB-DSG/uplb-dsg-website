@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ContainedImage from "@/components/contained-image";
-import { PAST_EVENTS } from "@/lib/data";
+import { PAST_EVENTS } from "@/lib/content";
 
 const year = (date: string) => date.match(/\d{4}/)?.[0] ?? "";
 

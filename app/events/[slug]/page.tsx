@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContainedImage from "@/components/contained-image";
 import { notFound } from "next/navigation";
-import { EVENTS, SITE_URL } from "@/lib/data";
+import { SITE_URL } from "@/lib/data";
+import { EVENTS } from "@/lib/content";
 
 export const dynamicParams = false;
 
@@ -131,11 +132,7 @@ export default async function EventPage({
           <h2 id="event-writeup" className="sr-only">
             Writeup
           </h2>
-          <div className="space-y-5 text-lg leading-relaxed text-white/80">
-            {event.writeup.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+          <div className="prose-body" dangerouslySetInnerHTML={{ __html: event.html }} />
         </section>
 
         {gallery.length > 0 && (

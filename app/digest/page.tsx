@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DigestCard from "@/components/digest-card";
-import { DIGEST_ENTRIES } from "@/lib/data";
+import { DIGEST_ENTRIES } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Data Digest",

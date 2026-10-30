@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ContainedImage from "@/components/contained-image";
-import { WORKSHOPS } from "@/lib/data";
+import { WORKSHOPS } from "@/lib/content";
 
 export default function WorkshopsSection() {
   return (

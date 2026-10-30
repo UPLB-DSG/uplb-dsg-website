@@ -1,7 +1,7 @@
 import Link from "next/link";
 import DigestCard from "@/components/digest-card";
 import RandomDigestButton from "@/components/random-digest-button";
-import { DIGEST_ENTRIES } from "@/lib/data";
+import { DIGEST_ENTRIES } from "@/lib/content";
 
 export default function DataDigestSection() {
   return (
