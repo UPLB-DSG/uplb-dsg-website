@@ -85,6 +85,33 @@ export default function AboutSection() {
             ))}
           </dl>
         </div>
+
+        <div className="mt-20 lg:mt-28">
+          <h3 className="font-display text-3xl font-extrabold text-off-white md:text-4xl">
+            Committee heads, {COPY.officersTerm}
+          </h3>
+          <ul className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+            {COPY.officers.map((officer) => (
+              <li key={officer.role}>
+                <figure>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-dark-gray">
+                    <Image
+                      src={officer.image}
+                      alt={`${officer.name}, ${officer.role} committee head`}
+                      fill
+                      sizes="(min-width: 768px) 30vw, 45vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-3">
+                    <span className="block font-bold text-off-white">{officer.name}</span>
+                    <span className="text-sm text-white/65">{officer.role}</span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

@@ -143,6 +143,17 @@ export const COPY = {
     "UP Rural High School",
     "Analytics and Artificial Intelligence Association of the Philippines",
   ],
+  // Committee head cards from the guild's ExeCom A.Y. 2026-2027 Facebook post.
+  // Names are as printed on the cards. Add the Head Chair and Internal Affairs cards when posted.
+  officersTerm: "A.Y. 2026-2027",
+  officers: [
+    { name: "Macs", role: "Secretary and Logistics", image: "/officers/secretary-logistics.webp" },
+    { name: "Jae", role: "External Affairs", image: "/officers/externals.webp" },
+    { name: "Denise", role: "Membership", image: "/officers/membership.webp" },
+    { name: "Galvin", role: "Training and Skills", image: "/officers/training-skills.webp" },
+    { name: "Rookie", role: "Finance and Audit", image: "/officers/finance-audit.webp" },
+    { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
+  ],
   nothingScheduled:
     "Nothing is scheduled right now. New workshops and events are posted on Facebook first.",
 };
