@@ -106,6 +106,31 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
+  joinIntro:
+    "",
+  // Removed.
+  joinSteps: [
+    {
+      title: "",
+      body: "",
+    },
+    {
+      title: "",
+      body: "",
+    },
+    {
+      title: "",
+      body: "",
+    },
+    {
+      title: "",
+      body: "",
+    },
+    {
+      title: "",
+      body: "",
+    },
+  ],
   // Named in the event writeups below; add to this list as new partners come in.
   partners: [
     "UPLB Graduate School",
@@ -115,6 +140,8 @@ export const COPY = {
     "UP Rural High School",
     "Analytics and Artificial Intelligence Association of the Philippines",
   ],
+  nothingScheduled:
+    "Nothing is scheduled right now. New workshops and events are posted on Facebook first.",
 };
 
 export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
@@ -428,6 +455,9 @@ export const EVENTS: Event[] = [
 
 export const PAST_EVENTS = EVENTS.filter((event) => event.kind === "event");
 export const WORKSHOPS = EVENTS.filter((event) => event.kind === "workshop");
+// ponytail: "upcoming" is judged at build time; an event stays listed until the next deploy after its date.
+const buildDate = new Date().toISOString().slice(0, 10);
+export const UPCOMING = EVENTS.filter((event) => event.publishedAt && event.publishedAt >= buildDate);
 
 const digestPanels = (slug: string, alts: string[]): ImageItem[] =>
   alts.map((alt, index) => ({
