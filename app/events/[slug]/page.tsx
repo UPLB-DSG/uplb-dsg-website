@@ -27,6 +27,7 @@ export async function generateMetadata({
     alternates: { canonical: `/events/${event.slug}/` },
     openGraph: {
       type: "article",
+      url: `/events/${event.slug}/`,
       title: event.title,
       description: event.description,
       images: event.images[0]
@@ -45,8 +46,13 @@ export default async function EventPage({
   if (!event) notFound();
 
   const [cover, ...gallery] = event.images;
+  // EVENTS is newest first; neighbours share the same kind so workshops page through workshops.
+  const siblings = EVENTS.filter((other) => other.kind === event.kind);
+  const position = siblings.indexOf(event);
+  const newer = siblings[position - 1];
+  const older = siblings[position + 1];
   const sectionLabel = event.kind === "workshop" ? "Workshops" : "Events";
-  const sectionHref = event.kind === "workshop" ? "/#workshops" : "/#events";
+  const sectionHref = event.kind === "workshop" ? "/#workshops" : "/events";
 
   const eventSchema = {
     "@context": "https://schema.org",
@@ -69,7 +75,7 @@ export default async function EventPage({
         <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-sm font-bold">
           <Link
             href="/"
-            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
             Home
           </Link>
@@ -78,14 +84,14 @@ export default async function EventPage({
           </span>
           <Link
             href={sectionHref}
-            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+            className="inline-flex min-h-11 items-center text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
           >
             {sectionLabel}
           </Link>
         </nav>
 
         <header className="mt-8 border-b border-white/10 pb-10">
-          <p className="text-sm text-accent-main">
+          <p className="text-sm text-accent-text">
             {event.date}
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-6xl">
@@ -98,13 +104,13 @@ export default async function EventPage({
             <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
               {event.venue && (
                 <div>
-                  <dt className="font-bold text-accent-main">Where</dt>
+                  <dt className="font-bold text-accent-text">Where</dt>
                   <dd className="mt-1 text-white/70">{event.venue}</dd>
                 </div>
               )}
               {event.audience && (
                 <div>
-                  <dt className="font-bold text-accent-main">Who</dt>
+                  <dt className="font-bold text-accent-text">Who</dt>
                   <dd className="mt-1 text-white/70">{event.audience}</dd>
                 </div>
               )}
@@ -159,7 +165,7 @@ export default async function EventPage({
                 href={event.source.href}
                 target="_blank"
                 rel="noreferrer"
-                className="underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-main"
+                className="inline-block py-3 underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
               >
                 Source: {event.source.label}
               </a>
@@ -167,6 +173,33 @@ export default async function EventPage({
               <span>Source: {event.source.label}</span>
             )}
           </footer>
+        )}
+
+        {(older || newer) && (
+          <nav aria-label={`More ${sectionLabel.toLowerCase()}`} className="mt-12 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-2">
+            {older ? (
+              <Link
+                href={`/events/${older.slug}`}
+                prefetch={false}
+                className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+              >
+                <span className="text-sm text-white/60">← Older</span>
+                <span className="mt-1 font-bold text-off-white group-hover:underline">{older.title}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {newer && (
+              <Link
+                href={`/events/${newer.slug}`}
+                prefetch={false}
+                className="group flex min-h-11 flex-col rounded-xl border border-white/10 p-4 text-right transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+              >
+                <span className="text-sm text-white/60">Newer →</span>
+                <span className="mt-1 font-bold text-off-white group-hover:underline">{newer.title}</span>
+              </Link>
+            )}
+          </nav>
         )}
       </div>
     </article>

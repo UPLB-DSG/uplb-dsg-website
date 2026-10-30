@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/digest/`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/events/`, changeFrequency: "monthly", priority: 0.9 },
     ...DIGEST_ENTRIES.map((entry) => ({
       url: `${SITE_URL}/digest/${entry.slug}/`,
       ...(entry.publishedAt && { lastModified: entry.publishedAt }),
