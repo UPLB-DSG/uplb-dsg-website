@@ -7,7 +7,7 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
     <Link
       href={`/digest/${entry.slug}`}
       prefetch={false}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+      className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
     >
       <div className="img-shimmer relative aspect-square overflow-hidden bg-black">
         <Image

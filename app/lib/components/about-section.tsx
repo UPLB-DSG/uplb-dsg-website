@@ -16,12 +16,12 @@ export default function AboutSection() {
     <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-24 border-t border-white/5 bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="img-shimmer relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          <div className="img-shimmer relative aspect-square w-full overflow-hidden rounded-xl border border-white/10 bg-white/5">
             <picture>
-              <source media="(max-width: 640px)" srcSet="/dsg-members-640.webp" />
+              <source media="(max-width: 640px)" srcSet="/batch-synthesis-640.webp" />
               <Image
-                src="/dsg-members.webp"
-                alt="UPLB Data Science Guild members gathered at a guild event"
+                src="/batch-synthesis.webp"
+                alt="Members of Synthesis, the guild's newest batch, posing in a campus garden"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -67,7 +67,7 @@ export default function AboutSection() {
           <ContainedImage
             image={{ src: "/mission-vision.webp", alt: COPY.missionImageAlt }}
             sizes="(min-width: 1024px) 40vw, 100vw"
-            className="aspect-[4/3] rounded-2xl border border-white/10"
+            className="aspect-[4/3] rounded-xl border border-white/10"
           />
         </div>
 
