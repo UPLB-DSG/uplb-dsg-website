@@ -3,7 +3,8 @@
 
 export type NavLink = { label: string; href: string };
 export type SocialLink = { label: string; href: string; icon: string };
-export type ImageItem = { src: string; alt: string };
+// small: the 640 px copy when one exists, else the original (set by app/lib/content.ts).
+export type ImageItem = { src: string; alt: string; small?: string };
 export type Reference = { label: string; href?: string };
 // Events and Data Digest entries live as markdown in content/; see app/lib/content.ts.
 export type Event = {
@@ -30,6 +31,7 @@ export type DigestEntry = {
   layoutBy?: string;
   references: Reference[];
   panels: ImageItem[];
+  cover: string;
 };
 
 export const SITE_URL = "https://uplbdsg.org";

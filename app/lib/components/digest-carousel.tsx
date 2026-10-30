@@ -14,7 +14,7 @@ export default function DigestCarousel({ panels }: { panels: ImageItem[] }) {
         <picture key={activePanel.src}>
           <source
             media="(max-width: 640px)"
-            srcSet={activePanel.src.replace(".webp", "-640.webp")}
+            srcSet={activePanel.small ?? activePanel.src}
           />
           <Image
             src={activePanel.src}
