@@ -42,7 +42,9 @@ collections:
     slug: "{{slug}}"
     media_folder: /public/events/{{slug}}
     public_folder: /events/{{slug}}
-    sortable_fields: [publishedAt, title]
+    sortable_fields:
+      fields: [publishedAt, title]
+      default: { field: publishedAt, direction: descending }
     summary: "{{publishedAt}} · {{title}}"
     fields:
       - { label: Type, name: kind, widget: select, options: [event, workshop], default: event }
@@ -80,7 +82,9 @@ collections:
     slug: "{{slug}}"
     media_folder: /public/digest/{{slug}}
     public_folder: /digest/{{slug}}
-    sortable_fields: [publishedAt, title]
+    sortable_fields:
+      fields: [publishedAt, title]
+      default: { field: publishedAt, direction: descending }
     summary: "{{date}} · {{title}}"
     fields:
       - { label: Title, name: title, widget: string }
