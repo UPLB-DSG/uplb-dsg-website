@@ -118,7 +118,7 @@ export default function IsoScene({ minimal = false }: { minimal?: boolean }) {
         </radialGradient>
       </defs>
 
-      <circle cx={CX} cy={CY} r="290" fill="url(#scene-glow)" />
+      {!minimal && <circle cx={CX} cy={CY} r="290" fill="url(#scene-glow)" />}
       {!minimal && <rect width={VW} height={VH} fill="url(#dots)" mask="url(#dot-mask)" opacity="0.6" />}
 
       {!minimal && <g mask="url(#dot-mask)">
@@ -133,10 +133,10 @@ export default function IsoScene({ minimal = false }: { minimal?: boolean }) {
       </g>}
 
       <g id="hero-cube" className="cube-float">
-        <ellipse cx={CX} cy={CUBE_Y + CUBE_H + 30} rx="120" ry="16" fill="#7230ff" fillOpacity="0.35" className="cube-shadow" />
+        <ellipse cx={CX} cy={CUBE_Y + CUBE_H + 30} rx="120" ry="16" fill="#0a0a0a" fillOpacity="0.6" className="cube-shadow" />
         <image href="/polygon-15.png" {...cube} />
         <image href="/group-49.png" {...cube} />
-        <image href="/group-47.png" {...cube} style={{ filter: "drop-shadow(0 0 14px rgba(255,255,255,0.5))" }} />
+        <image href="/group-47.png" {...cube} style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.25))" }} />
         <text x={CX} y={CUBE_Y + CUBE_H + 62} textAnchor="middle" className="antigravity-caption" fill="#fafafa" fontSize="14" fontFamily="ui-monospace, monospace" fontWeight="700">
           I&apos;m learning Python!
         </text>

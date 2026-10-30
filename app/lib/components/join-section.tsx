@@ -4,7 +4,7 @@ import { UPCOMING } from "@/lib/content";
 
 export default function JoinSection() {
   return (
-    <section id="join" aria-labelledby="join-heading" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 lg:px-12 py-20 lg:py-28">
+    <section id="join" aria-labelledby="join-heading" className="mx-auto w-full max-w-6xl scroll-mt-24 px-6 pt-12 pb-20 lg:px-12 lg:py-28">
       <div className="grid gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
         <div>
           <h2 id="join-heading" className="font-display text-4xl font-extrabold text-off-white md:text-5xl">
@@ -27,7 +27,7 @@ export default function JoinSection() {
           </ol>
         </div>
 
-        <aside aria-labelledby="next-heading" className="self-start rounded-2xl border border-white/10 bg-dark-gray p-6 md:p-8">
+        <aside aria-labelledby="next-heading" className="self-start rounded-xl border border-white/10 bg-dark-gray p-6 md:p-8">
           <h2 id="next-heading" className="font-display text-2xl font-extrabold text-off-white">
             Next up
           </h2>
