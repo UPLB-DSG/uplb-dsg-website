@@ -43,7 +43,7 @@ export const NAV_LINKS: { left: NavLink[]; right: NavLink[] } = {
   ],
   right: [
     { label: "About", href: "/#about" },
-    { label: "Join", href: "/#join" },
+    { label: "Contact", href: "/#contact" },
   ],
 };
 
@@ -68,7 +68,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const CONTACT_EMAIL = "uplbdatascienceguild@gmail.com";
 
 export const FOOTER_LINKS: NavLink[] = [
-  { label: "How to join", href: "/#join" },
   { label: "Workshops", href: "/#workshops" },
   { label: "Events", href: "/events" },
   { label: "Data Digest", href: "/digest" },
@@ -109,31 +108,6 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
-  joinIntro:
-    "Recruitment opens at the start of every semester and is announced on our Facebook page. Students from any UPLB program can apply. No data science background needed.",
-  // From the guild's recruitment process guidelines, in order.
-  joinSteps: [
-    {
-      title: "Come to the orientation",
-      body: "Each recruitment season opens with an orientation night. The date goes up on Facebook first.",
-    },
-    {
-      title: "Meet the members",
-      body: "Applicants set short one-on-one sessions with resident members and alumni to get to know the guild.",
-    },
-    {
-      title: "Run a fundraiser with your batch",
-      body: "Your applicant batch plans and runs one fundraising activity together.",
-    },
-    {
-      title: "Attend a guild workshop",
-      body: "Every applicant joins at least one workshop run by the Training and Skills Committee.",
-    },
-    {
-      title: "Present at finals",
-      body: "Your batch presents what it learned, defends its batch name, and joins as members.",
-    },
-  ],
   // Named in the event writeups below; add to this list as new partners come in.
   partners: [
     "UPLB Graduate School",
@@ -154,8 +128,6 @@ export const COPY = {
     { name: "Rookie", role: "Finance and Audit", image: "/officers/finance-audit.webp" },
     { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
   ],
-  nothingScheduled:
-    "Nothing is scheduled right now. New workshops and events are posted on Facebook first.",
 };
 
 export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";
