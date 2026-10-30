@@ -2,7 +2,6 @@
 
 export type NavLink = { label: string; href: string };
 export type SocialLink = { label: string; href: string; icon: string };
-export type Stat = { value: string; suffix: string; label: string };
 export type ImageItem = { src: string; alt: string };
 export type Reference = { label: string; href?: string };
 export type Event = {
@@ -75,19 +74,13 @@ export const FOOTER_LINKS: NavLink[] = [
   { label: "About", href: "/#about" },
 ];
 
-export const STATS: Stat[] = [
-  { value: "150", suffix: "+", label: "members" },
-  { value: "12", suffix: "+", label: "workshops conducted" },
-  { value: "3", suffix: "", label: "years in existence" },
-];
-
 export const COPY = {
   orgName: "UPLB Data Science Guild",
   tagline: SITE_DESCRIPTION,
   heroTagline:
     "The pioneer data science organization of UPLB. Workshops, visual explainers, and events for students who learn by building.",
   whoAreWe:
-    "The UPLB Data Science Guild (DSG) is the pioneer data science organization of the University of the Philippines Los Baños. We are a socio-civic organization of students who learn and practice data science together through workshops, projects, and community events, guided by three values: integrity, interdependence, and innovation.",
+    "The UPLB Data Science Guild (DSG) is the pioneer data science organization of the University of the Philippines Los Baños. We are a socio-civic organization of students who learn and practice data science together through workshops, projects, and community events.",
   mission:
     "To foster a data-driven culture in the Nation and beyond.",
   missionImageAlt:
@@ -112,6 +105,15 @@ export const COPY = {
       description:
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
+  ],
+  // Named in the event writeups below; add to this list as new partners come in.
+  partners: [
+    "UPLB Graduate School",
+    "AI Ready ASEAN Philippines",
+    "Hiraya Network",
+    "UP Data Science Society",
+    "UP Rural High School",
+    "Analytics and Artificial Intelligence Association of the Philippines",
   ],
 };
 

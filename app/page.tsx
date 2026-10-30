@@ -1,9 +1,8 @@
 import HeroSection from "@/components/hero-section";
-import WhoAreWeSection from "@/components/who-are-we-section";
-import AboutUsSection from "@/components/about-us-section";
-import DataDigestSection from "@/components/data-digest-section";
-import EventsSection from "@/components/events-section";
 import WorkshopsSection from "@/components/workshops-section";
+import EventsSection from "@/components/events-section";
+import DataDigestSection from "@/components/data-digest-section";
+import AboutSection from "@/components/about-section";
 import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
 const structuredData = {
@@ -37,11 +36,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HeroSection />
-      <WhoAreWeSection />
-      <AboutUsSection />
-      <DataDigestSection />
       <WorkshopsSection />
       <EventsSection />
+      <DataDigestSection />
+      <AboutSection />
     </div>
   );
 }
