@@ -2,7 +2,8 @@
 // dissolves into the next, with a slow drift. Pure CSS: every slide runs the
 // same keyframes offset by its index. The pause toggle is a checkbox the CSS
 // reads with :has(), so it needs no script. Reduced motion shows the first photo only.
-// Raw event photos, corners with stickers or watermarks cropped off (public/hero/).
+// Photos from the guild's Facebook page, cropped inside the poster frames (public/hero/):
+// 1, 3, 4 Untangled orientation (Sept 2026), 2 the Synthesis batch.
 const SLIDES: string[] = ["1", "2", "3", "4"];
 const HOLD = 7; // seconds per photo
 
