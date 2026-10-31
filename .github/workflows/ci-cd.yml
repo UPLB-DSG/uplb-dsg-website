@@ -1,0 +1,69 @@
+name: CI/CD
+
+# One pipeline: check (lint + build) on every PR and push to main, then deploy
+# the exact build that passed. Production deploys run one at a time so an older
+# build can never finish last and overwrite a newer one.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build -- --webpack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out
+          retention-days: 7
+
+  deploy:
+    name: Deploy
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Forks and Dependabot PRs have no access to the Cloudflare secrets.
+    if: >-
+      github.event_name != 'pull_request' ||
+      (github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')
+    concurrency:
+      group: ${{ github.event_name == 'pull_request' && format('preview-{0}', github.event.pull_request.number) || 'production' }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: out
+      - name: Deploy preview
+        if: github.event_name == 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=uplb-dsg-website --branch=pr-${{ github.event.pull_request.number }}
+      - name: Deploy production
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=uplb-dsg-website --branch=main

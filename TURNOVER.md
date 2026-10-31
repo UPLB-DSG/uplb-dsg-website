@@ -54,7 +54,7 @@ All site copy, event data, and Data Digest metadata/body copy live in `app/lib/d
 | Asset | Where | Status |
 | --- | --- | --- |
 | Source code | GitHub org `UPLB-DSG`, repo `uplb-dsg-website` (`main` branch) | Active |
-| Hosting / CD | **Cloudflare Pages** project `uplb-dsg-website`, auto-deploy via `.github/workflows/deploy-cloudflare.yml` (push to `main` → production; PR → `pr-N` preview). Needs org secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` | Active pipeline |
+| Hosting / CD | **Cloudflare Pages** project `uplb-dsg-website`, auto-deploy via `.github/workflows/ci-cd.yml` (lint + build check first, then push to `main` → production, PR → `pr-N` preview; production deploys run one at a time). Dependabot, CodeQL, and dependency review also run from `.github/`. Needs org secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` | Active pipeline |
 | Staging (legacy) | Vercel project `dsg-website` (`.vercel/`, `dsg-website.vercel.app`) — used for initial staging/review; **not the active pipeline** | Legacy |
 | Domain | `uplbdsg.org` | **Live** |
 | DNS | Cloudflare (free tier) | Active |
@@ -118,3 +118,4 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | 2026-10-30 | Sveltia CMS at `/admin` (same setup as the DSSoc site) for editing `content/events` and `content/digest` without code. Saves commit to `main`. Uploads become WebP at most 1200 px; posts without a `-640` copy or `cover.webp` fall back to the uploaded image. Sign-in with GitHub goes through the `uplbdsg-cms-auth` worker. |
 | 2026-10-31 | Removed the partners line from About: the site does not list sponsors or partners. |
 | 2026-10-31 | Filed a GitHub Support request (from smmariquit@up.edu.ph) to purge the pre-rewrite commits and the PR #4, #5, #6 diffs that still hold the removed recruitment text. Follow up on that ticket if it is not resolved. |
+| 2026-10-31 | CI/CD: `deploy-cloudflare.yml` became `ci-cd.yml` (lint and build gate before deploy, serialized production deploys after a deploy race on 2026-10-31). Added Dependabot (7-day cooldown), CodeQL, and dependency review. |
