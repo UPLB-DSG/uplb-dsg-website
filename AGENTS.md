@@ -20,7 +20,7 @@ Functional priorities, in order: **(1) landing page → (2) SEO-friendly content
 
 ## Stack
 
-- **Next.js 16.2.3** (App Router, `output: "export"` — fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 9** (flat config).
+- **Next.js 16.4.2** (App Router, `output: "export"` — fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 9** (flat config).
 - No component library, server, or database. Sveltia CMS (`/admin`, loaded from unpkg) edits the markdown in `content/` through GitHub. Beyond Next and React the only dependencies are `yaml` and `marked`, used at build time to read `content/`; nothing extra ships to the browser. Motion is CSS. Content is maintained in Git.
 - Wireframes/design live in Figma (external).
 
