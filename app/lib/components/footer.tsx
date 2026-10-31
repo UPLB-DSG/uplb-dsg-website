@@ -55,7 +55,16 @@ export default function Footer() {
       </div>
       <div className="mx-auto max-w-6xl space-y-2 border-t border-white/10 px-6 py-5 lg:px-12 text-sm leading-relaxed text-white/60">
         <p>
-          Website by <span className="whitespace-nowrap text-white/85">{COPY.credits.lead}</span> (lead) with{" "}
+          Website by{" "}
+          <a
+            href={COPY.credits.lead.href}
+            target="_blank"
+            rel="noreferrer"
+            className="whitespace-nowrap text-white/85 underline decoration-white/30 underline-offset-4 hover:text-off-white hover:decoration-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+          >
+            {COPY.credits.lead.name}
+          </a>{" "}
+          (lead) with{" "}
           {/* Names never split across lines. */}
           {new Intl.ListFormat("en", { type: "conjunction" })
             .formatToParts(COPY.credits.contributors)

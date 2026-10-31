@@ -129,7 +129,7 @@ export const COPY = {
   // Website team, shown in the footer. Contributors are the members of the
   // "UPLB DSG Website" Messenger chat; update when the team changes.
   credits: {
-    lead: "Simonee Ezekiel Mariquit",
+    lead: { name: "Simonee Ezekiel Mariquit", href: "https://github.com/smmariquit" },
     contributors: [
       "Alyanna Caabay",
       "Franz Saragena",
