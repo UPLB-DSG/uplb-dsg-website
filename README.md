@@ -50,7 +50,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | --- | --- |
 | `npm run dev -- --webpack` | Dev server with hot reload. Use `--webpack`; Turbopack is not tested here. |
 | `npm run lint` | ESLint. Must pass before you commit. |
-| `npm run build -- --webpack` | Production build into `out/`. Must pass before you commit. It also checks every content file. |
+| `npm run build -- --webpack` | Production build into `out/`. Must pass before you commit. It fails if a post is missing a required field. |
 
 To preview the production build, serve `out/` with any static server, for example `npx serve out`.
 
