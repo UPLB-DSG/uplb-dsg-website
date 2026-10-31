@@ -53,9 +53,17 @@ export default function Footer() {
           </ul>
         </nav>
       </div>
-      <p className="mx-auto max-w-6xl border-t border-white/10 px-6 py-5 lg:px-12 text-sm text-white/60">
-        © {new Date().getFullYear()} {COPY.orgName}. Built and maintained by members.
-      </p>
+      <div className="mx-auto max-w-6xl space-y-2 border-t border-white/10 px-6 py-5 lg:px-12 text-sm leading-relaxed text-white/60">
+        <p>
+          Website by <span className="whitespace-nowrap text-white/85">{COPY.credits.lead}</span> (lead) with{" "}
+          {/* Names never split across lines. */}
+          {new Intl.ListFormat("en", { type: "conjunction" })
+            .formatToParts(COPY.credits.contributors)
+            .map((part, i) => (part.type === "element" ? <span key={i} className="whitespace-nowrap">{part.value}</span> : part.value))}
+          .
+        </p>
+        <p>© {new Date().getFullYear()} {COPY.orgName}.</p>
+      </div>
     </footer>
   );
 }
