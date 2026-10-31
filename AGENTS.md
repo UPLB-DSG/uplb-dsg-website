@@ -21,7 +21,7 @@ Functional priorities, in order: **(1) landing page → (2) SEO-friendly content
 ## Stack
 
 - **Next.js 16.2.3** (App Router, `output: "export"` — fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 9** (flat config).
-- No component library, CMS, or database. Beyond Next and React the only dependencies are `yaml` and `marked`, used at build time to read `content/`; nothing extra ships to the browser. Motion is CSS. Content is maintained in Git; a Git-based editor may be added only when non-developers need it.
+- No component library, server, or database. Sveltia CMS (`/admin`, loaded from unpkg) edits the markdown in `content/` through GitHub. Beyond Next and React the only dependencies are `yaml` and `marked`, used at build time to read `content/`; nothing extra ships to the browser. Motion is CSS. Content is maintained in Git.
 - Wireframes/design live in Figma (external).
 
 ## Commands
@@ -39,7 +39,7 @@ npm run build -- --webpack  # production build → out/ (must pass before commit
 - `app/page.tsx` — landing-page composition of sections.
 - `app/digest/page.tsx` and `app/digest/[slug]/page.tsx` — static Data Digest index and article routes.
 - `app/events/page.tsx` and `app/events/[slug]/page.tsx` — events index and static event and workshop pages generated from `EVENTS`.
-- `app/lib/components/` — section components (`hero-section`, `hero-slideshow`, `hero-canvas`, `iso-scene`, `workshops-section`, `events-section`, `data-digest-section`, `about-section`, `header`, `footer`) plus shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`. The opening sequence is an inline script in `app/layout.tsx`.
+- `app/lib/components/` — section components (`hero-section`, `hero-slideshow`, `hero-canvas`, `iso-scene`, `workshops-section`, `events-section`, `data-digest-section`, `about-section`, `header`, `footer`) plus shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`. The opening sequence is an inline script in `app/layout.tsx`; it shows the logo file as is (never clip, rotate, recolor, or redraw the DSG logo).
 - Path aliases: `@/components/*` → `app/lib/components/*`, `@/lib/*` → `app/lib/*`.
 - **Site copy lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`, types). **Events and Data Digest entries are markdown files** in `content/events/` and `content/digest/` (same mechanism as the DSSoc site's posts): YAML frontmatter for the fields, markdown body for the writeup, file name is the slug. `app/lib/content.ts` reads them at build time, fails the build on a missing required field, sorts newest first, and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`. Quote `publishedAt` dates or leave them bare (`yaml` keeps them as strings). Non-developers edit the same files through Sveltia CMS at `/admin` (`public/admin/config.yml`); keep its field list in sync with the required fields in `content.ts`. Edit copy there, never hardcode in components. Event writeups are adapted from the guild's Facebook captions and must keep a `source` link. Date labels are plain sentence case, no uppercase tracked eyebrows. Never publish the internal recruitment or membership process.
 - Design tokens in `app/globals.css` `@theme`: `accent-main` `#7230ff`, `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, `accent-text` `#b69cff` for any accent-colored text (accent-main fails contrast at text sizes), `headline-via` for the intro ring. No gradient text, glows, or uppercase tracked labels. Fonts: Archivo (display, `--font-display`), Geist Sans/Mono.
@@ -64,7 +64,7 @@ Before committing any visual change, verify with the Playwright MCP at **320, 37
 
 ## Pending work / roadmap
 
-- A Git-based editor for non-developer publishers and the event signup site are future phases. Keep the public site static until either need is concrete.
+- The event signup site is a future phase. Keep the public site static until the need is concrete.
 
 ## Documentation duty (standing rule)
 

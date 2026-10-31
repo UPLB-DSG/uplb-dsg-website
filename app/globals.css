@@ -141,9 +141,10 @@ html.dsg-intro .hero-cube-enter {
   animation: shimmer-sweep 1.8s linear infinite;
 }
 
-/* Opening: the cube draws itself as line art, its nodes pop in, the name wipes
-   in, then the overlay closes like a shutter toward the center line. First home
-   visit per session only (gate script in the layout head). */
+/* Opening: scattered data points gather into a ring around the guild logo, the
+   logo fades in (shown as is, never clipped, rotated, recolored, or redrawn),
+   the name rises, then the overlay fades out. First home visit per session only
+   (gate script in the layout head). */
 .dsg-intro-ov {
   display: none;
 }
@@ -161,7 +162,8 @@ html.dsg-intro body::before {
   background: var(--color-background);
 }
 
-html.dsg-intro .dsg-intro-ov {
+html.dsg-intro .dsg-intro-ov,
+.dsg-intro-ov.out {
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -170,57 +172,55 @@ html.dsg-intro .dsg-intro-ov {
   background: var(--color-background);
   color: var(--color-off-white);
   cursor: pointer;
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 0.7s var(--ease-in-out-quart);
+  transition: opacity 0.6s ease;
 }
 
 .dsg-intro-ov.out {
-  clip-path: inset(50% 0 50% 0);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .dsg-intro-in {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   padding: 0 24px;
   text-align: center;
-  transition: opacity 0.25s ease, transform 0.25s var(--ease-out-quint);
 }
 
-.dsg-intro-ov.done .dsg-intro-in {
+.dsg-intro-emb {
+  position: relative;
+  display: grid;
+  width: 200px;
+  height: 200px;
+  place-items: center;
+}
+
+.dsg-intro-emb img {
+  width: 128px;
+  height: 128px;
   opacity: 0;
-  transform: scale(0.96);
+  animation: dsg-fade 0.6s 0.55s ease-out forwards;
 }
 
-.dsg-intro-emb svg {
-  width: 112px;
-  height: 112px;
-  overflow: visible;
+.dsg-intro-emb i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--color-accent-text);
+  opacity: 0;
+  transform: translate(var(--sx), var(--sy));
+  animation: dsg-gather 0.9s var(--ease-out-quint) forwards;
+  animation-delay: calc(var(--k) * 25ms);
 }
 
-.dsg-intro-emb path {
-  fill: none;
-  stroke: var(--color-accent-text);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: dsg-draw 0.8s 0.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-.dsg-intro-emb path + path {
-  animation-delay: 0.45s;
-}
-
-.dsg-intro-emb circle {
-  fill: var(--color-headline-via);
-  transform: scale(0);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: dsg-pop 0.35s var(--ease-out-quint) forwards;
-  animation-delay: calc(0.55s + var(--k) * 60ms);
+.dsg-intro-emb i:nth-child(even) {
+  background: var(--color-headline-via);
 }
 
 .dsg-intro-ttl {
@@ -228,33 +228,32 @@ html.dsg-intro .dsg-intro-ov {
   font-size: clamp(28px, 5vw, 52px);
   font-weight: 800;
   line-height: 1.1;
-  clip-path: inset(0 100% 0 0);
-  animation: dsg-wipe 0.7s 0.9s var(--ease-out-quint) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: dsg-rise 0.6s 0.95s var(--ease-out-quint) forwards;
 }
 
 .dsg-intro-sub {
-  font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 15px;
   color: rgb(250 250 250 / 70%);
   opacity: 0;
-  animation: dsg-fade 0.5s 1.3s forwards;
+  animation: dsg-fade 0.5s 1.25s forwards;
 }
 
-@keyframes dsg-draw {
+@keyframes dsg-gather {
+  30% {
+    opacity: 1;
+  }
   to {
-    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: translate(var(--ex), var(--ey));
   }
 }
 
-@keyframes dsg-pop {
+@keyframes dsg-rise {
   to {
-    transform: scale(1);
-  }
-}
-
-@keyframes dsg-wipe {
-  to {
-    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: none;
   }
 }
 
