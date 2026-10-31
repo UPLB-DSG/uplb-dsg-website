@@ -78,7 +78,7 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Task | How |
 | --- | --- |
 | Run locally | `npm ci && npm run dev` → http://localhost:3000 |
-| Edit site copy | `app/lib/data.ts` (website credits in the footer are `COPY.credits`; update them when the team changes) |
+| Edit site copy | `app/lib/data.ts` (website credits in the footer are `COPY.credits`; when the team changes, update them and the Credits section of README.md) |
 | Add an event or workshop | Easiest: `uplbdsg.org/admin/`, Events and workshops, New. By hand: add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/` and a `content/events/<slug>.md` copied from an existing entry (`kind`, `title`, `date`, `publishedAt`, `description`, `images`, `source` with the Facebook permalink, writeup as the body). The page, sitemap entry, and home-page card or timeline row follow from the file |
 | Add a Data Digest entry | Easiest: `uplbdsg.org/admin/`, Data Digest, New. By hand: add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`, then a `content/digest/<slug>.md` copied from an existing entry |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
