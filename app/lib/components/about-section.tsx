@@ -17,12 +17,12 @@ export default function AboutSection() {
     <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-24 border-t border-white/5 bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="img-shimmer relative aspect-square w-full overflow-hidden rounded-xl border border-white/10 bg-white/5">
+          <div className="img-shimmer relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 bg-white/5">
             <picture>
-              <source media="(max-width: 640px)" srcSet="/batch-synthesis-640.webp" />
+              <source media="(max-width: 640px)" srcSet="/events/edgerunners/02-640.webp" />
               <Image
-                src="/batch-synthesis.webp"
-                alt="Members of Synthesis, the guild's newest batch, posing in a campus garden"
+                src="/events/edgerunners/02.webp"
+                alt="New members and officers together at the September 2025 orientation"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -37,7 +37,7 @@ export default function AboutSection() {
             <p className="mt-5 max-w-lg leading-relaxed text-white/75 md:text-lg">{COPY.whoAreWe}</p>
             <dl className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 border-t border-white/10 pt-6 sm:grid-cols-4">
               {FACTS.map((fact) => (
-                <div key={fact.label} className="flex flex-col-reverse">
+                <div key={fact.label} className="flex flex-col-reverse justify-end">
                   <dt className="mt-1 text-sm leading-snug text-white/65">{fact.label}</dt>
                   <dd className="font-display text-3xl font-extrabold text-off-white tabular-nums md:text-4xl">{fact.value}</dd>
                 </div>
