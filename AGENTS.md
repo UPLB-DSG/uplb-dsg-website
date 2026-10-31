@@ -10,65 +10,84 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # UPLB DSG Website: Agent Guide
 
-## What this project is
+Static website for the **UPLB Data Science Guild (DSG)** at `uplbdsg.org`. Goals (from the project proposal): professionalize the guild's branding, be a portfolio piece for its developers, and build members' skills. Priorities in order: (1) landing page, (2) SEO-friendly event and Data Digest posts, (3) an event signup site (future; keep the site static until the need is concrete). Audience: potential members and people looking for event info.
 
-Static website for the **UPLB Data Science Guild (DSG)**. Three institutional goals (from the project proposal):
+## Hard rules (check every change against these)
 
-1. Professionalize the org's branding.
-2. Be a portfolio piece for the org's website developers.
-3. Skills development for members.
-
-Functional priorities, in order: **(1) landing page → (2) SEO-friendly content for events/series (blog-style) → (3) professional signup site for events (future).** The audience is potential members and people looking for event/activity info.
+- **Never publish the guild's recruitment or membership process** (orientation steps, applicant tasks, finals). It is internal. "Join" is not a call to action.
+- **No sponsor or partner lists.** Do not mix up DSG with other organizations: UP DSSoc events and PJDSC are not DSG events, and Hiraya Network, UP DSSoc, and AAP are not DSG partners.
+- **Show the DSG logo file as is.** Never clip, crop, stretch, rotate, recolor, or redraw it, including in animations.
+- **Copy lives in data, not components**: site copy in `app/lib/data.ts`, posts in `content/`.
+- **WCAG 2.2 AA**: 4.5:1 text contrast, visible focus rings, 44 px targets, alt text on every image, reduced motion respected.
+- **Merging to `main` deploys to production**, and so does saving in the CMS. Get a human's OK before merging.
+- Keep `TURNOVER.md` current (see the last section).
 
 ## Stack
 
-- **Next.js 16.4.3** (App Router, `output: "export"`, fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 10** (flat config).
-- No component library, server, or database. Sveltia CMS (`/admin`, loaded from unpkg) edits the markdown in `content/` through GitHub. Beyond Next and React the only dependencies are `yaml` and `marked`, used at build time to read `content/`; nothing extra ships to the browser. Motion is CSS. Content is maintained in Git.
-- Wireframes/design live in Figma (external).
+- **Next.js 16.4.3** (App Router, `output: "export"`, `trailingSlash: true`, fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 10** (flat config). Node 22 in CI.
+- No component library, server, or database. Runtime dependencies beyond Next and React: `yaml` and `marked`, used only at build time. Motion is CSS.
+- Sveltia CMS at `/admin` (`public/admin/index.html` pins the version, loaded from unpkg) edits `content/` through GitHub.
 
 ## Commands
 
 ```bash
-npm run dev                 # dev server (team passes -- --webpack; Turbopack not vetted)
+npm run dev -- --webpack    # dev server (Turbopack is not vetted here)
 npm run lint                # must pass before commit
-npm run build -- --webpack  # production build → out/ (must pass before commit)
+npm run build -- --webpack  # static build into out/; must pass before commit; validates content/
 ```
 
-`next.config.ts` sets `images: { unoptimized: true }`: there is no image optimizer server on the static host, so images ship as-is from `public/`. Don't rely on `/_next/image` resizing. Event and Data Digest assets use WebP; Digest panels are capped at 1200px, cards use 640px `cover.webp` thumbnails, and each image has a matching `*-640.webp` copy. Pages offer both through `srcSetOf()` in `app/lib/data.ts` (`640w` and full size) so 2x and 3x phones get the full file; never force the 640px copy with a `media` query, it looks blurred on phones. Hero slides have 9:16 phone crops at full height (`public/hero/N-tall.webp`).
+`next dev` rewrites the managed block at the top of this file. Commit it rather than reverting it.
 
-## Structure & conventions
+## Layout
 
-- `app/page.tsx`: landing-page composition of sections.
-- `app/digest/page.tsx` and `app/digest/[slug]/page.tsx`: static Data Digest index and article routes.
-- `app/events/page.tsx` and `app/events/[slug]/page.tsx`: events index and static event and workshop pages generated from `EVENTS`.
-- `app/lib/components/`: section components (`hero-section`, `hero-slideshow`, `hero-canvas`, `iso-scene`, `workshops-section`, `events-section`, `data-digest-section`, `about-section`, `header`, `footer`) plus shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`. The opening sequence is an inline script in `app/layout.tsx`; it shows the logo file as is (never clip, rotate, recolor, or redraw the DSG logo).
-- Path aliases: `@/components/*` → `app/lib/components/*`, `@/lib/*` → `app/lib/*`.
-- **Site copy lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`, types). **Events and Data Digest entries are markdown files** in `content/events/` and `content/digest/` (same mechanism as the DSSoc site's posts): YAML frontmatter for the fields, markdown body for the writeup, file name is the slug. `app/lib/content.ts` reads them at build time, fails the build on a missing required field or an unknown event `kind`, sorts newest first, and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`. Quote `publishedAt` dates or leave them bare (`yaml` keeps them as strings). Non-developers edit the same files through Sveltia CMS at `/admin` (`public/admin/config.yml`); keep its field list in sync with the required fields in `content.ts`. Edit copy there, never hardcode in components. Event writeups are adapted from the guild's Facebook captions and must keep a `source` link. Date labels are plain sentence case, no uppercase tracked eyebrows. Never publish the internal recruitment or membership process.
-- Design tokens in `app/globals.css` `@theme`: `accent-main` `#7230ff`, `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, `accent-text` `#b69cff` for any accent-colored text (accent-main fails contrast at text sizes), `headline-via` for the intro ring. No gradient text, glows, or uppercase tracked labels. Fonts: Archivo (display, `--font-display`), Geist Sans/Mono.
-- SEO: root metadata + OpenGraph in `app/layout.tsx`, branded Open Graph/Twitter images in `app/opengraph-image.png` and `app/twitter-image.png`, Organization JSON-LD in `app/page.tsx`, article metadata/JSON-LD in `app/digest/[slug]/page.tsx`, plus `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` is `https://uplbdsg.org`.
-- ESLint extends Next.js Core Web Vitals/TypeScript rules with high-signal safety and consistency checks; add rules only when they prevent real defects or review churn.
-- Commits: **Conventional Commits, signed** (`git commit -S`), atomic scope.
+- `app/page.tsx`: home page, section order. `app/layout.tsx`: metadata, header and footer, and the opening sequence (an inline head script that shows the logo file as is).
+- `app/events/` and `app/digest/`: index pages and `[slug]` pages generated from content.
+- `app/lib/data.ts`: `COPY` (hero, About, mission, values, committee heads, footer `credits`), `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`, shared types, and `srcSetOf()`.
+- `app/lib/content.ts`: reads `content/*.md` at build time and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`.
+- `app/lib/components/`: header, footer, hero (`hero-section`, `hero-slideshow`, `hero-canvas` easter eggs, `iso-scene` cube), section components, and shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`.
+- Aliases: `@/components/*` is `app/lib/components/*`, `@/lib/*` is `app/lib/*`. ESLint blocks `../` imports across directories.
 
-## UI verification (required for visual changes)
+## Content model
 
-Before committing any visual change, verify with the Playwright MCP at **320, 375, 414, 768, and 1440 px** widths:
+- One markdown file per post in `content/events/` or `content/digest/`. YAML frontmatter holds the fields, the body is the writeup, and the file name is the slug.
+- The build fails on a missing required field (events: `kind`, `title`, `date`, `description`, `images`; Digest: `title`, `date`, `description`, `panels`) or a `kind` other than `event` or `workshop`. Keep `public/admin/config.yml` in sync with these.
+- `date` is the display label in plain words. `publishedAt` (`YYYY-MM-DD`) sorts newest first; quote it or leave it bare.
+- Event writeups are adapted from the guild's Facebook captions and keep a `source` link.
+- CMS saves commit straight to `main`, so they go live. Deleting a post in the CMS leaves its images in `public/`; remove them by hand.
+- Date labels are plain sentence case. No uppercase tracked eyebrows.
+
+## Images
+
+- `next.config.ts` sets `images: { unoptimized: true }`: the static host has no optimizer, so files ship as committed. Do not rely on `/_next/image`.
+- WebP. Event photos at most 1600 px; Digest panels 1200 px; each has a `*-640.webp` copy; Digest cards use a 640 px `cover.webp` (a copy of panel 1). Hero slides add a 9:16 full-height phone crop, `public/hero/N-tall.webp`.
+- Offer small and full files through `srcSetOf()` (`640w` plus full size) and let the browser choose. Never force the 640 px copy with a `media` query; on 2x and 3x phones it looks blurred.
+- `contained-image` shows the whole image over a blurred copy of itself. That blur is intentional.
+
+## Design
+
+- Tokens in `app/globals.css`: `accent-main` `#7230ff` (fills only), `accent-text` `#b69cff` for colored text (accent-main fails contrast at text sizes), `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, `headline-via` for the intro ring.
+- No gradient text, glows, or uppercase tracked labels. Fonts: Archivo (display, `--font-display`) and Geist.
+
+## SEO
+
+Root metadata and Open Graph in `app/layout.tsx`; Open Graph and Twitter images in `app/opengraph-image.png` and `app/twitter-image.png`; Organization JSON-LD in `app/page.tsx`; Article and Event JSON-LD in the `[slug]` pages; `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` is `https://uplbdsg.org`.
+
+## Verifying visual changes
+
+Check **320, 375, 414, 768, and 1440 px** widths (Playwright MCP or a browser):
 
 - No horizontal overflow (`document.documentElement.scrollWidth === innerWidth`).
-- Mobile CTA targets ≥ 44px tall and labels stay on one line.
-- Desktop (`lg`, ≥1024px) layout must be unchanged by mobile-only tweaks; use `lg:` overrides, not shared classes.
+- Mobile tap targets at least 44 px tall, labels on one line.
+- The desktop layout (`lg`, 1024 px and up) is unchanged by mobile-only tweaks; use `lg:` overrides, not shared classes.
 
-## Deployment
+## Commits and deployment
 
-- **Cloudflare Pages** via `.github/workflows/ci-cd.yml`: a `check` job (lint + `build -- --webpack`) runs on every PR and push; the `deploy` job ships that exact build, push to `main` → production, PRs → preview branches (`pr-N`). Production deploys are serialized (concurrency group) so builds cannot race. Forks and Dependabot PRs build but do not deploy.
-- Also in `.github/`: `dependabot.yml` (weekly npm and Actions updates, 7-day cooldown, grouped minor/patch), `codeql.yml` (JS/TS code scanning), `dependency-review.yml` (fails a PR that adds a high or critical advisory).
-- Required GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-- A Vercel project (`dsg-website`, see `.vercel/`) exists from initial staging; **Cloudflare Pages is the active pipeline**.
-- Production domain: `uplbdsg.org`, with DNS on Cloudflare (see TURNOVER.md).
+- Conventional Commits, signed (`git commit -S`), one change per commit.
+- `.github/workflows/ci-cd.yml`: a `check` job (lint and build) on every pull request and push, then a `deploy` job ships that exact build to Cloudflare Pages: `main` to production, pull requests to `pr-N` previews (`https://pr-N.uplb-dsg-website.pages.dev`). Production deploys are serialized. Forks and Dependabot build but do not deploy.
+- Also in `.github/`: Dependabot (weekly, 7-day cooldown, grouped minor and patch), CodeQL, and dependency review (fails on a high or critical advisory).
+- Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. `main` has no required status checks because the CMS commits to it directly; a failing build never deploys.
+- The Vercel project in `.vercel/` is legacy staging. Cloudflare Pages is the active pipeline.
 
-## Pending work / roadmap
+## Documentation duty
 
-- The event signup site is a future phase. Keep the public site static until the need is concrete.
-
-## Documentation duty (standing rule)
-
-**`TURNOVER.md` at the repo root is the formal handover record and must be kept current at all times.** Any change to infrastructure, access/accounts, deployment, content workflow, or roadmap must update `TURNOVER.md` in the same change. Keep this `AGENTS.md` in sync when conventions or commands change. Outdated docs are treated as a defect (proposal Milestone 4 requires them for handover).
+`TURNOVER.md` is the formal handover record. Any change to infrastructure, access, deployment, content workflow, or roadmap updates it in the same change. Keep this file and `README.md` in sync when conventions or commands change. Outdated docs are a defect (proposal Milestone 4).
