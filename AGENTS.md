@@ -57,7 +57,8 @@ Before committing any visual change, verify with the Playwright MCP at **320, 37
 
 ## Deployment
 
-- **Cloudflare Pages** via `.github/workflows/deploy-cloudflare.yml`: push to `main` → production; PRs → preview branches (`pr-N`). Deploys the static `out/` dir with Wrangler.
+- **Cloudflare Pages** via `.github/workflows/ci-cd.yml`: a `check` job (lint + `build -- --webpack`) runs on every PR and push; the `deploy` job ships that exact build, push to `main` → production, PRs → preview branches (`pr-N`). Production deploys are serialized (concurrency group) so builds cannot race. Forks and Dependabot PRs build but do not deploy.
+- Also in `.github/`: `dependabot.yml` (weekly npm and Actions updates, 7-day cooldown, grouped minor/patch), `codeql.yml` (JS/TS code scanning), `dependency-review.yml` (fails a PR that adds a high or critical advisory).
 - Required GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
 - A Vercel project (`dsg-website`, see `.vercel/`) exists from initial staging — **Cloudflare Pages is the active pipeline**.
 - Production domain: `uplbdsg.org`, with DNS on Cloudflare — see TURNOVER.md.
