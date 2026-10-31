@@ -47,7 +47,7 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-cube-enter relative z-10 -mt-4 h-[220px] w-full pointer-events-none md:h-[340px] lg:mt-0 lg:h-auto lg:w-[50%] lg:flex-none lg:aspect-[1468/845]">
-          <IsoScene minimal />
+          <IsoScene />
         </div>
       </div>
     </section>
