@@ -34,7 +34,7 @@ npm run lint                # must pass before commit
 npm run build -- --webpack  # production build → out/ (must pass before commit)
 ```
 
-`next.config.ts` sets `images: { unoptimized: true }`: there is no image optimizer server on the static host, so images ship as-is from `public/`. Don't rely on `/_next/image` resizing. Event and Data Digest assets use WebP; Digest panels are capped at 1200px, cards use 640px `cover.webp` thumbnails, and mobile sources use matching `*-640.webp` files.
+`next.config.ts` sets `images: { unoptimized: true }`: there is no image optimizer server on the static host, so images ship as-is from `public/`. Don't rely on `/_next/image` resizing. Event and Data Digest assets use WebP; Digest panels are capped at 1200px, cards use 640px `cover.webp` thumbnails, and each image has a matching `*-640.webp` copy. Pages offer both through `srcSetOf()` in `app/lib/data.ts` (`640w` and full size) so 2x and 3x phones get the full file; never force the 640px copy with a `media` query, it looks blurred on phones. Hero slides have 9:16 phone crops at full height (`public/hero/N-tall.webp`).
 
 ## Structure & conventions
 
