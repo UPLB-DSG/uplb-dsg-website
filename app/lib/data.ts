@@ -126,4 +126,18 @@ export const COPY = {
     { name: "Rookie", role: "Finance and Audit", image: "/officers/finance-audit.webp" },
     { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
   ],
+  // Website team, shown in the footer. Contributors are the members of the
+  // "UPLB DSG Website" Messenger chat; update when the team changes.
+  credits: {
+    lead: "Simonee Ezekiel Mariquit",
+    contributors: [
+      "Alyanna Caabay",
+      "Franz Saragena",
+      "Galvin Gonzales",
+      "Hanna Macasarte",
+      "Hans Andrie Shi",
+      "Jude Padilla",
+      "Lance Gabriel Barroso",
+    ],
+  },
 };

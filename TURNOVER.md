@@ -78,7 +78,7 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Task | How |
 | --- | --- |
 | Run locally | `npm ci && npm run dev` → http://localhost:3000 |
-| Edit site copy | `app/lib/data.ts` |
+| Edit site copy | `app/lib/data.ts` (website credits in the footer are `COPY.credits`; update them when the team changes) |
 | Add an event or workshop | Easiest: `uplbdsg.org/admin/`, Events and workshops, New. By hand: add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/` and a `content/events/<slug>.md` copied from an existing entry (`kind`, `title`, `date`, `publishedAt`, `description`, `images`, `source` with the Facebook permalink, writeup as the body). The page, sitemap entry, and home-page card or timeline row follow from the file |
 | Add a Data Digest entry | Easiest: `uplbdsg.org/admin/`, Data Digest, New. By hand: add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`, then a `content/digest/<slug>.md` copied from an existing entry |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
@@ -128,3 +128,4 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | 2026-11-01 | Hero slideshow leads with workshops and talks (No Code Beta, Data Horizons 2024), with one community shot (Untangled). |
 | 2026-11-01 | Docs and cleanup: this document, README, and AGENTS.md now describe the markdown and `/admin` content workflow and current versions. Removed the unused hero scene layers, `FACEBOOK_URL`, and `COPY.tagline`; the content loader now fails the build on an unknown event `kind`. |
 | 2026-11-01 | Sharper images: phones were showing the 640px copies stretched 1.6x to 2x on 3x screens, and the hero 4x to 7x. Pictures now use `srcset` so high-density screens get the full file, the hero has full-height 9:16 phone crops, and the low-resolution Untangled slide (850px, cut from a poster) is replaced by a No Code Beta photo, so all five slides show learning. Facebook has 2048px originals of the hero photos if the hero needs to be sharper on retina laptops. |
+| 2026-11-01 | Footer credits the website team: Simonee Ezekiel Mariquit (lead) and the members of the UPLB DSG Website chat as contributors (`COPY.credits`). |
