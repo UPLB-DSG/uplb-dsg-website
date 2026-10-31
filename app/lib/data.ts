@@ -120,9 +120,10 @@ export const COPY = {
     "Analytics and Artificial Intelligence Association of the Philippines",
   ],
   // Committee head cards from the guild's ExeCom A.Y. 2026-2027 Facebook post.
-  // Names are as printed on the cards. Add the Head Chair and Internal Affairs cards when posted.
+  // Names are as printed on the cards. The post has no Internal Affairs card.
   officersTerm: "A.Y. 2026-2027",
   officers: [
+    { name: "Yana", role: "Head Chair", image: "/officers/head-chair.webp" },
     { name: "Macs", role: "Secretary and Logistics", image: "/officers/secretary-logistics.webp" },
     { name: "Jae", role: "External Affairs", image: "/officers/externals.webp" },
     { name: "Denise", role: "Membership", image: "/officers/membership.webp" },
