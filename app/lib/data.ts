@@ -110,15 +110,6 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
-  // Named in the event writeups below; add to this list as new partners come in.
-  partners: [
-    "UPLB Graduate School",
-    "AI Ready ASEAN Philippines",
-    "Hiraya Network",
-    "UP Data Science Society",
-    "UP Rural High School",
-    "Analytics and Artificial Intelligence Association of the Philippines",
-  ],
   // Committee head cards from the guild's ExeCom A.Y. 2026-2027 Facebook post.
   // Names are as printed on the cards. The post has no Internal Affairs card.
   officersTerm: "A.Y. 2026-2027",
