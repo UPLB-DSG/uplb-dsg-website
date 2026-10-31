@@ -5,6 +5,11 @@ export type NavLink = { label: string; href: string };
 export type SocialLink = { label: string; href: string; icon: string };
 // small: the 640 px copy when one exists, else the original (set by app/lib/content.ts).
 export type ImageItem = { src: string; alt: string; small?: string };
+// srcset for a <picture> source: the 640 px copy for small slots, the full file for
+// large or high-density ones (phones are 2x to 3x, so a 640 px file looks soft at full width).
+// ponytail: "1600w" only has to be above 640 for the browser to pick correctly.
+export const srcSetOf = ({ src, small }: { src: string; small?: string }) =>
+  small && small !== src ? `${small} 640w, ${src} 1600w` : src;
 export type Reference = { label: string; href?: string };
 // Events and Data Digest entries live as markdown in content/; see app/lib/content.ts.
 export type Event = {

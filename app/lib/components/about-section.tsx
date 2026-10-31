@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ContainedImage from "@/components/contained-image";
-import { COPY } from "@/lib/data";
+import { COPY, srcSetOf } from "@/lib/data";
 import { DIGEST_ENTRIES, EVENTS, PAST_EVENTS, WORKSHOPS } from "@/lib/content";
 
 // Facts counted from the content itself, so they never drift from what the site shows.
@@ -19,7 +19,10 @@ export default function AboutSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="img-shimmer relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 bg-white/5">
             <picture>
-              <source media="(max-width: 640px)" srcSet="/events/edgerunners/02-640.webp" />
+              <source
+                srcSet={srcSetOf({ src: "/events/edgerunners/02.webp", small: "/events/edgerunners/02-640.webp" })}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
               <Image
                 src="/events/edgerunners/02.webp"
                 alt="New members and officers together at the September 2025 orientation"

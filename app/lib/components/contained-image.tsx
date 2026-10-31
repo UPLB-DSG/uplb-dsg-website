@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ImageItem } from "@/lib/data";
+import { srcSetOf, type ImageItem } from "@/lib/data";
 
 // Shows the whole image, never cropped: the same picture, blurred and dimmed,
 // fills the box behind an object-contain foreground. The backdrop is a lazy
@@ -29,7 +29,7 @@ export default function ContainedImage({
         className="scale-125 object-cover opacity-50 blur-2xl"
       />
       <picture>
-        <source media="(max-width: 640px)" srcSet={small} />
+        <source srcSet={srcSetOf(image)} sizes={sizes} />
         <Image
           src={image.src}
           alt={image.alt}

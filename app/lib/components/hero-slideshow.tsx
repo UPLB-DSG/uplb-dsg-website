@@ -2,8 +2,10 @@
 // dissolves into the next, with a slow drift. Pure CSS: every slide runs the
 // same keyframes offset by its index. The pause toggle is a checkbox the CSS
 // reads with :has(), so it needs no script. Reduced motion shows the first photo only.
-// Learning first (public/hero/): 1, 3, 4 No Code Beta workshop (lab, teaching,
-// presentation), 2 a Data Horizons 2024 talk, 5 the Untangled orientation crowd.
+// Phones get N-tall.webp, a 9:16 crop at the photo's full height: the phone hero is
+// tall and narrow, so a landscape file would be stretched 4x to 7x and look blurred.
+// All learning (public/hero/): 1, 3, 4, 5 No Code Beta workshop (lab, teaching,
+// presentation, laptops), 2 a Data Horizons 2024 talk.
 const SLIDES: string[] = ["1", "2", "3", "4", "5"];
 const HOLD = 7; // seconds per photo
 
@@ -18,7 +20,7 @@ export default function HeroSlideshow() {
             className="hero-slide absolute inset-0"
             style={{ animationDuration: `${total}s`, animationDelay: `${i * HOLD}s` }}
           >
-            <source media="(max-width: 640px)" srcSet={`/hero/${src}-640.webp`} />
+            <source media="(max-width: 640px)" srcSet={`/hero/${src}-tall.webp`} />
             <img
               src={`/hero/${src}.webp`}
               alt=""

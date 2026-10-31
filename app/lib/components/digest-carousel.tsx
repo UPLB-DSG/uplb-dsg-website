@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { ImageItem } from "@/lib/data";
+import { srcSetOf, type ImageItem } from "@/lib/data";
 
 export default function DigestCarousel({ panels }: { panels: ImageItem[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -12,10 +12,7 @@ export default function DigestCarousel({ panels }: { panels: ImageItem[] }) {
     <figure className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black">
       <div className="relative">
         <picture key={activePanel.src}>
-          <source
-            media="(max-width: 640px)"
-            srcSet={activePanel.small ?? activePanel.src}
-          />
+          <source srcSet={srcSetOf(activePanel)} sizes="(min-width: 672px) 640px, calc(100vw - 3rem)" />
           <Image
             src={activePanel.src}
             alt={activePanel.alt}

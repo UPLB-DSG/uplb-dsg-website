@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { DigestEntry } from "@/lib/data";
+import { srcSetOf, type DigestEntry } from "@/lib/data";
 
 export default function DigestCard({ entry }: { entry: DigestEntry }) {
   return (
@@ -10,13 +10,20 @@ export default function DigestCard({ entry }: { entry: DigestEntry }) {
       className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-dark-gray transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
     >
       <div className="img-shimmer relative aspect-square overflow-hidden bg-black">
-        <Image
-          src={entry.cover}
-          alt={entry.panels[0].alt}
-          fill
-          sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
-        />
+        {/* cover.webp is a 640 px copy of panel 1; high-density screens get the panel itself. */}
+        <picture>
+          <source
+            srcSet={srcSetOf({ src: entry.panels[0].src, small: entry.cover })}
+            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+          />
+          <Image
+            src={entry.cover}
+            alt={entry.panels[0].alt}
+            fill
+            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </picture>
       </div>
       <div className="space-y-3 p-5">
         <p className="text-sm text-accent-text">
