@@ -16,7 +16,7 @@ export default function HeroSlideshow() {
           <picture
             key={src}
             className="hero-slide absolute inset-0"
-            style={{ animationDuration: `${total}s`, animationDelay: `${i * HOLD}s` } as React.CSSProperties}
+            style={{ animationDuration: `${total}s`, animationDelay: `${i * HOLD}s` }}
           >
             <source media="(max-width: 640px)" srcSet={`/hero/${src}-640.webp`} />
             <img

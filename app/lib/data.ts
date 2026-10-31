@@ -80,7 +80,6 @@ export const COPY = {
   orgName: "UPLB Data Science Guild",
   // Confirmed by the guild, October 2026. Update each recruitment cycle.
   memberCount: "100+",
-  tagline: SITE_DESCRIPTION,
   heroTagline:
     "The pioneer data science organization of UPLB. Workshops, visual explainers, and events for students who learn by building.",
   whoAreWe:
@@ -123,5 +122,3 @@ export const COPY = {
     { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
   ],
 };
-
-export const FACEBOOK_URL = "https://www.facebook.com/dsguplb";

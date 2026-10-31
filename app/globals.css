@@ -72,7 +72,6 @@ h3 {
 /* Motion system. Pure CSS, transform/opacity only, no JS observers. */
 :root {
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 @keyframes rise-in {
@@ -282,7 +281,7 @@ html.dsg-intro .dsg-intro-ov,
 }
 
 /* Pause toggle for all hero motion (WCAG 2.2.2). */
-#hero:has(.hero-pause:checked) :is(.hero-slide, .cube-float, .cube-shadow, .scene-node) {
+#hero:has(.hero-pause:checked) :is(.hero-slide, .cube-float, .cube-shadow) {
   animation-play-state: paused;
 }
 
@@ -297,7 +296,7 @@ html.dsg-intro .dsg-intro-ov,
   font-size: 11px;
 }
 
-/* Hero scene: cube hovers, its shadow breathes, nodes twinkle out of phase. */
+/* Hero cube: it hovers and its shadow breathes. */
 @keyframes cube-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
@@ -308,11 +307,6 @@ html.dsg-intro .dsg-intro-ov,
   50% { transform: scale(0.82); opacity: 0.2; }
 }
 
-@keyframes node-twinkle {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
-}
-
 .cube-float {
   animation: cube-float 6s ease-in-out infinite;
 }
@@ -321,11 +315,6 @@ html.dsg-intro .dsg-intro-ov,
   transform-box: fill-box;
   transform-origin: center;
   animation: shadow-breathe 6s ease-in-out infinite;
-}
-
-.scene-node {
-  animation: node-twinkle 4s ease-in-out infinite;
-  animation-delay: calc(var(--n, 0) * -0.7s);
 }
 
 /* Easter egg: type sudo and the cube leaves. */
@@ -362,7 +351,6 @@ html.dsg-intro .dsg-intro-ov,
   .hero-cube-enter,
   .cube-float,
   .cube-shadow,
-  .scene-node,
   #hero-cube.antigravity,
   .img-shimmer::before {
     animation: none !important;

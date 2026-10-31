@@ -36,10 +36,13 @@ const withSmall = (image: ImageItem): ImageItem => {
   return { ...image, small: small !== image.src && inPublic(small) ? small : image.src };
 };
 
-export const EVENTS = load<Event>("events", ["kind", "title", "date", "description", "images"]).map((event) => ({
-  ...event,
-  images: event.images.map(withSmall),
-}));
+export const EVENTS = load<Event>("events", ["kind", "title", "date", "description", "images"]).map((event) => {
+  // A typo here (say "Workshop") would silently drop the entry from both lists.
+  if (event.kind !== "event" && event.kind !== "workshop") {
+    throw new Error(`content/events/${event.slug}.md: kind must be "event" or "workshop", got "${event.kind}"`);
+  }
+  return { ...event, images: event.images.map(withSmall) };
+});
 export const PAST_EVENTS = EVENTS.filter((event) => event.kind === "event");
 export const WORKSHOPS = EVENTS.filter((event) => event.kind === "workshop");
 

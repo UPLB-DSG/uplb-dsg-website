@@ -8,7 +8,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# UPLB DSG Website — Agent Guide
+# UPLB DSG Website: Agent Guide
 
 ## What this project is
 
@@ -22,7 +22,7 @@ Functional priorities, in order: **(1) landing page → (2) SEO-friendly content
 
 ## Stack
 
-- **Next.js 16.4.2** (App Router, `output: "export"` — fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 9** (flat config).
+- **Next.js 16.4.3** (App Router, `output: "export"`, fully static), **React 19**, **TypeScript** (strict), **Tailwind CSS v4** (`@theme` tokens in `app/globals.css`), **ESLint 10** (flat config).
 - No component library, server, or database. Sveltia CMS (`/admin`, loaded from unpkg) edits the markdown in `content/` through GitHub. Beyond Next and React the only dependencies are `yaml` and `marked`, used at build time to read `content/`; nothing extra ships to the browser. Motion is CSS. Content is maintained in Git.
 - Wireframes/design live in Figma (external).
 
@@ -34,16 +34,16 @@ npm run lint                # must pass before commit
 npm run build -- --webpack  # production build → out/ (must pass before commit)
 ```
 
-`next.config.ts` sets `images: { unoptimized: true }` — there is no image optimizer server on the static host, so images ship as-is from `public/`. Don't rely on `/_next/image` resizing. Event and Data Digest assets use WebP; Digest panels are capped at 1200px, cards use 640px `cover.webp` thumbnails, and mobile sources use matching `*-640.webp` files.
+`next.config.ts` sets `images: { unoptimized: true }`: there is no image optimizer server on the static host, so images ship as-is from `public/`. Don't rely on `/_next/image` resizing. Event and Data Digest assets use WebP; Digest panels are capped at 1200px, cards use 640px `cover.webp` thumbnails, and mobile sources use matching `*-640.webp` files.
 
 ## Structure & conventions
 
-- `app/page.tsx` — landing-page composition of sections.
-- `app/digest/page.tsx` and `app/digest/[slug]/page.tsx` — static Data Digest index and article routes.
-- `app/events/page.tsx` and `app/events/[slug]/page.tsx` — events index and static event and workshop pages generated from `EVENTS`.
-- `app/lib/components/` — section components (`hero-section`, `hero-slideshow`, `hero-canvas`, `iso-scene`, `workshops-section`, `events-section`, `data-digest-section`, `about-section`, `header`, `footer`) plus shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`. The opening sequence is an inline script in `app/layout.tsx`; it shows the logo file as is (never clip, rotate, recolor, or redraw the DSG logo).
+- `app/page.tsx`: landing-page composition of sections.
+- `app/digest/page.tsx` and `app/digest/[slug]/page.tsx`: static Data Digest index and article routes.
+- `app/events/page.tsx` and `app/events/[slug]/page.tsx`: events index and static event and workshop pages generated from `EVENTS`.
+- `app/lib/components/`: section components (`hero-section`, `hero-slideshow`, `hero-canvas`, `iso-scene`, `workshops-section`, `events-section`, `data-digest-section`, `about-section`, `header`, `footer`) plus shared `contained-image`, `digest-card`, `digest-carousel`, `random-digest-button`. The opening sequence is an inline script in `app/layout.tsx`; it shows the logo file as is (never clip, rotate, recolor, or redraw the DSG logo).
 - Path aliases: `@/components/*` → `app/lib/components/*`, `@/lib/*` → `app/lib/*`.
-- **Site copy lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`, types). **Events and Data Digest entries are markdown files** in `content/events/` and `content/digest/` (same mechanism as the DSSoc site's posts): YAML frontmatter for the fields, markdown body for the writeup, file name is the slug. `app/lib/content.ts` reads them at build time, fails the build on a missing required field, sorts newest first, and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`. Quote `publishedAt` dates or leave them bare (`yaml` keeps them as strings). Non-developers edit the same files through Sveltia CMS at `/admin` (`public/admin/config.yml`); keep its field list in sync with the required fields in `content.ts`. Edit copy there, never hardcode in components. Event writeups are adapted from the guild's Facebook captions and must keep a `source` link. Date labels are plain sentence case, no uppercase tracked eyebrows. Never publish the internal recruitment or membership process.
+- **Site copy lives in `app/lib/data.ts`** (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`, types). **Events and Data Digest entries are markdown files** in `content/events/` and `content/digest/` (same mechanism as the DSSoc site's posts): YAML frontmatter for the fields, markdown body for the writeup, file name is the slug. `app/lib/content.ts` reads them at build time, fails the build on a missing required field or an unknown event `kind`, sorts newest first, and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`. Quote `publishedAt` dates or leave them bare (`yaml` keeps them as strings). Non-developers edit the same files through Sveltia CMS at `/admin` (`public/admin/config.yml`); keep its field list in sync with the required fields in `content.ts`. Edit copy there, never hardcode in components. Event writeups are adapted from the guild's Facebook captions and must keep a `source` link. Date labels are plain sentence case, no uppercase tracked eyebrows. Never publish the internal recruitment or membership process.
 - Design tokens in `app/globals.css` `@theme`: `accent-main` `#7230ff`, `accent-secondary` `#1818e6`, `background` `#0a0a0a`, `off-white` `#fafafa`, `accent-text` `#b69cff` for any accent-colored text (accent-main fails contrast at text sizes), `headline-via` for the intro ring. No gradient text, glows, or uppercase tracked labels. Fonts: Archivo (display, `--font-display`), Geist Sans/Mono.
 - SEO: root metadata + OpenGraph in `app/layout.tsx`, branded Open Graph/Twitter images in `app/opengraph-image.png` and `app/twitter-image.png`, Organization JSON-LD in `app/page.tsx`, article metadata/JSON-LD in `app/digest/[slug]/page.tsx`, plus `app/sitemap.ts` and `app/robots.ts`. `SITE_URL` is `https://uplbdsg.org`.
 - ESLint extends Next.js Core Web Vitals/TypeScript rules with high-signal safety and consistency checks; add rules only when they prevent real defects or review churn.
@@ -55,15 +55,15 @@ Before committing any visual change, verify with the Playwright MCP at **320, 37
 
 - No horizontal overflow (`document.documentElement.scrollWidth === innerWidth`).
 - Mobile CTA targets ≥ 44px tall and labels stay on one line.
-- Desktop (`lg`, ≥1024px) layout must be unchanged by mobile-only tweaks — use `lg:` overrides, not shared classes.
+- Desktop (`lg`, ≥1024px) layout must be unchanged by mobile-only tweaks; use `lg:` overrides, not shared classes.
 
 ## Deployment
 
 - **Cloudflare Pages** via `.github/workflows/ci-cd.yml`: a `check` job (lint + `build -- --webpack`) runs on every PR and push; the `deploy` job ships that exact build, push to `main` → production, PRs → preview branches (`pr-N`). Production deploys are serialized (concurrency group) so builds cannot race. Forks and Dependabot PRs build but do not deploy.
 - Also in `.github/`: `dependabot.yml` (weekly npm and Actions updates, 7-day cooldown, grouped minor/patch), `codeql.yml` (JS/TS code scanning), `dependency-review.yml` (fails a PR that adds a high or critical advisory).
 - Required GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-- A Vercel project (`dsg-website`, see `.vercel/`) exists from initial staging — **Cloudflare Pages is the active pipeline**.
-- Production domain: `uplbdsg.org`, with DNS on Cloudflare — see TURNOVER.md.
+- A Vercel project (`dsg-website`, see `.vercel/`) exists from initial staging; **Cloudflare Pages is the active pipeline**.
+- Production domain: `uplbdsg.org`, with DNS on Cloudflare (see TURNOVER.md).
 
 ## Pending work / roadmap
 

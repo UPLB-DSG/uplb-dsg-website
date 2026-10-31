@@ -62,7 +62,7 @@ export default function AboutSection() {
             </ul>
           </div>
           <ContainedImage
-            image={{ src: "/mission-vision.webp", alt: COPY.missionImageAlt }}
+            image={{ src: "/mission-vision.webp", small: "/mission-vision-640.webp", alt: COPY.missionImageAlt }}
             sizes="(min-width: 1024px) 40vw, 100vw"
             className="aspect-[4/3] rounded-xl border border-white/10"
           />

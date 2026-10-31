@@ -1,8 +1,8 @@
-# UPLB DSG Website — Turnover Document
+# UPLB DSG Website: Turnover Document
 
 > **Standing rule: keep this document current at all times.** Any change to infrastructure, accounts/access, deployment, content workflow, or roadmap must be reflected here in the same change. This is the formal handover record required by the project proposal (Milestone 4) and item 3 of the Successor Handover Checklist.
 
-_Last updated: 2026-08-19_
+_Last updated: 2026-11-01_
 
 ## 1. Project Overview
 
@@ -14,13 +14,13 @@ The website is the org's primary digital presence, with three institutional goal
 
 Functional priorities, in order:
 
-1. **Landing page** — the org pitch (About Us, mission/vision, events, socials).
-2. **Blog-style content for events and series, optimized for SEO** — includes the _Data Digest_, a series of comic-style photo posts teaching data science concepts.
+1. **Landing page**: the org pitch (About Us, mission/vision, events, socials).
+2. **Blog-style content for events and series, optimized for SEO**, including the _Data Digest_, a series of comic-style photo posts teaching data science concepts.
 3. **Professional signup site for events** (future phase).
 
 Audience: people interested in joining UPLB DSG or learning about its events and activities.
 
-## 2. Current State (as of 2026-09-20)
+## 2. Current State (as of 2026-11-01)
 
 - Landing page order: hero, Workshops, Recent events (latest 4, full list at `/events`), Data Digest, About (who we are, counted facts, mission, vision, values, committee heads), footer with the contact email. The recruitment process is internal and must not be published on the site.
 - Data Digest is live as 18 crawlable static entries at `/digest/[slug]`, one markdown file each in `content/digest/`, with a `/digest` index, per-entry metadata, Article JSON-LD, descriptive image text, `sitemap.xml`, and `robots.txt`.
@@ -34,20 +34,24 @@ Audience: people interested in joining UPLB DSG or learning about its events and
 - Website feedback survey (T&S Committee, Sept 30 2026, forms.gle/XtcRfsvt3H8zJo5T9) had 0 responses as of 2026-10-30; its nine questions double as the review rubric.
 - Favicon and Open Graph card are built from the official vector logo (`DSG Logo Vector.eps`, kept outside the repo). OG card: lockup on dark with the Facebook page description.
 - Media is optimized for the static host: WebP event assets, 1200px Digest panels, separate 640px mobile sources/card thumbnails, and lazy-loaded Digest links without route prefetch. Full media dropped from about 15 MB of initial JPEGs to about 6.5 MB, while mobile pages fetch the smaller variants.
-- Original timeline (landing April–May, blog June–July 2026) slipped; landing page polish is still in progress.
-- Not yet done: public launch announcement and a no-code publishing interface.
+- Original timeline (landing April to May, blog June to July 2026) slipped; the landing page, events, Data Digest, and the editor shipped by 2026-10-31.
+- Not yet done: public launch announcement.
 
 ## 3. Tech Stack
 
-- **Framework:** Next.js 16.2.3 (App Router, `output: "export"` — fully static) + React 19 + TypeScript.
+- **Framework:** Next.js 16.4.3 (App Router, `output: "export"`, fully static) + React 19 + TypeScript. ESLint 10.
 - **Styling:** Tailwind CSS v4 (design tokens in `app/globals.css` `@theme`).
 - **Wireframes:** Figma (external).
-- **Testing:** Playwright (currently used via MCP for manual viewport verification; no automated test suite yet).
-- **Future publishing option:** a Git-based editor may be added when non-developer publishing is frequent. No CMS or database is currently required.
+- **Testing:** Playwright (used via MCP for manual viewport verification; no automated test suite yet). The build fails on a content file with a missing field or an unknown event `kind`.
+- **Content editor:** Sveltia CMS at `/admin` (Git-based; no database).
 
 ### Content model
 
-All site copy, event data, and Data Digest metadata/body copy live in `app/lib/data.ts` (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `PAST_EVENTS`, `DIGEST_ENTRIES`). **To update published content, edit that file only — components must stay copy-free.** Digest panel files live at `public/digest/<slug>/01.webp`, `02.webp`, and so on; each has a `01-640.webp`-style mobile variant, and each entry also has a 640px `cover.webp`. Full panels are capped at 1200px to keep text readable without sending oversized files.
+- Site copy (hero, About, mission, values, committee heads, links, contact email) lives in `app/lib/data.ts` (`COPY`, `NAV_LINKS`, `SOCIAL_LINKS`, `FOOTER_LINKS`, `CONTACT_EMAIL`). Components stay copy-free.
+- Events, workshops, and Data Digest entries are markdown files: `content/events/<slug>.md` and `content/digest/<slug>.md`. YAML frontmatter holds the fields, the body is the writeup, and the file name is the page address. `app/lib/content.ts` reads them at build time and exports `EVENTS`, `PAST_EVENTS`, `WORKSHOPS`, `DIGEST_ENTRIES`.
+- Non-developers edit the same files through the editor at `/admin` (see the Contributor guide tab of the UPLB DSG Website doc).
+
+Hand-made Digest panel files live at `public/digest/<slug>/01.webp`, `02.webp`, and so on; each has a `01-640.webp`-style mobile variant, and each entry also has a 640px `cover.webp`. Full panels are capped at 1200px to keep text readable without sending oversized files.
 
 ## 4. Infrastructure & Access
 
@@ -55,16 +59,16 @@ All site copy, event data, and Data Digest metadata/body copy live in `app/lib/d
 | --- | --- | --- |
 | Source code | GitHub org `UPLB-DSG`, repo `uplb-dsg-website` (`main` branch) | Active |
 | Hosting / CD | **Cloudflare Pages** project `uplb-dsg-website`, auto-deploy via `.github/workflows/ci-cd.yml` (lint + build check first, then push to `main` → production, PR → `pr-N` preview; production deploys run one at a time). Dependabot, CodeQL, and dependency review also run from `.github/`. Needs org secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` | Active pipeline |
-| Staging (legacy) | Vercel project `dsg-website` (`.vercel/`, `dsg-website.vercel.app`) — used for initial staging/review; **not the active pipeline** | Legacy |
+| Staging (legacy) | Vercel project `dsg-website` (`.vercel/`, `dsg-website.vercel.app`), used for initial staging and review; **not the active pipeline** | Legacy |
 | Domain | `uplbdsg.org` | **Live** |
 | DNS | Cloudflare (free tier) | Active |
-| CMS | None; content is maintained in Git | Deliberate static-first choice |
+| CMS | Sveltia CMS at `uplbdsg.org/admin/`, GitHub sign-in through the `uplbdsg-cms-auth` Cloudflare Worker (see section 2). Saving commits to `main` | Active |
 
 Budget for the domain is approved-in-principle per the proposal but must be formally requested from DSG Finance/Executive each year.
 
 ## 5. Operational Procedures
 
-- **Ticket-based, asynchronous workflow.** All tasks, bugs, and feature requests go through tracked tickets (GitHub Issues) — no reliance on real-time availability.
+- **Ticket-based, asynchronous workflow.** All tasks, bugs, and feature requests go through tracked tickets (GitHub Issues), with no reliance on real-time availability.
 - **Three-Way Meeting protocol** at every handover: outgoing lead + incoming lead + a quorum of the new team, to validate access and prevent knowledge silos.
 - **Commits:** Conventional Commits, signed (`git commit -S`), atomic.
 - **Before every commit:** `npm run lint` and `npm run build -- --webpack` must pass; visual changes must be checked at 320 / 375 / 414 / 768 / 1440 px widths (see AGENTS.md).
@@ -74,8 +78,9 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Task | How |
 | --- | --- |
 | Run locally | `npm ci && npm run dev` → http://localhost:3000 |
-| Edit copy or add an event or workshop | Add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/`, then add one `EVENTS` item in `app/lib/data.ts` with `slug`, `kind`, dates, `writeup`, and `source` (Facebook permalink). The page, sitemap entry, and home-page card or timeline row follow from the data |
-| Add a Data Digest entry | Add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`; then add one `DIGEST_ENTRIES` item in `app/lib/data.ts` |
+| Edit site copy | `app/lib/data.ts` |
+| Add an event or workshop | Easiest: `uplbdsg.org/admin/`, Events and workshops, New. By hand: add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/` and a `content/events/<slug>.md` copied from an existing entry (`kind`, `title`, `date`, `publishedAt`, `description`, `images`, `source` with the Facebook permalink, writeup as the body). The page, sitemap entry, and home-page card or timeline row follow from the file |
+| Add a Data Digest entry | Easiest: `uplbdsg.org/admin/`, Data Digest, New. By hand: add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`, then a `content/digest/<slug>.md` copied from an existing entry |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
 | Review SEO | Check Google Search Console for `https://uplbdsg.org`, verify the sitemap and indexing status, then review performance and crawl reports |
 | Get a preview URL | Open a PR → Cloudflare Pages `pr-N` branch deploy |
@@ -98,9 +103,9 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 
 ## 9. Key Contacts
 
-- **Simonee Ezekiel Mariquit** — Lead Developer
-- **Franz Saragena** — Marketing & Creatives Head (2025–2026)
-- **Hans Andre Shi** — Marketing & Creatives Head (2026–2027)
+- **Simonee Ezekiel Mariquit**, Lead Developer
+- **Franz Saragena**, Marketing & Creatives Head (2025 to 2026)
+- **Hans Andre Shi**, Marketing & Creatives Head (2026 to 2027)
 
 ## 10. Revision History
 
@@ -117,6 +122,8 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | 2026-10-30 | Removed the How to join section and the Join nav link: the recruitment process is internal. Hero primary CTA now points to the Data Digest; nav shows Contact again. |
 | 2026-10-30 | Sveltia CMS at `/admin` (same setup as the DSSoc site) for editing `content/events` and `content/digest` without code. Saves commit to `main`. Uploads become WebP at most 1200 px; posts without a `-640` copy or `cover.webp` fall back to the uploaded image. Sign-in with GitHub goes through the `uplbdsg-cms-auth` worker. |
 | 2026-10-31 | Removed the partners line from About: the site does not list sponsors or partners. |
-| 2026-10-31 | Filed a GitHub Support request (from smmariquit@up.edu.ph) to purge the pre-rewrite commits and the PR #4, #5, #6 diffs that still hold the removed recruitment text. Follow up on that ticket if it is not resolved. |
+| 2026-10-31 | Filed GitHub Support ticket #4933085 (from smmariquit@up.edu.ph, support.github.com/tickets) to purge the pre-rewrite commits and the PR #4, #5, #6 diffs that still hold the removed recruitment text. Follow up on that ticket if it is not resolved. |
 | 2026-10-31 | CI/CD: `deploy-cloudflare.yml` became `ci-cd.yml` (lint and build gate before deploy, serialized production deploys after a deploy race on 2026-10-31). Added Dependabot (7-day cooldown), CodeQL, and dependency review. |
 | 2026-10-31 | Repo security on: Dependency graph, Dependabot alerts and security updates, secret scanning with push protection. Ruleset "Protect main" blocks force-pushes and deletion of `main` (repo admins can bypass for emergencies like a history rewrite). Required status checks are not enforced on `main` because the Sveltia editor commits there directly; the pipeline still deploys only builds that pass lint and build. Closed #2 (Vercel analytics, not used on Cloudflare) and #3 (superseded by #14). |
+| 2026-11-01 | Hero slideshow leads with workshops and talks (No Code Beta, Data Horizons 2024), with one community shot (Untangled). |
+| 2026-11-01 | Docs and cleanup: this document, README, and AGENTS.md now describe the markdown and `/admin` content workflow and current versions. Removed the unused hero scene layers, `FACEBOOK_URL`, and `COPY.tagline`; the content loader now fails the build on an unknown event `kind`. |

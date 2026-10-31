@@ -3,7 +3,7 @@ import WorkshopsSection from "@/components/workshops-section";
 import EventsSection from "@/components/events-section";
 import DataDigestSection from "@/components/data-digest-section";
 import AboutSection from "@/components/about-section";
-import { COPY, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
+import { COPY, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from "@/lib/data";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -12,7 +12,7 @@ const structuredData = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: COPY.orgName,
-      description: COPY.tagline,
+      description: SITE_DESCRIPTION,
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
       sameAs: SOCIAL_LINKS.map((social) => social.href),
