@@ -22,7 +22,7 @@ Audience: people interested in joining UPLB DSG or learning about its events and
 
 ## 2. Current State (as of 2026-09-20)
 
-- Landing page order: hero, Workshops, Recent events (latest 4, full list at `/events`), Data Digest, About (who we are, counted facts, partners, mission, vision, values, committee heads), footer with the contact email. The recruitment process is internal and must not be published on the site.
+- Landing page order: hero, Workshops, Recent events (latest 4, full list at `/events`), Data Digest, About (who we are, counted facts, mission, vision, values, committee heads), footer with the contact email. The recruitment process is internal and must not be published on the site.
 - Data Digest is live as 18 crawlable static entries at `/digest/[slug]`, one markdown file each in `content/digest/`, with a `/digest` index, per-entry metadata, Article JSON-LD, descriptive image text, `sitemap.xml`, and `robots.txt`.
 - SEO metadata is configured in `app/layout.tsx` and the Digest routes: canonical URLs, title templates, descriptions, Open Graph/Twitter images, Organization/WebSite JSON-LD, and BreadcrumbList JSON-LD for Digest articles.
 - Google Search Console is configured for `https://uplbdsg.org`. Use it to monitor indexing, sitemap processing, search queries, click-through rate, Core Web Vitals, mobile usability, and crawl errors. Submit `/sitemap.xml` and request re-crawls after substantial content or metadata changes.

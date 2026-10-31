@@ -43,10 +43,6 @@ export default function AboutSection() {
                 </div>
               ))}
             </dl>
-            <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/65">
-              Past events were run with {COPY.partners.slice(0, -1).join(", ")}, and the{" "}
-              {COPY.partners.at(-1)}.
-            </p>
           </div>
         </div>
 
