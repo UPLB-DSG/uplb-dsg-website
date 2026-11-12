@@ -114,6 +114,8 @@ export const COPY = {
         "All members are expected to work with themselves and their stakeholders to reach their goals with mutual dependence.",
     },
   ],
+  workshopsIntro:
+    "Hands-on sessions run by the guild, from members-only training camps to online workshops open to every UPLB student.",
   // Committee head cards from the guild's ExeCom A.Y. 2026-2027 Facebook post.
   // Names are as printed on the cards. The post has no Internal Affairs card.
   officersTerm: "A.Y. 2026-2027",
