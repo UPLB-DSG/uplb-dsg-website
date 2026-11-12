@@ -105,7 +105,7 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 
 - **Simonee Ezekiel Mariquit**, Lead Developer
 - **Franz Saragena**, Marketing & Creatives Head (2025 to 2026)
-- **Hans Andre Shi**, Marketing & Creatives Head (2026 to 2027)
+- **Hans Andrie Shi**, Marketing & Creatives Head (2026 to 2027)
 
 ## 10. Revision History
 
