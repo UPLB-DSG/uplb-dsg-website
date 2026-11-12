@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ContainedImage from "@/components/contained-image";
 import { WORKSHOPS } from "@/lib/content";
+import { COPY } from "@/lib/data";
 
 export default function WorkshopsSection() {
   return (
@@ -9,10 +10,7 @@ export default function WorkshopsSection() {
         <h2 id="workshops-heading" className="font-display text-4xl font-extrabold text-off-white md:text-5xl">
           Workshops
         </h2>
-        <p className="max-w-md leading-relaxed text-white/70">
-          Hands-on sessions run by the guild, from members-only training camps to
-          free online workshops open to every UPLB student.
-        </p>
+        <p className="max-w-md leading-relaxed text-white/70">{COPY.workshopsIntro}</p>
       </div>
 
       <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
