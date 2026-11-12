@@ -207,7 +207,7 @@ Merging to `main` deploys to production, and the editor commits straight to `mai
 
 ## Credits
 
-Built and maintained by guild members. Lead: Simonee Ezekiel Mariquit. Contributors: Alyanna Caabay, Franz Saragena, Galvin Gonzales, Hanna Macasarte, Hans Andrie Shi, Jude Padilla, and Lance Gabriel Barroso.
+Built and maintained by guild members. Lead: Simonee Ezekiel Mariquit. Contributors: Alyanna Caabay, Franz Saragena, Galvin Gonzales, Hanna Macasarte, Hans Andrie Shi, Jude Padilla, and Lance Gabriel Barroso. The footer lists the same team with their profile links (`COPY.credits.team` in `app/lib/data.ts`).
 
 ## License
 

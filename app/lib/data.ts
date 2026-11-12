@@ -3,6 +3,7 @@
 
 export type NavLink = { label: string; href: string };
 export type SocialLink = { label: string; href: string; icon: string };
+export type TeamMember = { name: string; role?: string; links: NavLink[] };
 // small: the 640 px copy when one exists, else the original (set by app/lib/content.ts).
 export type ImageItem = { src: string; alt: string; small?: string };
 // srcset for a <picture> source: the 640 px copy for small slots, the full file for
@@ -126,18 +127,46 @@ export const COPY = {
     { name: "Rookie", role: "Finance and Audit", image: "/officers/finance-audit.webp" },
     { name: "Hans", role: "Marketing and Creatives", image: "/officers/marketing-creatives.webp" },
   ],
-  // Website team, shown in the footer. Contributors are the members of the
-  // "UPLB DSG Website" Messenger chat; update when the team changes.
+  // Website team, shown in the footer: the members of the "UPLB DSG Website"
+  // Messenger chat. Add a link only when the member has given it.
   credits: {
-    lead: { name: "Simonee Ezekiel Mariquit", href: "https://github.com/smmariquit" },
-    contributors: [
-      "Alyanna Caabay",
-      "Franz Saragena",
-      "Galvin Gonzales",
-      "Hanna Macasarte",
-      "Hans Andrie Shi",
-      "Jude Padilla",
-      "Lance Gabriel Barroso",
-    ],
+    heading: "Website team",
+    team: [
+      {
+        name: "Simonee Ezekiel Mariquit",
+        role: "Lead Developer",
+        links: [
+          { label: "GitHub", href: "https://github.com/smmariquit" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/stimmie/" },
+          { label: "Website", href: "https://stimmie.dev" },
+        ],
+      },
+      { name: "Alyanna Caabay", links: [{ label: "GitHub", href: "https://github.com/nanaririn" }] },
+      {
+        name: "Franz Saragena",
+        links: [
+          { label: "GitHub", href: "https://github.com/fr4nzu" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/franz-saragena-a47553356/" },
+        ],
+      },
+      {
+        name: "Galvin Gonzales",
+        links: [
+          { label: "GitHub", href: "https://github.com/SenjoNanaya" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/galvin-gonzales-884838375/" },
+        ],
+      },
+      { name: "Hanna Macasarte", links: [{ label: "GitHub", href: "https://github.com/hannamacx" }] },
+      { name: "Hans Andrie Shi", links: [{ label: "GitHub", href: "https://github.com/hans334" }] },
+      {
+        name: "Jude Padilla",
+        links: [
+          { label: "GitHub", href: "https://github.com/judepadillx" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/judepadillx" },
+          { label: "Website", href: "https://judepadillx.vercel.app/" },
+        ],
+      },
+      { name: "Lance Gabriel Barroso", links: [{ label: "GitHub", href: "https://github.com/labarroso" }] },
+    ] as TeamMember[],
   },
 };
