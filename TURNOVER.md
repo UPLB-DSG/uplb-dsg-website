@@ -2,7 +2,7 @@
 
 > **Standing rule: keep this document current at all times.** Any change to infrastructure, accounts/access, deployment, content workflow, or roadmap must be reflected here in the same change. This is the formal handover record required by the project proposal (Milestone 4) and item 3 of the Successor Handover Checklist.
 
-_Last updated: 2026-11-01_
+_Last updated: 2026-11-12_
 
 ## 1. Project Overview
 
@@ -78,7 +78,7 @@ Budget for the domain is approved-in-principle per the proposal but must be form
 | Task | How |
 | --- | --- |
 | Run locally | `npm ci && npm run dev` → http://localhost:3000 |
-| Edit site copy | `app/lib/data.ts` (website credits in the footer are `COPY.credits`; when the team changes, update them and the Credits section of README.md) |
+| Edit site copy | `app/lib/data.ts` (the footer's "Website team" list is `COPY.credits.team`, one entry per member with their profile links; when the team changes, update it and the Credits section of README.md) |
 | Add an event or workshop | Easiest: `uplbdsg.org/admin/`, Events and workshops, New. By hand: add WebP photos (1600px max plus `*-640.webp`) under `public/events/<slug>/` and a `content/events/<slug>.md` copied from an existing entry (`kind`, `title`, `date`, `publishedAt`, `description`, `images`, `source` with the Facebook permalink, writeup as the body). The page, sitemap entry, and home-page card or timeline row follow from the file |
 | Add a Data Digest entry | Easiest: `uplbdsg.org/admin/`, Data Digest, New. By hand: add 1200px numbered WebP panels, matching `*-640.webp` mobile variants, and a 640px `cover.webp` under `public/digest/<slug>/`, then a `content/digest/<slug>.md` copied from an existing entry |
 | Deploy to production | Push to `main` (GitHub Actions → Cloudflare Pages) |
@@ -105,7 +105,7 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 
 - **Simonee Ezekiel Mariquit**, Lead Developer
 - **Franz Saragena**, Marketing & Creatives Head (2025 to 2026)
-- **Hans Andre Shi**, Marketing & Creatives Head (2026 to 2027)
+- **Hans Andrie Shi**, Marketing & Creatives Head (2026 to 2027)
 
 ## 10. Revision History
 
@@ -129,3 +129,4 @@ Incoming teams may redesign, restructure, or migrate the site as they see fit, p
 | 2026-11-01 | Docs and cleanup: this document, README, and AGENTS.md now describe the markdown and `/admin` content workflow and current versions. Removed the unused hero scene layers, `FACEBOOK_URL`, and `COPY.tagline`; the content loader now fails the build on an unknown event `kind`. |
 | 2026-11-01 | Sharper images: phones were showing the 640px copies stretched 1.6x to 2x on 3x screens, and the hero 4x to 7x. Pictures now use `srcset` so high-density screens get the full file, the hero has full-height 9:16 phone crops, and the low-resolution Untangled slide (850px, cut from a poster) is replaced by a No Code Beta photo, so all five slides show learning. Facebook has 2048px originals of the hero photos if the hero needs to be sharper on retina laptops. |
 | 2026-11-01 | Footer credits the website team: Simonee Ezekiel Mariquit (lead, linked to github.com/smmariquit) and the members of the UPLB DSG Website chat as contributors (`COPY.credits`). |
+| 2026-11-12 | Footer credits became a "Website team" list (`COPY.credits.team`): each member's name with their GitHub, LinkedIn, and personal site links. Links come from each member's public GitHub profile; add or remove one only when the member asks. |

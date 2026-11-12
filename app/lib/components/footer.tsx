@@ -53,25 +53,33 @@ export default function Footer() {
           </ul>
         </nav>
       </div>
-      <div className="mx-auto max-w-6xl space-y-2 border-t border-white/10 px-6 py-5 lg:px-12 text-sm leading-relaxed text-white/60">
-        <p>
-          Website by{" "}
-          <a
-            href={COPY.credits.lead.href}
-            target="_blank"
-            rel="noreferrer"
-            className="whitespace-nowrap text-white/85 underline decoration-white/30 underline-offset-4 hover:text-off-white hover:decoration-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
-          >
-            {COPY.credits.lead.name}
-          </a>{" "}
-          (lead) with{" "}
-          {/* Names never split across lines. */}
-          {new Intl.ListFormat("en", { type: "conjunction" })
-            .formatToParts(COPY.credits.contributors)
-            .map((part, i) => (part.type === "element" ? <span key={i} className="whitespace-nowrap">{part.value}</span> : part.value))}
-          .
-        </p>
-        <p>© {new Date().getFullYear()} {COPY.orgName}.</p>
+      <div className="mx-auto max-w-6xl border-t border-white/10 px-6 py-8 lg:px-12 text-sm leading-relaxed text-white/60">
+        <h2 className="font-semibold text-white/85">{COPY.credits.heading}</h2>
+        <ul className="mt-3 grid gap-x-8 gap-y-1 sm:grid-cols-2 sm:gap-y-3 lg:grid-cols-4">
+          {COPY.credits.team.map((member) => (
+            <li key={member.name} className="flex flex-wrap items-center justify-between gap-x-4 sm:block">
+              <p className="text-white/85">
+                {member.name}
+                {member.role && <span className="block text-white/60">{member.role}</span>}
+              </p>
+              <p className="flex gap-x-3">
+                {member.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${member.name}, ${link.label}`}
+                    className="inline-flex min-h-11 min-w-11 items-center rounded-sm underline decoration-white/30 underline-offset-4 transition-colors hover:text-off-white hover:decoration-off-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-off-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6">© {new Date().getFullYear()} {COPY.orgName}.</p>
       </div>
     </footer>
   );
